@@ -3,13 +3,14 @@
 public class GunHolder : MonoBehaviour
 {
     [SerializeField] private TargetScaner _targetScaner;
-
-    private Weapon _currentWeapon;
+    [SerializeField] private Weapon _currentWeapon;
 
     private void FixedUpdate()
     {
         if (_targetScaner.HasTarget)
+        {
             SpotTarget(_targetScaner.ClosestTarget.Position);
+        }
     }
 
     public void EnquipWeapon(Weapon weapon)
@@ -22,7 +23,7 @@ public class GunHolder : MonoBehaviour
 
     public void Shoot()
     {
-        _currentWeapon.Shoot();
+        _currentWeapon.Attack();
     }
 
     public void SpotTarget(Vector3 targetPosition)

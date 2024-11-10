@@ -5,7 +5,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _reloadTime;
 
     [SerializeField] protected Transform ShootPoint;
-    [SerializeField] protected Animator GunAnimator;
+    [SerializeField] protected Animator WeaponAnimator;
 
     private float _currentTime = 0;
 
@@ -26,7 +26,7 @@ public abstract class Weapon : MonoBehaviour
         Transform = transform;
     }
 
-    public abstract void Shoot();
+    public abstract void Attack();
 
     public virtual void Reload()
     {
