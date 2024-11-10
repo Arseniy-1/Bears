@@ -12,6 +12,7 @@ public class TargetScaner : MonoBehaviour
     private WaitForSeconds _delay;
 
     public ITarget ClosestTarget { get; private set; }
+    public bool HasTarget => ClosestTarget != null;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class TargetScaner : MonoBehaviour
             if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
                 targets.Add(target);
 
-        if (targets != null)
+        if (targets.Count > 0)
         {
             ClosestTarget = targets.ToArray()[0];
         }

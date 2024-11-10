@@ -8,7 +8,8 @@ public class GunHolder : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SpotTarget(_targetScaner.ClosestTarget.Position);
+        if (_targetScaner.HasTarget)
+            SpotTarget(_targetScaner.ClosestTarget.Position);
     }
 
     public void EnquipWeapon(Weapon weapon)

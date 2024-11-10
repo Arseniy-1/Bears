@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 371260202}
   - component: {fileID: 371260197}
   - component: {fileID: 371260196}
+  - component: {fileID: 371260203}
   - component: {fileID: 371260195}
   - component: {fileID: 371260194}
   m_Layer: 0
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f548a686015c76840832fcb9d05677b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetScaner: {fileID: 0}
+  _targetScaner: {fileID: 371260203}
 --- !u!114 &371260197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +331,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealthPoint: 0
+--- !u!114 &371260203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371260193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3b9308d8d24514ea92ec3f3b840084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scanRadius: 150
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _scanDelay: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
