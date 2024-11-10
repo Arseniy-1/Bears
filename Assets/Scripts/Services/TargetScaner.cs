@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class TargetScaner : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class TargetScaner : MonoBehaviour
     [SerializeField] private float _scanDelay = 1;
 
     private WaitForSeconds _delay;
-
     public ITarget ClosestTarget { get; private set; }
+
+    public Vector2 Position => Position;
 
     private void Start()
     {
@@ -37,9 +39,15 @@ public class TargetScaner : MonoBehaviour
             if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
                 targets.Add(target);
 
+<<<<<<< Updated upstream:Assets/Scripts/Services/TargetScaner.cs
         if (targets != null)
+=======
+        List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - Position).magnitude).ToList();
+
+        if (sortedTargets.Count > 0)
+>>>>>>> Stashed changes:Assets/_Project/Scripts/Services/TargetScaner.cs
         {
-            ClosestTarget = targets.ToArray()[0];
+            ClosestTarget = sortedTargets.ToArray()[0];
         }
         else
         {
