@@ -10,7 +10,7 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        HorizontalDirection = Input.GetAxis(Horizontal);
-        VerticalDirection = Input.GetAxis(Vertical);
+        HorizontalDirection = Input.GetAxisRaw(Horizontal);
+        VerticalDirection = Input.GetAxisRaw(Vertical);
     }
 }
