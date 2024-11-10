@@ -15,6 +15,11 @@ namespace _Project.Scripts.Player
             _triggerObserver.TriggerEnter += OnTriggerEntered;
         }
 
+        private void OnDisable()
+        {
+            _triggerObserver.TriggerEnter -= OnTriggerEntered;
+        }
+
         private void OnTriggerEntered(Collider2D collider)
         {
             if (collider.TryGetComponent(out CollectableObject collectable))

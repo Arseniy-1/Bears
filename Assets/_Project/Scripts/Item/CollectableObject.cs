@@ -4,12 +4,12 @@ namespace _Project.Scripts.Item
 {
     public class CollectableObject : MonoBehaviour, IInteractable
     {
-        [SerializeField] private ItemType _itemType;
-        [SerializeField] private int _count;
-        
+        [field: SerializeField] public int Count { get; private set; }
+        [field: SerializeField] public ItemType ItemType { get; private set; }
+
         public void Collect()
         {
-            Debug.Log($"collected {_itemType.Name} x{_count}");
+            //Debug.Log($"collected {ItemType.Name} x{Count}");
         }
     }
 }
