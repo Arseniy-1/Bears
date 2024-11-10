@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using _Project.Scripts.Item;
+using _Project.Scripts.Player.Inventory;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamagable, ITarget
@@ -6,6 +8,7 @@ public class Player : MonoBehaviour, IDamagable, ITarget
     [SerializeField] private GunHolder _hand;
     [SerializeField] private Health _health;
     [SerializeField] private CollisionHandler _collisionHandler;
+    [SerializeField] private Inventory _inventory;
 
     public Vector2 Position => transform.position;
 

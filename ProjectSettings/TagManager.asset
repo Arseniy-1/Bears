@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Collectable
+  - CollectableZone
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CollectZone
+    uniqueID: 3713412379
+    locked: 0
+  - name: Player
+    uniqueID: 2743263535
     locked: 0
