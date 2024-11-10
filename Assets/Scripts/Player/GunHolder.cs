@@ -7,14 +7,10 @@ public class GunHolder : MonoBehaviour
 
     private void FixedUpdate()
     {
-<<<<<<< Updated upstream:Assets/Scripts/Player/GunHolder.cs
-        SpotTarget(_targetScaner.ClosestTarget.Position);
-=======
         if (_targetScaner.HasTarget)
         {
             SpotTarget(_targetScaner.ClosestTarget.Position);
         }
->>>>>>> Stashed changes:Assets/_Project/Scripts/Player/GunHolder.cs
     }
 
     public void EnquipWeapon(Weapon weapon)
