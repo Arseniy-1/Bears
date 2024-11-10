@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamagable, ITarget
 {
-    [SerializeField] private GunHolder _hand;
+    [SerializeField] private GunHolder _gunHolder;
     [SerializeField] private Health _health;
     [SerializeField] private CollisionHandler _collisionHandler;
     [SerializeField] private Inventory _inventory;
@@ -33,9 +33,10 @@ public class Player : MonoBehaviour, IDamagable, ITarget
     {
         if (interactable is Weapon weapon)
         {
-            _hand.EnquipWeapon(weapon);
+            _gunHolder.EnquipWeapon(weapon);
         }
     }
+
     private void RaiseDeath()
     {
         Destroy(gameObject);
