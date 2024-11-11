@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 371260204}
   - component: {fileID: 371260195}
   - component: {fileID: 371260194}
+  - component: {fileID: 371260205}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -361,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 371260193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: -0.96, z: 0}
+  m_LocalPosition: {x: -0.27, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -394,6 +395,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cd880c48afdb745928393ef52ea382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &371260205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371260193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2468a660220ba94f8722ed0bcd5d389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteCharacter: {fileID: 0}
+  spriteWeapon: {fileID: 0}
+  _weapon: {fileID: 0}
+  _scaner: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
