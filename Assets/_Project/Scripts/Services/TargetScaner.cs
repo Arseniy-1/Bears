@@ -10,8 +10,10 @@ public class TargetScaner : MonoBehaviour
     [SerializeField] private float _scanDelay = 1;
 
     private WaitForSeconds _delay;
-
     public ITarget ClosestTarget { get; private set; }
+    public bool HasTarget => ClosestTarget != null;
+
+    public Vector2 Position => transform.position;
 
     private void Start()
     {
@@ -37,9 +39,11 @@ public class TargetScaner : MonoBehaviour
             if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
                 targets.Add(target);
 
-        if (targets != null)
+        List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - Position).magnitude).ToList();
+
+        if (sortedTargets.Count > 0)
         {
-            ClosestTarget = targets.ToArray()[0];
+            ClosestTarget = sortedTargets.ToArray()[0];
         }
         else
         {
