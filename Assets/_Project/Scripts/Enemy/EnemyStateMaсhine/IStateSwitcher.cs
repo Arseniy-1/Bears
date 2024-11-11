@@ -1,6 +1,6 @@
-using Enemy.EnemyStateMaсhine.States;
+using _Project.Scripts.Enemy.EnemyStateMaсhine.States;
 
-namespace Enemy.EnemyStateMaсhine
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine
 {
     public interface IStateSwitcher
     {

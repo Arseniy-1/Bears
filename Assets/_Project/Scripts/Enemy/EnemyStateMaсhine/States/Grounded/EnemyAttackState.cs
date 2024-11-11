@@ -1,12 +1,12 @@
-using Enemy.EnemyStateMaсhine.States.Configs;
+using _Project.Scripts.Enemy.EnemyStateMaсhine.States.Configs;
 
-namespace Enemy.EnemyStateMaсhine.States.Grounded
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
 {
     public class EnemyAttackState : MovementState
     {
         private AttackStateConfig _config;
 
-        public EnemyAttackState(IStateSwitcher stateSwitcher, StateMachineData data, global::Enemy.Enemy enemy) : base(
+        public EnemyAttackState(IStateSwitcher stateSwitcher, StateMachineData data, Enemy enemy) : base(
             stateSwitcher, data, enemy)
             => _config = enemy.Config.AttackStateConfig;
 

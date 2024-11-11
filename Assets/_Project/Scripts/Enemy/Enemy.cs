@@ -1,7 +1,7 @@
-using Enemy.EnemyStateMaсhine;
+using _Project.Scripts.Enemy.EnemyStateMaсhine;
 using UnityEngine;
 
-namespace Enemy
+namespace _Project.Scripts.Enemy
 {
     public class Enemy : MonoBehaviour
     {

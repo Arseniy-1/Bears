@@ -1,4 +1,4 @@
-namespace Enemy.EnemyStateMaсhine.States
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States
 {
     public interface IState
     {

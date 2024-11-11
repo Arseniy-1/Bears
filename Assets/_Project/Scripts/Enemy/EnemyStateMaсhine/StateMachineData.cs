@@ -1,6 +1,6 @@
 using System;
 
-namespace Enemy.EnemyStateMaсhine
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine
 {
     public class StateMachineData
     {

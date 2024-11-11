@@ -1,4 +1,4 @@
-namespace Enemy.EnemyStateMaсhine.States.Grounded
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
 {
     public class EnemyIdleState : MovementState
     {
