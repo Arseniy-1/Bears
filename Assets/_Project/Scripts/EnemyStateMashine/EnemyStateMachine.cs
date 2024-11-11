@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using _Project.Scripts.Enemy.EnemyStateMaсhine.States;
-using _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded;
+using _Project.Scripts.EnemyStateMashine.States;
+using _Project.Scripts.EnemyStateMashine.States.Grounded;
 
-namespace _Project.Scripts.Enemy.EnemyStateMaсhine
+namespace _Project.Scripts.EnemyStateMashine
 {
     public class EnemyStateMachine : IStateSwitcher
     {
@@ -15,8 +15,8 @@ namespace _Project.Scripts.Enemy.EnemyStateMaсhine
         {
             _states = new List<IState>()
             {
-                new EnemyIdleState(this, enemy, enemy.Scaner),
-                new EnemyWalkState(this, enemy, enemy.Scaner),
+                new EnemyIdleState(this, enemy),
+                new EnemyWalkState(this, enemy),
                 new EnemyAttackState()
             };
             

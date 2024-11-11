@@ -1,4 +1,4 @@
-namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
+namespace _Project.Scripts.EnemyStateMashine.States.Grounded
 {
     public class EnemyAttackState : IState
     {

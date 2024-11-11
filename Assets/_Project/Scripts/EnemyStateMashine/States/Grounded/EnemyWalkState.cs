@@ -1,9 +1,9 @@
-namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
+namespace _Project.Scripts.EnemyStateMashine.States.Grounded
 {
     public class EnemyWalkState : MovementState
     {
-        public EnemyWalkState(IStateSwitcher stateSwitcher, Enemy enemy, TargetScaner scanner) : base(
-            stateSwitcher, enemy, scanner) { }
+        public EnemyWalkState(IStateSwitcher stateSwitcher, EnemyStateMashine.Enemy enemy) : base(
+            stateSwitcher, enemy) { }
 
         public override void Enter()
         {
@@ -12,7 +12,7 @@ namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
 
         public override void Update()
         {
-            if(TargetScanner.HasTarget == false)
+            if(Enemy.TargetDetected == false)
                 StateSwitcher.SwitchState<EnemyIdleState>();
         }
 
