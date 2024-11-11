@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Enemy.EnemyStateMaсhine.States;
-using Enemy.EnemyStateMaсhine.States.Grounded;
-using UnityEngine;
+using _Project.Scripts.Enemy.EnemyStateMaсhine.States;
+using _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded;
 
-namespace Enemy.EnemyStateMaсhine
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine
 {
     public class EnemyStateMachine : IStateSwitcher
     {

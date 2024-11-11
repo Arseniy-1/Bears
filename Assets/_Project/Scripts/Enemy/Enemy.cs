@@ -1,13 +1,14 @@
-using Enemy.EnemyStateMaсhine;
+using _Project.Scripts.Enemy.EnemyStateMaсhine;
 using UnityEngine;
 
-namespace Enemy
+namespace _Project.Scripts.Enemy
 {
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private EnemyView _enemyView;
         [SerializeField] private EnemyConfig _config;
         private EnemyStateMachine _stateMachine;
+        
 
         public EnemyView View => _enemyView;
         public EnemyConfig Config => _config;

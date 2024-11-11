@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy
+namespace _Project.Scripts.Enemy
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyView : MonoBehaviour

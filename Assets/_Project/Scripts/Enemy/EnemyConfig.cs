@@ -1,7 +1,7 @@
-using Enemy.EnemyStateMaсhine.States.Configs;
+using _Project.Scripts.Enemy.EnemyStateMaсhine.States.Configs;
 using UnityEngine;
 
-namespace Enemy
+namespace _Project.Scripts.Enemy
 {
     [CreateAssetMenu(menuName = "Configs/EnemyConfig", fileName = "EnemyConfig")]
     public class EnemyConfig : ScriptableObject

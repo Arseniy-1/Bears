@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Enemy.EnemyStateMaсhine.States.Configs
+namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Configs
 {
     [Serializable]
     public class WalkStateConfig
