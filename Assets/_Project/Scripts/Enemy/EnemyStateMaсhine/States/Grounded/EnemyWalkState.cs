@@ -1,23 +1,18 @@
-using _Project.Scripts.Enemy.EnemyStateMaсhine.States.Configs;
-
 namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
 {
     public class EnemyWalkState : MovementState
     {
-        private WalkStateConfig _config;
+        public EnemyWalkState(IStateSwitcher stateSwitcher, Enemy enemy, TargetScaner scanner) : base(
+            stateSwitcher, enemy, scanner) { }
 
-        public EnemyWalkState(IStateSwitcher stateSwitcher, StateMachineData data, Enemy enemy) : base(
-            stateSwitcher, data, enemy)
-            => _config = enemy.Config.WalkStateConfig;
-        
         public override void Enter()
         {
-            Data.Speed = _config.Speed;
+            
         }
 
         public override void Update()
         {
-            if(IsSpeedZero())
+            if(TargetScanner.HasTarget == false)
                 StateSwitcher.SwitchState<EnemyIdleState>();
         }
 

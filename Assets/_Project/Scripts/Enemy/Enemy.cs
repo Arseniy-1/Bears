@@ -3,15 +3,12 @@ using UnityEngine;
 
 namespace _Project.Scripts.Enemy
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : Character, ITarget
     {
         [SerializeField] private EnemyView _enemyView;
-        [SerializeField] private EnemyConfig _config;
         private EnemyStateMachine _stateMachine;
         
-
         public EnemyView View => _enemyView;
-        public EnemyConfig Config => _config;
 
         private void Awake()
         {
@@ -23,5 +20,7 @@ namespace _Project.Scripts.Enemy
         {
             _stateMachine.Update();
         }
+
+        public Vector2 Position { get; }
     }
 }

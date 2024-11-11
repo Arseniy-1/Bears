@@ -5,14 +5,14 @@ namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States
     public abstract class MovementState : IState
     {
         protected readonly IStateSwitcher StateSwitcher;
-        protected readonly StateMachineData Data;
+        protected readonly TargetScaner TargetScanner;
         private readonly Enemy _enemy;
 
-        public MovementState(IStateSwitcher stateSwitcher, StateMachineData data, Enemy enemy)
+        public MovementState(IStateSwitcher stateSwitcher, Enemy enemy, TargetScaner targetScanner)
         {
             StateSwitcher = stateSwitcher;
-            Data = data;
             _enemy = enemy;
+            TargetScanner = targetScanner;
         }
         
         protected EnemyView View => _enemy.View;
@@ -22,7 +22,5 @@ namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States
         public abstract void Update();
 
         public abstract void Exit();
-        
-        protected bool IsSpeedZero() => Mathf.Approximately(Data.Speed, 0f);
     }
 }

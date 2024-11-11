@@ -2,16 +2,16 @@ namespace _Project.Scripts.Enemy.EnemyStateMaсhine.States.Grounded
 {
     public class EnemyIdleState : MovementState
     {
-        public EnemyIdleState(IStateSwitcher switcher, StateMachineData data, Enemy enemy) : base(switcher, data, enemy) {}
+        public EnemyIdleState(IStateSwitcher switcher,  Enemy enemy, TargetScaner scanner) : base(switcher, enemy, scanner) {}
 
         public override void Enter()
         {
-            Data.Speed = 0;
+            
         }
 
         public override void Update()
         {
-            if (IsSpeedZero())
+            if (TargetScanner.HasTarget)
                 return;
             
             StateSwitcher.SwitchState<EnemyWalkState>();

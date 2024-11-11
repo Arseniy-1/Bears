@@ -13,13 +13,11 @@ namespace _Project.Scripts.Enemy.EnemyStateMaсhine
 
         public EnemyStateMachine(Enemy enemy)
         {
-            StateMachineData data = new StateMachineData();
-            
             _states = new List<IState>()
             {
-                new EnemyIdleState(this, data, enemy),
-                new EnemyWalkState(this, data, enemy),
-                new EnemyAttackState(this, data, enemy)
+                new EnemyIdleState(this, enemy, enemy.Scaner),
+                new EnemyWalkState(this, enemy, enemy.Scaner),
+                new EnemyAttackState()
             };
             
             _currentState = _states[0];
