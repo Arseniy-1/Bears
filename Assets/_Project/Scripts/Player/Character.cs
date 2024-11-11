@@ -9,6 +9,5 @@ public class Character : MonoBehaviour
     [SerializeField] private Weapon _weapon;
     [SerializeField] private TargetScaner _scaner;
     
-    public Weapon Weapon => _weapon;
     public TargetScaner Scaner => _scaner;
 }
