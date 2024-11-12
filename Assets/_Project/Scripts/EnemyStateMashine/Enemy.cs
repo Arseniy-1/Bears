@@ -1,30 +1,22 @@
-using _Project.Scripts.EnemyStateMashine;
 using UnityEngine;
 
-namespace _Project.Scripts.EnemyStateMashine
+public class Enemy : Character, ITarget
 {
-    public class Enemy : Character, ITarget
+    [field: SerializeField] public TargetScaner TargetScaner { get; private set; }
+    [field: SerializeField] public float DetectionRange { get; private set; }
+    [field: SerializeField] public float AttackRange { get; private set; }
+
+    private EnemyStateMachine _stateMachine;
+
+    public Vector2 Position => transform.position;
+
+    private void Awake()
     {
-        [SerializeField] private EnemyView _enemyView;
-        [SerializeField] private float _detectionRange;
-        
-        private EnemyStateMachine _stateMachine;
-        private Transform _transform;
-        
-        public EnemyView View => _enemyView;
-        public bool TargetDetected => Vector3.Distance(_transform.position, Scaner.ClosestTarget.Position) < _detectionRange;
-        public Vector2 Position => transform.position;
+        _stateMachine = new EnemyStateMachine(this);
+    }
 
-        private void Awake()
-        {
-            _enemyView.Initialize();
-            _stateMachine = new EnemyStateMachine(this);
-            _transform = transform;
-        }
-
-        private void Update()
-        {
-            _stateMachine.Update();
-        }
+    private void Update()
+    {
+        _stateMachine.Update();
     }
 }
