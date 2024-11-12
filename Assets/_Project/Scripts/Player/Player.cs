@@ -1,13 +1,16 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamagable, ITarget
+public class Player : Character, IDamagable, ITarget
 {
+    [SerializeField] private float _speed;
     [SerializeField] private GunHolder _gunHolder;
     [SerializeField] private Health _health;
     [SerializeField] private CollisionHandler _collisionHandler;
 
     public Vector2 Position => transform.position;
+    private Mover _mover;
 
     private void OnEnable()
     {
@@ -15,10 +18,20 @@ public class Player : MonoBehaviour, IDamagable, ITarget
         _collisionHandler.CollisionDetected += Interact;
     }
 
+    private void Awake()
+    {
+        _mover = new Mover(this, GetComponent<Rigidbody2D>(), _gunHolder.TargetScanner, GetComponent<InputHandler>());
+    }
+
     private void OnDisable()
     {
         _health.Died -= RaiseDeath;
         _collisionHandler.CollisionDetected -= Interact;
+    }
+
+    private void Update()
+    {
+        _mover.Run(_speed);
     }
 
     public void TakeDamage(float amount)

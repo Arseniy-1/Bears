@@ -1,28 +1,25 @@
 public class Turning
 {
     private readonly Character _character;
-    private TargetScaner _scanner;
-    
-    public Turning(Character character)
+    private readonly TargetScanner _scanner;
+
+    public Turning(Character character, TargetScanner scanner)
     {
         _character = character;
+        _scanner = scanner;
     }
 
-    public void CorrectFlip(bool flip)
+    public void CorrectFlip(int posX)
     {
-        if (_character.Scaner.HasTarget)
+        if (_scanner.HasTarget)
         {
-            if (_character.Scaner.ClosestTarget.Position.x > _character.transform.position.x)
-                _character.spriteWeapon.flipY = false;
-            else
-                _character.spriteWeapon.flipY = true;
+            _character.spriteWeapon.flipY = !((int)_scanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
+            _character.spriteCharacter.flipX = !((int)_scanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
         }
-        else
+        
+        else if (posX != 0)
         {
-            if (flip)
-                _character.spriteCharacter.flipX = !flip;
-            else
-                _character.spriteCharacter.flipX = flip;
+            _character.spriteCharacter.flipX = posX < 0;
         }
     }
 }

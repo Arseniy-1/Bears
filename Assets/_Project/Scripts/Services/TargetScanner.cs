@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections;
 
-public class TargetScaner : MonoBehaviour
+public class TargetScanner : MonoBehaviour
 {
     [SerializeField] private float _scanRadius = 150f;
     [SerializeField] private LayerMask _targetLayer;
