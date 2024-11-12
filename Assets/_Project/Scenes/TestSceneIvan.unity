@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f548a686015c76840832fcb9d05677b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetScaner: {fileID: 116459289}
+  _targetScanner: {fileID: 116459289}
   _currentWeapon: {fileID: 1034110586}
 --- !u!4 &116459288
 Transform:
@@ -199,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 582628657849014645, guid: 144f53a5999457f4197f070d25751408, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 582628657849014645, guid: 144f53a5999457f4197f070d25751408, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6962356440656083624, guid: 144f53a5999457f4197f070d25751408, type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,6 +261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 582628657849014645, guid: 144f53a5999457f4197f070d25751408, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6962356440656083624, guid: 144f53a5999457f4197f070d25751408, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.3769546
@@ -312,9 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719488480}
   - component: {fileID: 719488479}
-  - component: {fileID: 719488478}
   - component: {fileID: 719488477}
-  - component: {fileID: 719488476}
   - component: {fileID: 719488475}
   - component: {fileID: 719488474}
   - component: {fileID: 719488473}
@@ -413,20 +419,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealthPoint: 0
---- !u!114 &719488476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719488470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df77d12cc430209498ee4f2f720e120f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 3
-  _inputHandler: {fileID: 719488474}
 --- !u!114 &719488477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,27 +431,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3d47fc991783045a39c02c053e90a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteCharacter: {fileID: 0}
-  spriteWeapon: {fileID: 0}
-  Scaner: {fileID: 0}
+  spriteCharacter: {fileID: 719488479}
+  spriteWeapon: {fileID: 1034110589}
+  _speed: 3
   _gunHolder: {fileID: 116459287}
   _health: {fileID: 719488475}
   _collisionHandler: {fileID: 719488473}
---- !u!114 &719488478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719488470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2468a660220ba94f8722ed0bcd5d389, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteCharacter: {fileID: 719488479}
-  spriteWeapon: {fileID: 1034110589}
-  Scaner: {fileID: 0}
 --- !u!212 &719488479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -501,8 +478,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2830189, g: 0.11881453, b: 0.11881453, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d67ff70d38497d241a21478579d79bc9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
