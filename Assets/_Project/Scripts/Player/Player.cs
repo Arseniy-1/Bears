@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamagable, ITarget
+public class Player : Character, IDamagable, ITarget
 {
     [SerializeField] private GunHolder _gunHolder;
     [SerializeField] private Health _health;
