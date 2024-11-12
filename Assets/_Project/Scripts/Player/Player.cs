@@ -1,30 +1,40 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character, IDamagable, ITarget
+public class Player : MonoBehaviour, IDamagable, ITarget
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private GunHolder _gunHolder;
+    [SerializeField] private Health _health;
+    [SerializeField] private CollisionHandler _collisionHandler;
 
     public Vector2 Position => transform.position;
-    private Mover _mover;
 
-    private void Awake()
+    private void OnEnable()
     {
-        _mover = new Mover(this, GetComponent<Rigidbody2D>(), gunHolder.TargetScanner, GetComponent<InputHandler>());
+        _health.Died += RaiseDeath;
+        _collisionHandler.CollisionDetected += Interact;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        _mover.Run(_speed);
+        _health.Died -= RaiseDeath;
+        _collisionHandler.CollisionDetected -= Interact;
     }
-    
-    protected override void Interact(IInteractable interactable)
+
+    public void TakeDamage(float amount)
+    {
+        _health.TakeDamage(amount);
+    }
+
+    private void Interact(IInteractable interactable)
     {
         if (interactable is Weapon weapon)
         {
-            gunHolder.EnquipWeapon(weapon);
+            _gunHolder.EnquipWeapon(weapon);
         }
     }
-    
+
+    private void RaiseDeath()
+    {
+        Destroy(gameObject);
+    }
 }

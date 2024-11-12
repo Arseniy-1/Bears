@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootGun : Weapon
 {
@@ -8,26 +7,12 @@ public class ShootGun : Weapon
 
     private int _bulletCount = 6;
 
-    private void Start()
-    {
-        StartCoroutine(Shooting());
-    }
-
-    public override void Attack()
+    protected override void Attack()
     {
         for (int i = 0; i < _bulletCount; i++)
         {
             Ammo ammo = Instantiate(_ammoPrefab, ShootPoint.transform.position, GetRandomSpread(ShootPoint.transform.rotation));
             ammo.Activate();
-        }
-    }
-
-    private IEnumerator Shooting()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            Attack();
         }
     }
 

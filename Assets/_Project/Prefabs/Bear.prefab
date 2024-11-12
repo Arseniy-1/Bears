@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 4128314347545548986}
   - component: {fileID: 1833966129265052292}
   - component: {fileID: 4329931852941578532}
-  - component: {fileID: 4107256664310461370}
-  m_Layer: 0
+  - component: {fileID: 5505160828527499833}
+  m_Layer: 7
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _inputHandler: {fileID: 7811903257393740812}
-  _scaner: {fileID: 2590057797219706565}
 --- !u!114 &9140744587613635494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,20 +208,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4107256664310461370
-MonoBehaviour:
+--- !u!61 &5505160828527499833
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401926380772118081}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2468a660220ba94f8722ed0bcd5d389, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapon: {fileID: 1257401659930481335}
-  _sprite: {fileID: 6998880714694432590}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5277662992652271630
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +264,7 @@ GameObject:
   - component: {fileID: 1567313764152571517}
   - component: {fileID: 4204060467969746444}
   - component: {fileID: 2590057797219706565}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,6 +369,14 @@ PrefabInstance:
     - target: {fileID: 1079142274653617283, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: m_Name
       value: ShootGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079142274653617283, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005734954366770178, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8712087793319151113, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: _sprite
