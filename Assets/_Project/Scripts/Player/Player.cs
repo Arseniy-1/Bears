@@ -5,50 +5,26 @@ using UnityEngine;
 public class Player : Character, IDamagable, ITarget
 {
     [SerializeField] private float _speed;
-    [SerializeField] private GunHolder _gunHolder;
-    [SerializeField] private Health _health;
-    [SerializeField] private CollisionHandler _collisionHandler;
 
     public Vector2 Position => transform.position;
     private Mover _mover;
 
-    private void OnEnable()
-    {
-        _health.Died += RaiseDeath;
-        _collisionHandler.CollisionDetected += Interact;
-    }
-
     private void Awake()
     {
-        _mover = new Mover(this, GetComponent<Rigidbody2D>(), _gunHolder.TargetScanner, GetComponent<InputHandler>());
-    }
-
-    private void OnDisable()
-    {
-        _health.Died -= RaiseDeath;
-        _collisionHandler.CollisionDetected -= Interact;
+        _mover = new Mover(this, GetComponent<Rigidbody2D>(), gunHolder.TargetScanner, GetComponent<InputHandler>());
     }
 
     private void Update()
     {
         _mover.Run(_speed);
     }
-
-    public void TakeDamage(float amount)
-    {
-        _health.TakeDamage(amount);
-    }
-
-    private void Interact(IInteractable interactable)
+    
+    protected override void Interact(IInteractable interactable)
     {
         if (interactable is Weapon weapon)
         {
-            _gunHolder.EnquipWeapon(weapon);
+            gunHolder.EnquipWeapon(weapon);
         }
     }
-
-    private void RaiseDeath()
-    {
-        Destroy(gameObject);
-    }
+    
 }
