@@ -2,14 +2,16 @@
 
 public class GunHolder : MonoBehaviour
 {
-    [SerializeField] private TargetScaner _targetScaner;
+    [SerializeField] private TargetScanner _targetScanner;
     [SerializeField] private Weapon _currentWeapon;
-
+    
+    public TargetScanner TargetScanner => _targetScanner;
+    
     private void FixedUpdate()
     {
-        if (_targetScaner.HasTarget)
+        if (_targetScanner.HasTarget)
         {
-            SpotTarget(_targetScaner.ClosestTarget.Position);
+            SpotTarget(_targetScanner.ClosestTarget.Position);
         }
     }
 

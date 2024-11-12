@@ -6,5 +6,4 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public SpriteRenderer spriteCharacter; 
     [SerializeField] public SpriteRenderer spriteWeapon;
-    [SerializeField] public TargetScaner Scaner;
 }
