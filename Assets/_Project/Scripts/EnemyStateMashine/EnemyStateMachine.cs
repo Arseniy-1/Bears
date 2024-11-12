@@ -8,14 +8,9 @@ public class EnemyStateMachine : IStateSwitcher
     private List<IState> _states;
     private IState _currentState;
 
-    public EnemyStateMachine(Enemy enemy)
+    public EnemyStateMachine(List<IState> states)
     {
-        _states = new List<IState>()
-            {
-                new EnemyIdleState(this, enemy),
-                new EnemyMoveState(this, enemy),
-                new EnemyAttackState()
-            };
+        _states = states;
 
         _currentState = _states[0];
         _currentState.Enter();
@@ -62,15 +57,22 @@ public class EnemyIdleState : IState
 
     public virtual void Update()
     {
-        if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.DetectionRange)
-            _stateSwitcher.SwitchState<EnemyMoveState>();
+        if (_enemy.TargetScaner.HasTarget)
+        {
+            if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.DetectionRange)
+            {
+                _stateSwitcher.SwitchState<EnemyMoveState>();
+                Debug.Log(Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position));
+                Debug.Log(_enemy.DetectionRange);
+            }
+        }
     }
 }
 
 public class EnemyMoveState : IState
 {
     private readonly Enemy _enemy;
-    private  IStateSwitcher _stateSwitcher;
+    private IStateSwitcher _stateSwitcher;
 
     public EnemyMoveState(Enemy entity)
     {
@@ -95,12 +97,23 @@ public class EnemyMoveState : IState
     {
         if (_enemy.TargetScaner.HasTarget)
         {
-            _enemy.transform.position += (_enemy.TargetScaner.transform.position - _enemy.transform.position) * 2 * Time.deltaTime; //Магическое число - скорость
-        }
+            Vector2 direction = (_enemy.TargetScaner.ClosestTarget.Position - _enemy.Position).normalized;
+            Vector3 currentDirection = new Vector3(direction.x, direction.y, 0);
+            _enemy.GunHolder.SpotTarget();
+            _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
 
-        if(Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.AttackRange)
+            if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.AttackRange)
+            {
+                _stateSwitcher.SwitchState<EnemyAttackState>();
+            }
+            else
+            {
+                _stateSwitcher.SwitchState<EnemyIdleState>();
+            }
+        }
+        else
         {
-            _stateSwitcher.SwitchState<EnemyAttackState>();
+            _stateSwitcher.SwitchState<EnemyIdleState>();
         }
     }
 }
@@ -131,9 +144,21 @@ public class EnemyAttackState : IState
 
     public virtual void Update()
     {
-        if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.AttackRange)
+        if (_enemy.TargetScaner.HasTarget)
         {
-
+            if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.AttackRange)
+            {
+                _enemy.GunHolder.SpotTarget();
+                _enemy.GunHolder.Shoot();
+            }
+            else
+            {
+                _stateSwitcher.SwitchState<EnemyMoveState>();
+            }
+        }
+        else
+        {
+            _stateSwitcher.SwitchState<EnemyIdleState>();
         }
     }
 }

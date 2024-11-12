@@ -2,7 +2,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Character))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,7 +10,7 @@ public class PlayerMover : MonoBehaviour
     private Character _character;
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
-    private Turning _turning;
+    //private Turning _turning;
 
     public float HorizontalSpeed => _rigidbody2D.velocity.x;
 
@@ -21,7 +20,7 @@ public class PlayerMover : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         
-        _turning = new Turning(_character);
+        //_turning = new Turning(_character);
     }
 
     private void Update()
@@ -30,6 +29,6 @@ public class PlayerMover : MonoBehaviour
         float currentVerticalSpeed = _inputHandler.VerticalDirection * _speed;
 
         _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
-        _turning.CorrectFlip(currentHorizontalSpeed < 0);
+        //_turning.CorrectFlip(currentHorizontalSpeed < 0);
     }
 }

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1cf9246ce2dc2044ea52295de8c24f8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   ShootPoint: {fileID: 1285180867897563712}
   WeaponAnimator: {fileID: 8222165744207115121}
   _ammoPrefab: {fileID: 8971809276139737897, guid: 585f638940758be4ebdc73537852b403, type: 3}
+  _spread: 0.3
 --- !u!95 &8222165744207115121
 Animator:
   serializedVersion: 5

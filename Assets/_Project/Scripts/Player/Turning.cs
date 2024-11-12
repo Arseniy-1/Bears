@@ -1,7 +1,6 @@
 public class Turning
 {
     private readonly Character _character;
-    private TargetScaner _scanner;
     
     public Turning(Character character)
     {
