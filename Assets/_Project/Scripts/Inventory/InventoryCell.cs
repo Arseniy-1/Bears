@@ -24,7 +24,12 @@ namespace _Project.Scripts.Inventory
             }
         }
 
-        public int Amount => _data.Amount;
+        public int Amount
+        {
+            get => _data.Amount;
+            set => _data.Amount = value;
+        }
+
         public bool IsEmpty => Amount == 0 && string.IsNullOrEmpty(ItemId);
 
         public InventoryCell(InventoryCellData data)
