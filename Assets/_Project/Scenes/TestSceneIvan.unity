@@ -202,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 582628657849014645, guid: 144f53a5999457f4197f070d25751408, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6962356440656083624, guid: 144f53a5999457f4197f070d25751408, type: 3}
       propertyPath: m_LocalPosition.x
@@ -265,6 +265,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6259105144827010750, guid: 144f53a5999457f4197f070d25751408, type: 3}
+      propertyPath: spriteCharacter
+      value: 
+      objectReference: {fileID: 1563169155}
     - target: {fileID: 6962356440656083624, guid: 144f53a5999457f4197f070d25751408, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.3769546
@@ -433,10 +437,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteCharacter: {fileID: 719488479}
   spriteWeapon: {fileID: 1034110589}
+  gunHolder: {fileID: 116459287}
+  health: {fileID: 719488475}
+  collisionHandler: {fileID: 719488473}
   _speed: 3
-  _gunHolder: {fileID: 116459287}
-  _health: {fileID: 719488475}
-  _collisionHandler: {fileID: 719488473}
 --- !u!212 &719488479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -618,6 +622,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1563169155 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5443354527603052591, guid: 144f53a5999457f4197f070d25751408, type: 3}
+  m_PrefabInstance: {fileID: 547666490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1936898368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +678,14 @@ PrefabInstance:
     - target: {fileID: 1079142274653617283, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: m_Name
       value: ShootGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079142274653617283, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424781930286575202, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,40 +1,38 @@
+using _Project.Scripts.Player;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamagable, ITarget
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(InputHandler))]
+public class Player : Character, IDamagable, ITarget
 {
-    [SerializeField] private GunHolder _gunHolder;
-    [SerializeField] private Health _health;
-    [SerializeField] private CollisionHandler _collisionHandler;
+    [SerializeField] private float _speed;
 
     public Vector2 Position => transform.position;
+    private Mover _mover;
+    private InputHandler _inputHandler;
+    private Rigidbody2D _rigidbody2D;
 
-    private void OnEnable()
+    private void Awake()
     {
-        _health.Died += RaiseDeath;
-        _collisionHandler.CollisionDetected += Interact;
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _inputHandler = GetComponent<InputHandler>();
     }
 
-    private void OnDisable()
+    private void Start()
     {
-        _health.Died -= RaiseDeath;
-        _collisionHandler.CollisionDetected -= Interact;
+        _mover = new Mover(this, _rigidbody2D, gunHolder.TargetScanner, _inputHandler);
     }
 
-    public void TakeDamage(float amount)
+    private void Update()
     {
-        _health.TakeDamage(amount);
+        _mover.Run(_speed);
     }
-
-    private void Interact(IInteractable interactable)
+    
+    protected override void Interact(IInteractable interactable)
     {
         if (interactable is Weapon weapon)
         {
-            _gunHolder.EnquipWeapon(weapon);
+            gunHolder.EnquipWeapon(weapon);
         }
-    }
-
-    private void RaiseDeath()
-    {
-        Destroy(gameObject);
     }
 }
