@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 
 namespace _Project.Scripts.Inventory.ReadOnly
 {
-    public interface IReadOnlyInvetory
+    public interface IReadOnlyInventory
     {
         event Action<string, int> ItemsAdded;
         event Action<string, int> ItemsRemoved;

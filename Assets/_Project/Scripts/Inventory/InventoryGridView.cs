@@ -5,20 +5,31 @@ namespace _Project.Scripts.Inventory
 {
     public class InventoryGridView : MonoBehaviour
     {
-        public void Setup(IReadOnlyInvetoryGrid invetory)
+        private IReadOnlyInventoryGrid _inventory;
+        
+        public void Setup(IReadOnlyInventoryGrid inventory)
         {
-            var cells = invetory.GetCells();
-            var size = invetory.Size;
+            _inventory = inventory;
+            Print();
+        }
 
+        public void Print()
+        {
+            var cells = _inventory.GetCells();
+            var size = _inventory.Size;
+            string line = $"";
+            
             for (int x = 0; x < size.x; x++)
             {
                 for (int y = 0; y < size.y; y++)
                 {
                     IReadOnlyInventoryCell cell = cells[x, y];
                     
-                    Debug.Log($"Cell ({x};{y}), Item: {cell.ItemId}, Amount: {cell.Amount}");
+                    line += ($"Cell ({x};{y}), Item: {cell.ItemId}, Amount: {cell.Amount}\n");
                 }
             }
+            
+            Debug.Log(line);
         }
     }
 }

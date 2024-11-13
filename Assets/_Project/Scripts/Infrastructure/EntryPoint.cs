@@ -9,34 +9,56 @@ namespace _Project.Scripts.Infrastructure
     public class EntryPoint : MonoBehaviour
     {
         public InventoryGridView _view;
+        private InventoriesService _inventoriesService;
 
         private void Start()
         {
-            var inventoryData = new InventoryGridData()
-            {
-                Size = new Vector2Int(3, 4),
-                OwnerId = "Player",
-                Cells = new List<InventoryCellData>()
-            };
-            
-            // fill the cells
-            var size = inventoryData.Size;
-            for (int x = 0; x < size.x; x++)
-            {
-                for (int y = 0; y < size.y; y++)
-                {
-                    inventoryData.Cells.Add(new InventoryCellData());
-                }
-            }
+            _inventoriesService = new InventoriesService();
 
-            var cellData = inventoryData.Cells[0];
-            cellData.ItemId = "brick";
-            cellData.Amount = 15;
-            //Debug.Log($"{cellData.Amount}");
-            
-            var inventory = new InventoryGrid(inventoryData);
+            string ownerId = "Player";
+            var inventoryData = CreateTestInventory(ownerId);
+            var inventory = _inventoriesService.RegisterInventory(inventoryData);
             
             _view.Setup(inventory);
+
+            var addedResult = _inventoriesService.AddItems(ownerId, "apple", 30);
+            Debug.Log($"{addedResult.ToString()}, ItemId: apple");
+            
+            addedResult = _inventoriesService.AddItems(ownerId, "кирпич", 112);
+            Debug.Log($"{addedResult.ToString()}, ItemId: кирпич");
+            
+            addedResult = _inventoriesService.AddItems(ownerId, "letter", 10);
+            Debug.Log($"{addedResult.ToString()}, ItemId: letter");
+            
+            _view.Print();
+
+            var removedResult = _inventoriesService.RemoveItems(ownerId, "apple", 13);
+            Debug.Log($"{removedResult.ToString()}, ItemId: apple");
+            
+            removedResult = _inventoriesService.RemoveItems(ownerId, "apple", 18);
+            Debug.Log($"{removedResult.ToString()}, ItemId: apple");
+            
+            _view.Print();
+
+        }
+
+        private InventoryGridData CreateTestInventory(string ownerId)
+        {
+            var size = new Vector2Int(3, 4); // load from configs
+            var cellsData = new List<InventoryCellData>();
+            var length = size.x * size.y;
+            
+            for(int i = 0; i < length; i++)
+                cellsData.Add(new InventoryCellData());
+
+            var inventoryData = new InventoryGridData
+            {
+                OwnerId = ownerId,
+                Size = size,
+                Cells = cellsData
+            };
+
+            return inventoryData;
         }
     }
 }

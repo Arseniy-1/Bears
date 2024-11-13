@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Inventory.ReadOnly
 {
-    public interface IReadOnlyInvetoryGrid : IReadOnlyInvetory
+    public interface IReadOnlyInventoryGrid : IReadOnlyInventory
     {
         event Action<Vector2Int> SizeChanged;
         
