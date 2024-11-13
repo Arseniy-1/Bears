@@ -1,17 +1,27 @@
+using System;
 using _Project.Scripts.Player;
 using UnityEngine;
 
-
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(InputHandler))]
 public class Player : Character, IDamagable, ITarget
 {
     [SerializeField] private float _speed;
 
     public Vector2 Position => transform.position;
     private Mover _mover;
+    private InputHandler _inputHandler;
+    private Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
-        _mover = new Mover(this, GetComponent<Rigidbody2D>(), gunHolder.TargetScanner, GetComponent<InputHandler>());
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _inputHandler = GetComponent<InputHandler>();
+    }
+
+    private void Start()
+    {
+        _mover = new Mover(this, _rigidbody2D, gunHolder.TargetScanner, _inputHandler);
     }
 
     private void Update()
