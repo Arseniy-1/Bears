@@ -9,7 +9,7 @@ namespace _Project.Scripts.Player
         private readonly Turning _turning;
 
         public float HorizontalSpeed => _rigidbody2D.velocity.x;
-
+      
         public Mover(Character character, Rigidbody2D rigidbody2D, TargetScanner targetScanner, InputHandler inputHandler)
         {
             _turning = new Turning(character, targetScanner);
@@ -21,7 +21,7 @@ namespace _Project.Scripts.Player
         {
             float currentHorizontalSpeed = _inputHandler.HorizontalDirection * speed;
             float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
-
+          
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _turning.CorrectFlip((int)currentHorizontalSpeed);
         }

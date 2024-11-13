@@ -26,7 +26,17 @@ public abstract class Weapon : MonoBehaviour
         Transform = transform;
     }
 
-    public abstract void Attack();
+    protected abstract void Attack();
+
+    public virtual void TryAttack()
+    {
+        if (IsReloaded == false)
+            return;
+
+        Attack();
+
+        IsReloaded = false;
+    }
 
     public virtual void Reload()
     {
