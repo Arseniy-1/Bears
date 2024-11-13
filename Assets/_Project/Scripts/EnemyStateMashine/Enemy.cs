@@ -16,7 +16,7 @@ public class Enemy : Character, ITarget
     private void Start()
     {
         Turning = new Turning(this, GunHolder);
-        _stateMachine = new EnemyStateMachine(new List<IState>(new IState[] { new EnemyIdleState(this), new EnemyMoveState(this), new EnemyAttackState(this) }));
+        //_stateMachine = new EnemyStateMachine(new List<IState>(new IState[] { new EnemyIdleState(this), new EnemyMoveState(this), new EnemyAttackState(this) }));
     }
 
     private void Update()

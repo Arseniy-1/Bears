@@ -44,6 +44,7 @@ public class EnemyIdleState : IState
     public void Initialize(IStateSwitcher stateSwitcher)
     {
         _stateSwitcher = stateSwitcher;
+        Debug.Log(_stateSwitcher == null);
     }
 
     public virtual void Enter()
@@ -61,6 +62,7 @@ public class EnemyIdleState : IState
         {
             if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
             {
+                Debug.Log(_stateSwitcher == null);
                 _stateSwitcher.SwitchState<EnemyMoveState>();
                 Debug.Log(Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position));
                 Debug.Log(_enemy.DetectionRange);
@@ -102,7 +104,7 @@ public class EnemyMoveState : IState
             _enemy.GunHolder.SpotTarget();
             _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
             _enemy.Turning.CorrectFlip((int)direction.x);
-            
+
             if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
             {
                 _stateSwitcher.SwitchState<EnemyAttackState>();
