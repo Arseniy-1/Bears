@@ -5,7 +5,9 @@ public class GunHolder : MonoBehaviour
     [SerializeField] private TargetScanner _targetScaner;
     [SerializeField] private Weapon _currentWeapon;
 
-    public void EnquipWeapon(Weapon weapon)
+    public TargetScanner TargetScanner => _targetScaner;
+    
+    public void EquipWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
         _currentWeapon.Transform.parent = transform;
@@ -20,9 +22,12 @@ public class GunHolder : MonoBehaviour
 
     public void SpotTarget()
     {
-        Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
-        var direction = targetPosition - transform.position;
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (TargetScanner.HasTarget)
+        {
+            Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
+            var direction = targetPosition - transform.position;
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 }

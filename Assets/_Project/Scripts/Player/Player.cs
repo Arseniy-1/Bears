@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(InputHandler))]
-public class Player : Character, IDamagable, ITarget
+public class Player : Character, ITarget
 {
     [SerializeField] private float _speed;
 
@@ -20,7 +20,7 @@ public class Player : Character, IDamagable, ITarget
 
     private void Start()
     {
-        _mover = new Mover(this, _rigidbody2D, gunHolder.TargetScanner, _inputHandler);
+        _mover = new Mover(this, _rigidbody2D, GunHolder, _inputHandler);
     }
 
     private void Update()
@@ -32,7 +32,7 @@ public class Player : Character, IDamagable, ITarget
     {
         if (interactable is Weapon weapon)
         {
-            gunHolder.EnquipWeapon(weapon);
+            GunHolder.EquipWeapon(weapon);
         }
     }
 }

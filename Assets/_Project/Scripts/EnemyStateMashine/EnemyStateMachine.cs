@@ -57,12 +57,12 @@ public class EnemyIdleState : IState
 
     public virtual void Update()
     {
-        if (_enemy.TargetScaner.HasTarget)
+        if (_enemy.GunHolder.TargetScanner.HasTarget)
         {
-            if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.DetectionRange)
+            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
             {
                 _stateSwitcher.SwitchState<EnemyMoveState>();
-                Debug.Log(Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position));
+                Debug.Log(Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position));
                 Debug.Log(_enemy.DetectionRange);
             }
         }
@@ -95,14 +95,15 @@ public class EnemyMoveState : IState
 
     public virtual void Update()
     {
-        if (_enemy.TargetScaner.HasTarget)
+        if (_enemy.GunHolder.TargetScanner.HasTarget)
         {
-            Vector2 direction = (_enemy.TargetScaner.ClosestTarget.Position - _enemy.Position).normalized;
+            Vector2 direction = (_enemy.GunHolder.TargetScanner.ClosestTarget.Position - _enemy.Position).normalized;
             Vector3 currentDirection = new Vector3(direction.x, direction.y, 0);
             _enemy.GunHolder.SpotTarget();
             _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
-
-            if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.AttackRange)
+            _enemy.Turning.CorrectFlip((int)direction.x);
+            
+            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
             {
                 _stateSwitcher.SwitchState<EnemyAttackState>();
             }
@@ -144,9 +145,9 @@ public class EnemyAttackState : IState
 
     public virtual void Update()
     {
-        if (_enemy.TargetScaner.HasTarget)
+        if (_enemy.GunHolder.TargetScanner.HasTarget)
         {
-            if (Vector3.Distance(_enemy.Position, _enemy.TargetScaner.ClosestTarget.Position) < _enemy.AttackRange)
+            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
             {
                 _enemy.GunHolder.SpotTarget();
                 _enemy.GunHolder.Shoot();
