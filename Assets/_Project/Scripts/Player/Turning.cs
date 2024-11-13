@@ -1,25 +1,28 @@
-public class Turning
+namespace _Project.Scripts.Player
 {
-    private readonly Character _character;
-    private readonly TargetScanner _scanner;
-
-    public Turning(Character character, TargetScanner scanner)
+    public class Turning
     {
-        _character = character;
-        _scanner = scanner;
-    }
+        private readonly Character _character;
+        private readonly TargetScanner _scanner;
 
-    public void CorrectFlip(int posX)
-    {
-        if (_scanner.HasTarget)
+        public Turning(Character character, TargetScanner scanner)
         {
-            _character.spriteWeapon.flipY = !((int)_scanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
-            _character.spriteCharacter.flipX = !((int)_scanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
+            _character = character;
+            _scanner = scanner;
         }
-        
-        else if (posX != 0)
+
+        public void CorrectFlip(int posX)
         {
-            _character.spriteCharacter.flipX = posX < 0;
+            if (_scanner.HasTarget)
+            {
+                _character.spriteWeapon.flipY = !((int)_scanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
+                _character.spriteCharacter.flipX = !((int)_scanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
+            }
+        
+            else if (posX != 0)
+            {
+                _character.spriteCharacter.flipX = posX < 0;
+            }
         }
     }
 }

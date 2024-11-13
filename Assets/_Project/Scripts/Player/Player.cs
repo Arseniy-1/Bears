@@ -1,6 +1,6 @@
-using System;
-using System.Collections.Generic;
+using _Project.Scripts.Player;
 using UnityEngine;
+
 
 public class Player : Character, IDamagable, ITarget
 {
@@ -26,5 +26,4 @@ public class Player : Character, IDamagable, ITarget
             gunHolder.EnquipWeapon(weapon);
         }
     }
-    
 }
