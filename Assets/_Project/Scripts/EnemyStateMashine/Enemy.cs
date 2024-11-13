@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class Enemy : Character, ITarget
 {
-    [field: SerializeField] public TargetScanner TargetScaner { get; private set; }
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
-    [field: SerializeField] public GunHolder GunHolder { get; private set; }
 
     private EnemyStateMachine _stateMachine;
 

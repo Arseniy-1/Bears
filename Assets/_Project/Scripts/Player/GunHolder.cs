@@ -5,7 +5,9 @@ public class GunHolder : MonoBehaviour
     [SerializeField] private TargetScanner _targetScaner;
     [SerializeField] private Weapon _currentWeapon;
 
-    public void EnquipWeapon(Weapon weapon)
+    public TargetScanner TargetScanner => _targetScaner;
+    
+    public void EquipWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
         _currentWeapon.Transform.parent = transform;
