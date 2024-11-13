@@ -3,7 +3,6 @@
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private float _reloadTime;
-
     [SerializeField] protected Transform ShootPoint;
     [SerializeField] protected Animator WeaponAnimator;
 

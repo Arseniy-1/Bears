@@ -20,7 +20,7 @@ public class Player : Character, ITarget
 
     private void Start()
     {
-        _mover = new Mover(this, _rigidbody2D, GunHolder.TargetScanner, _inputHandler);
+        _mover = new Mover(this, _rigidbody2D, GunHolder, _inputHandler);
     }
 
     private void Update()

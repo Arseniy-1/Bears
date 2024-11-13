@@ -22,9 +22,12 @@ public class GunHolder : MonoBehaviour
 
     public void SpotTarget()
     {
-        Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
-        var direction = targetPosition - transform.position;
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (TargetScanner.HasTarget)
+        {
+            Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
+            var direction = targetPosition - transform.position;
+            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 }
