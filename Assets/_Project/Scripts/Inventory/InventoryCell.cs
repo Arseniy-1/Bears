@@ -27,7 +27,14 @@ namespace _Project.Scripts.Inventory
         public int Amount
         {
             get => _data.Amount;
-            set => _data.Amount = value;
+            set
+            {
+                if (_data.Amount != value)
+                {
+                    _data.Amount = value;
+                    ItemAmountChanged?.Invoke(value);
+                }
+            } 
         }
 
         public bool IsEmpty => Amount == 0 && string.IsNullOrEmpty(ItemId);

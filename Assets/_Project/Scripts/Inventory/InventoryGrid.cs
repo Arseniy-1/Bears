@@ -58,13 +58,13 @@ namespace _Project.Scripts.Inventory
 
             if (remainingAmount <= 0)
             {
-                return new AddItemsPayload(OwnerId, amount, itemsAddedToSlotWithSameItemsAmount);
+                return new AddItemsPayload(OwnerId, itemId, amount, itemsAddedToSlotWithSameItemsAmount);
             }
 
             int itemsAddedToAvailableSlotsAmount = AddToFirstAvailableCells(itemId, remainingAmount, out remainingAmount);
             int totalAddedItemsAmount = itemsAddedToSlotWithSameItemsAmount + itemsAddedToAvailableSlotsAmount;
             
-            return new AddItemsPayload(OwnerId, amount, totalAddedItemsAmount);
+            return new AddItemsPayload(OwnerId, itemId,amount, totalAddedItemsAmount);
         }
 
         public AddItemsPayload AddItems(Vector2Int cellPosition, string itemId, int amount = 1)
@@ -94,14 +94,14 @@ namespace _Project.Scripts.Inventory
                 cell.Amount = newAmount;
             }
 
-            return new AddItemsPayload(OwnerId, amount, itemsAddedAmount);
+            return new AddItemsPayload(OwnerId, itemId, amount, itemsAddedAmount);
         }
 
         public RemoveItemsPayload RemoveItems(string itemId, int amount = 1)
         {
             if (Contains(itemId, amount) == false)
             {
-                return new RemoveItemsPayload(OwnerId, amount, false);
+                return new RemoveItemsPayload(OwnerId, itemId, amount, false);
             }
 
             int amountToRemove = amount;
@@ -128,7 +128,7 @@ namespace _Project.Scripts.Inventory
                     {
                         RemoveItems(position, itemId, amountToRemove);
 
-                        return new RemoveItemsPayload(OwnerId, amount, true);
+                        return new RemoveItemsPayload(OwnerId, itemId, amount, true);
                     }
                 }
             }
@@ -142,7 +142,7 @@ namespace _Project.Scripts.Inventory
 
             if (cell.IsEmpty || cell.ItemId != itemId || cell.Amount < amount)
             {
-                return new RemoveItemsPayload(OwnerId, amount, false);
+                return new RemoveItemsPayload(OwnerId, itemId, amount, false);
             }
 
             cell.Amount -= amount;
@@ -152,7 +152,7 @@ namespace _Project.Scripts.Inventory
                 cell.ItemId = null;
             }
 
-            return new RemoveItemsPayload(OwnerId, amount, true);
+            return new RemoveItemsPayload(OwnerId, itemId, amount, true);
         }
 
         public int GetAmount(string itemId)
@@ -205,7 +205,7 @@ namespace _Project.Scripts.Inventory
                     array[x, y] = _cellsMap[position];
                 }
             }
-
+            
             return array;
         }
 

@@ -1,7 +1,7 @@
 ﻿using _Project.Scripts.Inventory.ReadOnly;
 using UnityEngine;
 
-namespace _Project.Scripts.Inventory
+namespace _Project.Scripts.Inventory.Views
 {
     public class InventoryGridView : MonoBehaviour
     {

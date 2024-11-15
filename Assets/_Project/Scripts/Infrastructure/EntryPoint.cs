@@ -1,45 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
 using _Project.Scripts.Inventory;
+using _Project.Scripts.Inventory.Controllers;
 using _Project.Scripts.Inventory.Data;
+using _Project.Scripts.Inventory.Views;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Infrastructure
 {
     public class EntryPoint : MonoBehaviour
     {
-        public InventoryGridView _view;
+        private const string OWNER1 = "Player";
+        private const string OWNER2 = "chest_1";
+
+        private readonly string[] _itemIds = {"Apple", "Seed", "Stone", "Buckshot"};
+        
+        [SerializeField] private ScreenView _screenView;
         private InventoriesService _inventoriesService;
+        private ScreenController _screenController;
+
+        private string _openedOwnerId;
 
         private void Start()
         {
             _inventoriesService = new InventoriesService();
+            _screenController = new ScreenController(_inventoriesService, _screenView);
+            
+            InventoryGridData inventoryDataPlayer = CreateTestInventory(OWNER1);
+            _inventoriesService.RegisterInventory(inventoryDataPlayer);
+            
+            InventoryGridData inventoryDataChest = CreateTestInventory(OWNER2);
+            _inventoriesService.RegisterInventory(inventoryDataChest);
 
-            string ownerId = "Player";
-            var inventoryData = CreateTestInventory(ownerId);
-            var inventory = _inventoriesService.RegisterInventory(inventoryData);
-            
-            _view.Setup(inventory);
+            _screenController.OpenInventory(OWNER1);
+            _openedOwnerId = OWNER1;
+        }
 
-            var addedResult = _inventoriesService.AddItems(ownerId, "apple", 30);
-            Debug.Log($"{addedResult.ToString()}, ItemId: apple");
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                _screenController.OpenInventory(OWNER1);
+                _openedOwnerId = OWNER1;
+            }
             
-            addedResult = _inventoriesService.AddItems(ownerId, "кирпич", 112);
-            Debug.Log($"{addedResult.ToString()}, ItemId: кирпич");
-            
-            addedResult = _inventoriesService.AddItems(ownerId, "letter", 10);
-            Debug.Log($"{addedResult.ToString()}, ItemId: letter");
-            
-            _view.Print();
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                _screenController.OpenInventory(OWNER2);
+                _openedOwnerId = OWNER2;
+            }
 
-            var removedResult = _inventoriesService.RemoveItems(ownerId, "apple", 13);
-            Debug.Log($"{removedResult.ToString()}, ItemId: apple");
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                int randomIndex = Random.Range(0, _itemIds.Length);
+                string randomItemId = _itemIds[randomIndex];
+                int randomAmount = Random.Range(1, 200);
+                AddItemsPayload result = _inventoriesService.AddItems(_openedOwnerId, randomItemId, randomAmount);
+                
+                Debug.Log(result.ToString());
+            }
             
-            removedResult = _inventoriesService.RemoveItems(ownerId, "apple", 18);
-            Debug.Log($"{removedResult.ToString()}, ItemId: apple");
-            
-            _view.Print();
-
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                int randomIndex = Random.Range(0, _itemIds.Length);
+                string randomItemId = _itemIds[randomIndex];
+                int randomAmount = Random.Range(1, 200);
+                RemoveItemsPayload result = _inventoriesService.RemoveItems(_openedOwnerId, randomItemId, randomAmount);
+                
+                Debug.Log(result.ToString());
+            }
         }
 
         private InventoryGridData CreateTestInventory(string ownerId)
