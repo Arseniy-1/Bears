@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 4310476032478087993}
   - component: {fileID: 7170747867369391590}
   - component: {fileID: 4903445819731262085}
-  - component: {fileID: 890263533882693896}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -148,12 +147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6868080a970c840b860c5f694ce9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteCharacter: {fileID: 0}
-  spriteWeapon: {fileID: 0}
-  health: {fileID: 0}
+  spriteCharacter: {fileID: 373742429818168722}
+  spriteWeapon: {fileID: 8553243129172391579}
+  health:
+    _maxHealth: 0
+    _currentHealthPoint: 0
   <GunHolder>k__BackingField: {fileID: 2687033564565863634}
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 5
+  <Waypoints>k__BackingField: []
 --- !u!114 &7170747867369391590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,20 +218,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &890263533882693896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7092250327509489669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278183fa13af2214b9758128ca9e92d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _currentHealthPoint: 0
 --- !u!1001 &4466316440415148281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,3 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339a9fcf49f4da740afec080dc62bd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &8553243129172391579 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5424781930286575202, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+  m_PrefabInstance: {fileID: 4466316440415148281}
+  m_PrefabAsset: {fileID: 0}

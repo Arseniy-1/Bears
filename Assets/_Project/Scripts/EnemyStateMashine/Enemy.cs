@@ -7,9 +7,9 @@ public class Enemy : Character, ITarget
 {
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
+    public List<Transform> Waypoints { get; private set; }
 
     private EnemyStateMachine _stateMachine;
-
     public Vector2 Position => transform.position;
     public Turning Turning { get; private set; }
 
@@ -23,9 +23,10 @@ public class Enemy : Character, ITarget
         _stateMachine?.Update();
     }
 
-    public void Construct(EnemyStateMachine enemyStateMachine)
+    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints)
     {
         _stateMachine = enemyStateMachine;
+        Waypoints = waypoints;
     }
 
     private void OnDrawGizmos()

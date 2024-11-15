@@ -5,14 +5,9 @@ public class EnemyFabric : MonoBehaviour
 {
     [SerializeField] private Enemy _enemyPrefab;
 
-    private void Start()
+    public void Create(Transform transform, List<Transform> waypoints)
     {
-        Create();
-    }
-
-    public void Create()
-    {
-        Enemy enemy = Instantiate(_enemyPrefab);
+        Enemy enemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
 
         List<IState> enemyStates = new List<IState>
         {
@@ -28,6 +23,6 @@ public class EnemyFabric : MonoBehaviour
             state.Initialize(enemyStateMashine);
         }
 
-        enemy.Construct(enemyStateMashine);
+        enemy.Construct(enemyStateMashine, waypoints);
     }
 }
