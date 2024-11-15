@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable, ITarget
 {
-    [SerializeField] protected Health health;
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
-    
+
+    [SerializeField] protected Health health;
+
     protected virtual void Interact(IInteractable interactable){}
 
     public Vector2 Position => transform.position;

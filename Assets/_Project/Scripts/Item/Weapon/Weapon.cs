@@ -1,10 +1,9 @@
-﻿using _Project.Scripts.Item;
-using UnityEditor.Profiling;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private float _reloadTime;
+    
     [SerializeField] protected Transform ShootPoint;
     [SerializeField] protected Animator WeaponAnimator;
 
@@ -44,5 +43,24 @@ public abstract class Weapon : MonoBehaviour
         _currentTime = 0;
         IsReloaded = true;
         //todo: Play reload animation
+    }
+}
+
+class Animal
+{
+    protected float Weight;
+
+    public virtual void Test()
+    {
+        Debug.Log("im Animal");
+    }
+}
+
+class Cat: Animal
+{
+    public override void Test()
+    {
+        base.Test();
+        Debug.Log("im Animal");
     }
 }
