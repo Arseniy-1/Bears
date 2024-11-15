@@ -24,15 +24,21 @@ namespace _Project.Scripts.Infrastructure
 
         private void Start()
         {
-            _inventoriesService = new InventoriesService();
-            _screenController = new ScreenController(_inventoriesService, _screenView);
+            // add config to provider
+            // make loading acync
+            var gameStateProvider = new GameStatePlayerPrefsProvider();
+            gameStateProvider.LoadGameState();
             
-            InventoryGridData inventoryDataPlayer = CreateTestInventory(OWNER1);
-            _inventoriesService.RegisterInventory(inventoryDataPlayer);
+            _inventoriesService = new InventoriesService(gameStateProvider);
+            GameStateData gameState = gameStateProvider.GameState;
             
-            InventoryGridData inventoryDataChest = CreateTestInventory(OWNER2);
-            _inventoriesService.RegisterInventory(inventoryDataChest);
+            
+            foreach (InventoryGridData inventoryData in gameState.Inventories)
+            {
+                _inventoriesService.RegisterInventory(inventoryData);
+            }
 
+            _screenController = new ScreenController(_inventoriesService, _screenView);
             _screenController.OpenInventory(OWNER1);
             _openedOwnerId = OWNER1;
         }
@@ -70,25 +76,6 @@ namespace _Project.Scripts.Infrastructure
                 
                 Debug.Log(result.ToString());
             }
-        }
-
-        private InventoryGridData CreateTestInventory(string ownerId)
-        {
-            var size = new Vector2Int(3, 4); // load from configs
-            var cellsData = new List<InventoryCellData>();
-            var length = size.x * size.y;
-            
-            for(int i = 0; i < length; i++)
-                cellsData.Add(new InventoryCellData());
-
-            var inventoryData = new InventoryGridData
-            {
-                OwnerId = ownerId,
-                Size = size,
-                Cells = cellsData
-            };
-
-            return inventoryData;
         }
     }
 }
