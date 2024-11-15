@@ -29,6 +29,7 @@ public class GunHolder : MonoBehaviour
     public void ReturnWeapon()
     {
         transform.rotation = Quaternion.Euler(Vector3.zero);
+        transform.localScale = Vector3.one;
     }
 
     public void SpotTarget()
