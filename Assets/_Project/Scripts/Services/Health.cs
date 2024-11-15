@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-public class Health : MonoBehaviour
+[Serializable]
+public class Health
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _currentHealthPoint;
@@ -9,7 +10,7 @@ public class Health : MonoBehaviour
     public event Action<float, float> HealthChanged;
     public event Action Died;
 
-    public void Awake()
+    public Health()
     {
         _currentHealthPoint = _maxHealth;
     }
