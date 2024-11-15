@@ -2,7 +2,7 @@ using System;
 using _Project.Scripts.Player;
 using UnityEngine;
 
-public class Player : Character, ITarget
+public class Player : Character
 {
     [SerializeField] private float _speed;
     [SerializeField] private CollisionHandler _collisionHandler;
