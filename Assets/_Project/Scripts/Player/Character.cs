@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Character : MonoBehaviour, IDamagable
 {
-    [SerializeField] public SpriteRenderer spriteCharacter;
-    [SerializeField] public SpriteRenderer spriteWeapon;
     [SerializeField] protected Health health;
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
     

@@ -1,28 +1,28 @@
+using Vector3 = UnityEngine.Vector3;
+
 namespace _Project.Scripts.Player
 {
     public class Turning
     {
         private readonly Character _character;
-        private readonly GunHolder _gunHolder;
 
-        public Turning(Character character, GunHolder gunHolder)
+        public Turning(Character character)
         {
             _character = character;
-            _gunHolder = gunHolder;
         }
 
         public void CorrectFlip(int posX)
         {
-            _gunHolder.SpotTarget();
+            _character.GunHolder.SpotTarget();
             
-            if (_gunHolder.TargetScanner.HasTarget)
+            if (_character.GunHolder.TargetScanner.HasTarget)
             {
-                _character.spriteWeapon.flipY = !((int)_gunHolder.TargetScanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
-                _character.spriteCharacter.flipX = !((int)_gunHolder.TargetScanner.ClosestTarget.Position.x > (int)_character.transform.position.x);
+                _character.transform.localScale = !((int)_character.GunHolder.TargetScanner.ClosestTarget.Position.x > (int)_character.transform.position.x) ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+                _character.GunHolder.transform.localScale = !((int)_character.GunHolder.TargetScanner.ClosestTarget.Position.x > (int)_character.transform.position.x) ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
             else if (posX != 0)
             {
-                _character.spriteCharacter.flipX = posX < 0;
+                _character.transform.localScale = posX > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
             }
         }
     }
