@@ -53,6 +53,7 @@ public class EnemyIdleState : IState
     public virtual void Enter()
     {
         Debug.Log(GetType());
+        _enemy.GunHolder.ReturnWeapon();
     }
 
     public virtual void Exit()

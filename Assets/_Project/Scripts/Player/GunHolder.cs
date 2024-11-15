@@ -20,6 +20,11 @@ public class GunHolder : MonoBehaviour
         _currentWeapon.TryAttack();
     }
 
+    public void ReturnWeapon()
+    {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
     public void SpotTarget()
     {
         if (TargetScanner.HasTarget)
