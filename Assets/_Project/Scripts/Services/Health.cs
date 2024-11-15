@@ -1,18 +1,19 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
-[Serializable]
+
 public class Health
 {
-    [SerializeField] private float _maxHealth = 100;
-    [SerializeField] private float _currentHealthPoint;
+    private readonly float _maxHealth;
+    private float _currentHealthPoint;
 
     public event Action<float, float> HealthChanged;
     public event Action Died;
 
-    public Health()
+    public Health(float maxHealth)
     {
-        _currentHealthPoint = _maxHealth;
+        _currentHealthPoint = maxHealth;
+        _maxHealth = maxHealth;
     }
 
     public void Heal(float amount)
