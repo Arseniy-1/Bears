@@ -4,7 +4,7 @@ using System;
 [Serializable]
 public class Health
 {
-    [SerializeField] private float _maxHealth;
+    [SerializeField] private float _maxHealth = 100;
     [SerializeField] private float _currentHealthPoint;
 
     public event Action<float, float> HealthChanged;

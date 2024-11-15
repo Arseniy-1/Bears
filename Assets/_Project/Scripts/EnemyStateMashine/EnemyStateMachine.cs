@@ -36,6 +36,10 @@ public class EnemyIdleState : IState
     private readonly Enemy _enemy;
     private IStateSwitcher _stateSwitcher;
 
+    private int _currentWaypoint = 0;
+    private float _speed = 3;
+
+
     public EnemyIdleState(Enemy entity)
     {
         _enemy = entity;
@@ -44,12 +48,12 @@ public class EnemyIdleState : IState
     public void Initialize(IStateSwitcher stateSwitcher)
     {
         _stateSwitcher = stateSwitcher;
-        Debug.Log(_stateSwitcher == null);
     }
 
     public virtual void Enter()
     {
         Debug.Log(GetType());
+        _enemy.GunHolder.ReturnWeapon();
     }
 
     public virtual void Exit()
@@ -62,11 +66,15 @@ public class EnemyIdleState : IState
         {
             if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
             {
-                Debug.Log(_stateSwitcher == null);
                 _stateSwitcher.SwitchState<EnemyMoveState>();
-                Debug.Log(Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position));
-                Debug.Log(_enemy.DetectionRange);
             }
+
+            if (_enemy.transform.position == _enemy.Waypoints[_currentWaypoint].position)
+            {
+                _currentWaypoint = (_currentWaypoint + 1) % _enemy.Waypoints.Count;
+            }
+
+            _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _enemy.Waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
         }
     }
 }
@@ -109,7 +117,7 @@ public class EnemyMoveState : IState
             {
                 _stateSwitcher.SwitchState<EnemyAttackState>();
             }
-            else
+            else if(Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) > _enemy.DetectionRange)
             {
                 _stateSwitcher.SwitchState<EnemyIdleState>();
             }
@@ -117,6 +125,7 @@ public class EnemyMoveState : IState
         else
         {
             _stateSwitcher.SwitchState<EnemyIdleState>();
+            Debug.Log("2");
         }
     }
 }

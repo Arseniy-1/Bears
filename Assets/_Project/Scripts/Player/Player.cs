@@ -2,8 +2,6 @@ using System;
 using _Project.Scripts.Player;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(InputHandler))]
 public class Player : Character, ITarget
 {
     [SerializeField] private float _speed;
