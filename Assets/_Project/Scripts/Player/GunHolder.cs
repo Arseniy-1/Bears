@@ -9,10 +9,16 @@ public class GunHolder : MonoBehaviour
     
     public void EquipWeapon(Weapon weapon)
     {
+        if (_currentWeapon.gameObject.activeSelf)
+        {
+            return;
+        }
+        
         _currentWeapon = weapon;
         _currentWeapon.Transform.parent = transform;
         _currentWeapon.Transform.position = transform.position;
         _currentWeapon.Transform.rotation = transform.rotation;
+        _currentWeapon.Transform.localScale = transform.localScale;
     }
 
     public void Shoot()

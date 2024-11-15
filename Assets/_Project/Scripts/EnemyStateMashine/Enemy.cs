@@ -15,7 +15,7 @@ public class Enemy : Character, ITarget
 
     private void Start()
     {
-        Turning = new Turning(this, GunHolder);
+        Turning = new Turning(this);
     }
 
     private void Update()

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Item;
+using UnityEditor.Profiling;
+using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
