@@ -75,6 +75,8 @@ public class EnemyIdleState : IState
             }
 
             _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _enemy.Waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
+            float direction = (_enemy.Waypoints[_currentWaypoint].position.x - _enemy.Position.x);
+            _enemy.Turning.CorrectFlip((int)direction);
         }
     }
 }
@@ -111,7 +113,7 @@ public class EnemyMoveState : IState
             Vector3 currentDirection = new Vector3(direction.x, direction.y, 0);
             _enemy.GunHolder.SpotTarget();
             _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
-            _enemy.Turning.CorrectFlip((int)direction.x);
+            _enemy.Turning.CorrectFlip((int)currentDirection.x);
 
             if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
             {
@@ -161,6 +163,7 @@ public class EnemyAttackState : IState
             if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
             {
                 _enemy.GunHolder.SpotTarget();
+                _enemy.Turning.CorrectFlip((int)_enemy.GunHolder.TargetScanner.ClosestTarget.Position.x);
                 _enemy.GunHolder.Shoot();
             }
             else
