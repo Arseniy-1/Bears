@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetScaner: {fileID: 116459289}
-  _currentWeapon: {fileID: 0}
+  _currentWeapon: {fileID: 2024115334}
 --- !u!4 &116459288
 Transform:
   m_ObjectHideFlags: 0
@@ -834,6 +834,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1000347171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2024115334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2908327946690408460, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+  m_PrefabInstance: {fileID: 1936898368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339a9fcf49f4da740afec080dc62bd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
