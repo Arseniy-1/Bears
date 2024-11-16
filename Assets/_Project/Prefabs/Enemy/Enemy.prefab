@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetScaner: {fileID: 7170747867369391590}
-  _currentWeapon: {fileID: 4979862520314502896}
+  _currentWeapon: {fileID: 8325902022692906825}
 --- !u!1 &7092250327509489669
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,15 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6868080a970c840b860c5f694ce9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteCharacter: {fileID: 373742429818168722}
-  spriteWeapon: {fileID: 8553243129172391579}
+  <GunHolder>k__BackingField: {fileID: 2687033564565863634}
   health:
     _maxHealth: 0
     _currentHealthPoint: 0
-  <GunHolder>k__BackingField: {fileID: 2687033564565863634}
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 5
-  <Waypoints>k__BackingField: []
 --- !u!114 &7170747867369391590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,19 +277,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 170871092894882204, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
   m_PrefabInstance: {fileID: 4466316440415148281}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4979862520314502896 stripped
+--- !u!114 &8325902022692906825 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8712087793319151113, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5652018517579382704, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
   m_PrefabInstance: {fileID: 4466316440415148281}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339a9fcf49f4da740afec080dc62bd22, type: 3}
+  m_Script: {fileID: 11500000, guid: 681c28dd40cb4b059c8ef786379eb14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &8553243129172391579 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5424781930286575202, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
-  m_PrefabInstance: {fileID: 4466316440415148281}
-  m_PrefabAsset: {fileID: 0}

@@ -7,7 +7,7 @@ public class Player : Character
     [SerializeField] private float _speed;
     [SerializeField] private CollisionHandler _collisionHandler;
 
-    public Vector2 Position => transform.position;
+    public new Vector2 Position => transform.position;
     private Mover _mover;
     private InputHandler _inputHandler;
     private Rigidbody2D _rigidbody2D;
