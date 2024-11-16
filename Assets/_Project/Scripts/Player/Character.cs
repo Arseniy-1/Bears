@@ -11,7 +11,6 @@ public class Character : MonoBehaviour, IDamagable
     private void Start()
     {
         _health = new Health(_healthValue);
-        
     }
 
     protected virtual void Interact(IInteractable interactable){}

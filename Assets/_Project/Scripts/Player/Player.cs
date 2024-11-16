@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.Item.Resource;
 using _Project.Scripts.Player;
 using UnityEngine;
 
@@ -45,6 +46,11 @@ public class Player : Character, ITarget
         if (interactable is Weapon weapon)
         {
             GunHolder.EquipWeapon(weapon);
+        }
+
+        if (interactable is Resource resource)
+        {
+            resource.Put(); // TODO - кладём в инвентарь.
         }
     }
 }

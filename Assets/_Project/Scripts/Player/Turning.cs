@@ -15,8 +15,10 @@ namespace _Project.Scripts.Player
         {
             if (_character.GunHolder.TargetScanner.HasTarget)
             {
-                _character.transform.localScale = !((int)_character.GunHolder.TargetScanner.ClosestTarget.Position.x > (int)_character.transform.position.x) ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
-                _character.GunHolder.transform.localScale = !((int)_character.GunHolder.TargetScanner.ClosestTarget.Position.x > (int)_character.transform.position.x) ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
+                var isFlipped = !((int)_character.GunHolder.TargetScanner.ClosestTarget.Position.x >
+                                  (int)_character.transform.position.x);
+                _character.transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+                _character.GunHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
             else if (posX != 0)
             {

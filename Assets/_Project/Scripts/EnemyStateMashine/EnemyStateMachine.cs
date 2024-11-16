@@ -75,6 +75,8 @@ public class EnemyIdleState : IState
             }
 
             _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _enemy.Waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
+            float direction = (_enemy.Waypoints[_currentWaypoint].position.x - _enemy.Position.x);
+            _enemy.Turning.CorrectFlip((int)direction);
         }
     }
 }

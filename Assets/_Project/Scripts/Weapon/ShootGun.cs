@@ -5,7 +5,7 @@ public class ShootGun : Weapon
     [SerializeField] private Ammo _ammoPrefab;
     [SerializeField] private float _spread;
 
-    private int _bulletCount = 6;
+    private readonly int _bulletCount = 6;
 
     protected override void Attack()
     {
