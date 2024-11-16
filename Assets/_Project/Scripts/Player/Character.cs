@@ -1,20 +1,16 @@
 using System;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IDamagable
+public class Character : MonoBehaviour, IDamagable, ITarget
 {
-    [SerializeField] private float _healthValue;
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
 
-    private Health _health;
-
-    private void Start()
-    {
-        _health = new Health(_healthValue);
-    }
+    [SerializeField] protected Health health;
 
     protected virtual void Interact(IInteractable interactable){}
-    
+
+    public Vector2 Position => transform.position;
+
     public void TakeDamage(float amount)
     {
         _health.TakeDamage(amount);

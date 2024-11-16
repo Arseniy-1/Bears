@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using _Project.Scripts.Player;
 using UnityEngine;
 
-public class Enemy : Character, ITarget
+public class Enemy : Character
 {
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     public List<Transform> Waypoints { get; private set; }
 
     private EnemyStateMachine _stateMachine;
-    public Vector2 Position => transform.position;
     public Turning Turning { get; private set; }
 
     private void Start()
