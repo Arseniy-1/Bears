@@ -13,6 +13,6 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 
     public void TakeDamage(float amount)
     {
-        _health.TakeDamage(amount);
+        health.TakeDamage(amount);
     }
 }
