@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable, ITarget
@@ -12,6 +13,6 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 
     public void TakeDamage(float amount)
     {
-        health.TakeDamage(amount);
+        _health.TakeDamage(amount);
     }
 }
