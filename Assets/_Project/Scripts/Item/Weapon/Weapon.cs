@@ -45,22 +45,3 @@ public abstract class Weapon : MonoBehaviour
         //todo: Play reload animation
     }
 }
-
-class Animal
-{
-    protected float Weight;
-
-    public virtual void Test()
-    {
-        Debug.Log("im Animal");
-    }
-}
-
-class Cat: Animal
-{
-    public override void Test()
-    {
-        base.Test();
-        Debug.Log("im Animal");
-    }
-}
