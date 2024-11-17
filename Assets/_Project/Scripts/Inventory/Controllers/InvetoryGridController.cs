@@ -9,7 +9,7 @@ namespace _Project.Scripts.Inventory.Controllers
     {
         private readonly List<InventoryCellController> _cellControllers = new();
 
-        public InvetoryGridController(IReadOnlyInventoryGrid inventory, InventoryView view)
+        public InvetoryGridController(IReadOnlyInventoryGrid inventory, InventoryView view) // string InventoryOwnerId
         {
             Vector2Int size = inventory.Size;
             IReadOnlyInventoryCell[,] cells = inventory.GetCells();

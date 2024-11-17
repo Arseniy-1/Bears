@@ -45,7 +45,7 @@ namespace _Project.Scripts.Infrastructure
             return gameState;
         }
 
-        private InventoryGridData CreateTestInventory(string ownerId)
+        private InventoryGridData CreateTestInventory(string ownerId) // default init
         {
             var size = new Vector2Int(3, 4); // load from configs
             var cellsData = new List<InventoryCellData>();

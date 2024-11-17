@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Inventory.ReadOnly;
 using _Project.Scripts.Inventory.Views;
+using UnityEngine;
 
 namespace _Project.Scripts.Inventory.Controllers
 {
@@ -14,9 +15,11 @@ namespace _Project.Scripts.Inventory.Controllers
         {
             _inventoriesService = inventoriesService;
             _view = view;
+
+            _inventoriesService.InventoryPresenterOpening += OnOpenInventoryOpened;
         }
 
-        public void OpenInventory(string ownerId)
+        private void OnOpenInventoryOpened(string ownerId)
         {
             IReadOnlyInventoryGrid inventory = _inventoriesService.GetInventory(ownerId);
             InventoryView invetoryView = _view.InventoryView;

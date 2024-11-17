@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace _Project.Scripts.Inventory
 {
-    public class InventoryGrid : IReadOnlyInventoryGrid
+    public class InventoryGridService : IReadOnlyInventoryGrid
     {
         private readonly InventoryGridData _data;
-        private readonly Dictionary<Vector2Int, InventoryCell> _cellsMap = new ();
+        private readonly Dictionary<Vector2Int, InventoryCellService> _cellsMap = new ();
         
         public event Action<string, int> ItemsAdded;
         public event Action<string, int> ItemsRemoved;
@@ -31,7 +31,7 @@ namespace _Project.Scripts.Inventory
         }
 
         // add service to load items configs
-        public InventoryGrid(InventoryGridData data)
+        public InventoryGridService(InventoryGridData data)
         {
             _data = data;
             
@@ -43,7 +43,7 @@ namespace _Project.Scripts.Inventory
                 {
                     int listIndex = x * size.y + y;
                     InventoryCellData cellData = data.Cells[listIndex];
-                    var cell = new InventoryCell(cellData);
+                    var cell = new InventoryCellService(cellData);
                     var position = new Vector2Int(x, y);
 
                     _cellsMap[position] = cell;
@@ -69,21 +69,21 @@ namespace _Project.Scripts.Inventory
 
         public AddItemsPayload AddItems(Vector2Int cellPosition, string itemId, int amount = 1)
         {
-            InventoryCell cell = _cellsMap[cellPosition];
-            int newAmount = cell.Amount + amount;
+            InventoryCellService cellService = _cellsMap[cellPosition];
+            int newAmount = cellService.Amount + amount;
             int itemsAddedAmount = 0;
 
-            if (cell.IsEmpty) 
-                cell.ItemId = itemId;
+            if (cellService.IsEmpty) 
+                cellService.ItemId = itemId;
 
             int itemCellCapacity = GetItemCellCapacity(itemId);
 
             if (newAmount > itemCellCapacity)
             {
                 int itemsReaminingAmount = newAmount - itemCellCapacity;
-                int itemsToAddAmount = itemCellCapacity - cell.Amount;
+                int itemsToAddAmount = itemCellCapacity - cellService.Amount;
                 itemsAddedAmount += itemsToAddAmount;
-                cell.Amount = itemCellCapacity;
+                cellService.Amount = itemCellCapacity;
 
                 var payload = AddItems(itemId, itemsReaminingAmount);
                 itemsAddedAmount += payload.ItemsAddedAmount;
@@ -91,7 +91,7 @@ namespace _Project.Scripts.Inventory
             else
             {
                 itemsAddedAmount = amount;
-                cell.Amount = newAmount;
+                cellService.Amount = newAmount;
             }
 
             return new AddItemsPayload(OwnerId, itemId, amount, itemsAddedAmount);
@@ -111,18 +111,18 @@ namespace _Project.Scripts.Inventory
                 for (int y = 0; y < Size.y; y++)
                 {
                     var position = new Vector2Int(x, y);
-                    InventoryCell cell = _cellsMap[position];
+                    InventoryCellService cellService = _cellsMap[position];
 
-                    if (cell.ItemId != itemId)
+                    if (cellService.ItemId != itemId)
                     {
                         continue;
                     }
 
-                    if (amountToRemove > cell.Amount)
+                    if (amountToRemove > cellService.Amount)
                     {
-                        amountToRemove -= cell.Amount;
+                        amountToRemove -= cellService.Amount;
                         
-                        RemoveItems(position, itemId, cell.Amount);
+                        RemoveItems(position, itemId, cellService.Amount);
                     }
                     else
                     {
@@ -175,17 +175,17 @@ namespace _Project.Scripts.Inventory
 
         public void SwapCells(Vector2Int cellPositionA, Vector2Int cellPositionB)
         {
-            InventoryCell cellA = _cellsMap[cellPositionA];
-            InventoryCell cellB = _cellsMap[cellPositionB];
+            InventoryCellService cellServiceA = _cellsMap[cellPositionA];
+            InventoryCellService cellServiceB = _cellsMap[cellPositionB];
 
-            string tempCellItemId = cellA.ItemId;
-            int tempCellItemAmount = cellA.Amount;
+            string tempCellItemId = cellServiceA.ItemId;
+            int tempCellItemAmount = cellServiceA.Amount;
 
-            cellA.ItemId = cellB.ItemId;
-            cellA.Amount = cellB.Amount;
+            cellServiceA.ItemId = cellServiceB.ItemId;
+            cellServiceA.Amount = cellServiceB.Amount;
             
-            cellB.ItemId = tempCellItemId;
-            cellB.Amount = tempCellItemAmount;
+            cellServiceB.ItemId = tempCellItemId;
+            cellServiceB.Amount = tempCellItemAmount;
         }
 
         public void SetSize(Vector2Int size)
@@ -220,12 +220,12 @@ namespace _Project.Scripts.Inventory
                 for (int y = 0; y < Size.y; y++)
                 {
                     var position = new Vector2Int(x, y);
-                    InventoryCell cell = _cellsMap[position];
+                    InventoryCellService cellService = _cellsMap[position];
                     
-                    if(cell.IsEmpty == false)
+                    if(cellService.IsEmpty == false)
                         continue;
 
-                    cell.ItemId = itemId;
+                    cellService.ItemId = itemId;
                     int newAmount = remainingAmount;
                     int cellItemCapacity = GetItemCellCapacity(itemId);
 
@@ -234,12 +234,12 @@ namespace _Project.Scripts.Inventory
                         remainingAmount = newAmount - cellItemCapacity;
                         int itemsToAddAmount = cellItemCapacity;
                         itemsAddedAmount += itemsToAddAmount;
-                        cell.Amount = cellItemCapacity;
+                        cellService.Amount = cellItemCapacity;
                     }
                     else
                     {
                         itemsAddedAmount += remainingAmount;
-                        cell.Amount = newAmount;
+                        cellService.Amount = newAmount;
                         remainingAmount = 0;
 
                         return itemsAddedAmount;
@@ -261,33 +261,33 @@ namespace _Project.Scripts.Inventory
                 for (int y = 0; y < Size.y; y++)
                 {
                     var position = new Vector2Int(x, y);
-                    InventoryCell cell = _cellsMap[position];
+                    InventoryCellService cellService = _cellsMap[position];
 
-                    if (cell.IsEmpty)
+                    if (cellService.IsEmpty)
                     {
                         continue;
                     }
 
                     int cellItemCapacity = GetItemCellCapacity(itemId);
 
-                    if (cell.Amount >= cellItemCapacity)
+                    if (cellService.Amount >= cellItemCapacity)
                     {
                         continue;
                     }
 
-                    if (cell.ItemId != itemId)
+                    if (cellService.ItemId != itemId)
                     {
                         continue;
                     }
 
-                    int newAmount = cell.Amount + remainingAmount;
+                    int newAmount = cellService.Amount + remainingAmount;
 
                     if (newAmount > cellItemCapacity)
                     {
                         remainingAmount = newAmount - cellItemCapacity;
-                        int itemsToAddAmount = cellItemCapacity - cell.Amount;
+                        int itemsToAddAmount = cellItemCapacity - cellService.Amount;
                         itemsAddedAmount += itemsToAddAmount;
-                        cell.Amount = cellItemCapacity;
+                        cellService.Amount = cellItemCapacity;
 
                         if (remainingAmount == 0)
                         {
@@ -297,7 +297,7 @@ namespace _Project.Scripts.Inventory
                     else
                     {
                         itemsAddedAmount += remainingAmount;
-                        cell.Amount = newAmount;
+                        cellService.Amount = newAmount;
                         remainingAmount = 0;
 
                         return itemsAddedAmount;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _Project.Scripts.Infrastructure;
 using _Project.Scripts.Inventory.ReadOnly;
 using UnityEngine;
@@ -9,16 +10,23 @@ namespace _Project.Scripts.Inventory
     {
         private readonly IGameStateSaver _gameStateSaver;
         
-        private Dictionary<string, InventoryGrid> _inventoriesMap = new();
+        private Dictionary<string, InventoryGridService> _inventoriesMap = new();
+
+        public event Action<string> InventoryPresenterOpening;
 
         public InventoriesService(IGameStateSaver gameStateSaver)
         {
             _gameStateSaver = gameStateSaver;
         }
 
-        public InventoryGrid RegisterInventory(InventoryGridData inventoryData)
+        public void OpenInventory(string ownerId)
         {
-            var inventory = new InventoryGrid(inventoryData);
+            InventoryPresenterOpening?.Invoke(ownerId);
+        }
+
+        public InventoryGridService RegisterInventory(InventoryGridData inventoryData)
+        {
+            var inventory = new InventoryGridService(inventoryData);
             _inventoriesMap[inventory.OwnerId] = inventory;
 
             return inventory;

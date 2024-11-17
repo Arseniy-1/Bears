@@ -4,6 +4,7 @@ using _Project.Scripts.Inventory;
 using _Project.Scripts.Inventory.Controllers;
 using _Project.Scripts.Inventory.Data;
 using _Project.Scripts.Inventory.Views;
+using _Project.Scripts.Storage;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,9 +17,13 @@ namespace _Project.Scripts.Infrastructure
 
         private readonly string[] _itemIds = {"Apple", "Seed", "Stone", "Buckshot"};
         
-        [SerializeField] private ScreenView _screenView;
+        [SerializeField] private StorageView _storageViewPrefab;
+        [SerializeField] private ScreenView _screenViewPrefab;
+        
         private InventoriesService _inventoriesService;
         private ScreenController _screenController;
+        private InventoryFactory _inventoryFactory;
+        private StorageViewFactory _storageViewFactory;
 
         private string _openedOwnerId;
 
@@ -31,51 +36,56 @@ namespace _Project.Scripts.Infrastructure
             
             _inventoriesService = new InventoriesService(gameStateProvider);
             GameStateData gameState = gameStateProvider.GameState;
-            
-            
-            foreach (InventoryGridData inventoryData in gameState.Inventories)
-            {
-                _inventoriesService.RegisterInventory(inventoryData);
-            }
 
-            _screenController = new ScreenController(_inventoriesService, _screenView);
-            _screenController.OpenInventory(OWNER1);
-            _openedOwnerId = OWNER1;
+            _inventoryFactory = new InventoryFactory(_inventoriesService);
+            _storageViewFactory = new StorageViewFactory(_inventoryFactory, _inventoriesService, _storageViewPrefab);
+            _screenController = new ScreenController(_inventoriesService, _screenViewPrefab);
+
+            _storageViewFactory.Create();
+
+            // foreach (InventoryGridData inventoryData in gameState.Inventories)
+            // {
+            //     _inventoriesService.RegisterInventory(inventoryData);
+            // }
+
+
+            // _screenController.OnOpenInventoryOpened(OWNER1);
+            // _openedOwnerId = OWNER1;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                _screenController.OpenInventory(OWNER1);
-                _openedOwnerId = OWNER1;
-            }
-            
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                _screenController.OpenInventory(OWNER2);
-                _openedOwnerId = OWNER2;
-            }
+            // if (Input.GetKeyDown(KeyCode.Alpha1))
+            // {
+            //     _screenController.OnOpenInventoryOpened(OWNER1);
+            //     _openedOwnerId = OWNER1;
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.Alpha2))
+            // {
+            //     _screenController.OnOpenInventoryOpened(OWNER2);
+            //     _openedOwnerId = OWNER2;
+            // }
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                int randomIndex = Random.Range(0, _itemIds.Length);
-                string randomItemId = _itemIds[randomIndex];
-                int randomAmount = Random.Range(1, 200);
-                AddItemsPayload result = _inventoriesService.AddItems(_openedOwnerId, randomItemId, randomAmount);
-                
-                Debug.Log(result.ToString());
-            }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                int randomIndex = Random.Range(0, _itemIds.Length);
-                string randomItemId = _itemIds[randomIndex];
-                int randomAmount = Random.Range(1, 200);
-                RemoveItemsPayload result = _inventoriesService.RemoveItems(_openedOwnerId, randomItemId, randomAmount);
-                
-                Debug.Log(result.ToString());
-            }
+            // if (Input.GetKeyDown(KeyCode.A))
+            // {
+            //     int randomIndex = Random.Range(0, _itemIds.Length);
+            //     string randomItemId = _itemIds[randomIndex];
+            //     int randomAmount = Random.Range(1, 200);
+            //     AddItemsPayload result = _inventoriesService.AddItems(_openedOwnerId, randomItemId, randomAmount);
+            //     
+            //     Debug.Log(result.ToString());
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.R))
+            // {
+            //     int randomIndex = Random.Range(0, _itemIds.Length);
+            //     string randomItemId = _itemIds[randomIndex];
+            //     int randomAmount = Random.Range(1, 200);
+            //     RemoveItemsPayload result = _inventoriesService.RemoveItems(_openedOwnerId, randomItemId, randomAmount);
+            //     
+            //     Debug.Log(result.ToString());
+            // }
         }
     }
 }

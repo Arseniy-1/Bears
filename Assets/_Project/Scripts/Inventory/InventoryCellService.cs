@@ -4,7 +4,7 @@ using _Project.Scripts.Inventory.ReadOnly;
 
 namespace _Project.Scripts.Inventory
 {
-    public class InventoryCell : IReadOnlyInventoryCell
+    public class InventoryCellService : IReadOnlyInventoryCell
     {
         private readonly InventoryCellData _data;
         
@@ -39,7 +39,7 @@ namespace _Project.Scripts.Inventory
 
         public bool IsEmpty => Amount == 0 && string.IsNullOrEmpty(ItemId);
 
-        public InventoryCell(InventoryCellData data)
+        public InventoryCellService(InventoryCellData data)
         {
             _data = data;
         }
