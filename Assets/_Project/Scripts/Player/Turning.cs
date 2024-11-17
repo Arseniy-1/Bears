@@ -13,9 +13,9 @@ namespace _Project.Scripts.Player
 
         public void CorrectFlip(int posX)
         {
-            if (_character.GunHolder.TargetScanner.HasTarget)
+            if (_character.TargetScanner.HasTarget)
             {
-                var isFlipped = !((int)_character.GunHolder.TargetScanner.ClosestTarget.Position.x >
+                var isFlipped = !((int)_character.TargetScanner.ClosestTarget.Position.x >
                                   (int)_character.transform.position.x);
                 _character.transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
                 _character.GunHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);

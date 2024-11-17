@@ -13,7 +13,8 @@ public class EnemyFabric : MonoBehaviour
         {
             new EnemyIdleState(enemy),
             new EnemyMoveState(enemy),
-            new EnemyAttackState(enemy)
+            new EnemyAttackState(enemy),
+            new EnemyActivitysState(enemy)
         };
 
         EnemyStateMachine enemyStateMashine = new(enemyStates);

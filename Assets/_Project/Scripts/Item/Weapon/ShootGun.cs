@@ -3,7 +3,7 @@
 public class ShootGun : Weapon
 {
     [SerializeField] private Ammo _ammoPrefab;
-    [SerializeField] private float _spread;
+    [SerializeField, Range(0, 1) , Header("(Разброс) Среднее значение: 0,2")] private float _spread;
 
     private readonly int _bulletCount = 6;
 

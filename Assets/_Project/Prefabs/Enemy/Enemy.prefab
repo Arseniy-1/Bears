@@ -147,10 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6868080a970c840b860c5f694ce9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <TargetScanner>k__BackingField: {fileID: 7170747867369391590}
   <GunHolder>k__BackingField: {fileID: 2687033564565863634}
-  health:
-    _maxHealth: 0
-    _currentHealthPoint: 0
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 5
 --- !u!114 &7170747867369391590

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable, ITarget
 {
+    [field: SerializeField] public TargetScanner TargetScanner { get; private set; }
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
 
     [SerializeField] protected Health health;

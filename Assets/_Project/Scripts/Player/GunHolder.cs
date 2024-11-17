@@ -5,8 +5,6 @@ public class GunHolder : MonoBehaviour
     [SerializeField] private TargetScanner _targetScaner;
     [SerializeField] private Weapon _currentWeapon;
 
-    public TargetScanner TargetScanner => _targetScaner;
-    
     public void EquipWeapon(Weapon weapon)
     {
         if (_currentWeapon.gameObject.activeSelf)
@@ -34,7 +32,7 @@ public class GunHolder : MonoBehaviour
 
     public void SpotTarget()
     {
-        if (TargetScanner.HasTarget)
+        if (_targetScaner.HasTarget)
         {
             Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
             var direction = targetPosition - transform.position;
