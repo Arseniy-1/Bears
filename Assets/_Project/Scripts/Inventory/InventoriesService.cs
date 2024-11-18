@@ -32,47 +32,47 @@ namespace _Project.Scripts.Inventory
             return inventory;
         }
         
-        public AddItemsPayload AddItems(
+        public ItemTransactionInfo AddItems(
             string ownerId,
             string itemId,
             int amount = 1)
         {
-            AddItemsPayload result = _inventoriesMap[ownerId].AddItems(itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].AddItems(itemId, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
         }
 
-        public AddItemsPayload AddItems(
+        public ItemTransactionInfo AddItems(
             string ownerId,
             Vector2Int position,
             string itemId,
             int amount = 1)
         {
-            AddItemsPayload result = _inventoriesMap[ownerId].AddItems(position, itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].AddItems(position, itemId, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
         }
 
-        public RemoveItemsPayload RemoveItems(
+        public ItemTransactionInfo RemoveItems(
             string ownerId,
             string itemId,
             int amount = 1)
         {
-            RemoveItemsPayload result = _inventoriesMap[ownerId].RemoveItems(itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].RemoveItems(itemId, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
         }
 
-        public RemoveItemsPayload RemoveItems(
+        public ItemTransactionInfo RemoveItems(
             string ownerId,
             Vector2Int position,
             string itemId,
             int amount = 1)
         {
-            RemoveItemsPayload result = _inventoriesMap[ownerId].RemoveItems(position, itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].RemoveItems(position, itemId, amount);
             _gameStateSaver.SaveGameState();
             
             return result;

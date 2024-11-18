@@ -51,23 +51,23 @@ namespace _Project.Scripts.Inventory
             }
         }
 
-        public AddItemsPayload AddItems(string itemId, int amount = 1)
+        public ItemTransactionInfo AddItems(string itemId, int amount = 1)
         {
             int remainingAmount = amount;
             int itemsAddedToSlotWithSameItemsAmount = AddToCellsWithSameItems(itemId, remainingAmount, out remainingAmount);
 
             if (remainingAmount <= 0)
             {
-                return new AddItemsPayload(OwnerId, itemId, amount, itemsAddedToSlotWithSameItemsAmount);
+                return new ItemTransactionInfo(OwnerId, itemId, amount, itemsAddedToSlotWithSameItemsAmount);
             }
 
             int itemsAddedToAvailableSlotsAmount = AddToFirstAvailableCells(itemId, remainingAmount, out remainingAmount);
             int totalAddedItemsAmount = itemsAddedToSlotWithSameItemsAmount + itemsAddedToAvailableSlotsAmount;
             
-            return new AddItemsPayload(OwnerId, itemId,amount, totalAddedItemsAmount);
+            return new ItemTransactionInfo(OwnerId, itemId,amount, totalAddedItemsAmount);
         }
 
-        public AddItemsPayload AddItems(Vector2Int cellPosition, string itemId, int amount = 1)
+        public ItemTransactionInfo AddItems(Vector2Int cellPosition, string itemId, int amount = 1)
         {
             InventoryCellService cellService = _cellsMap[cellPosition];
             int newAmount = cellService.Amount + amount;
@@ -86,7 +86,7 @@ namespace _Project.Scripts.Inventory
                 cellService.Amount = itemCellCapacity;
 
                 var payload = AddItems(itemId, itemsReaminingAmount);
-                itemsAddedAmount += payload.ItemsAddedAmount;
+                itemsAddedAmount += payload.ItemsChangedAmount;
             }
             else
             {
@@ -94,17 +94,19 @@ namespace _Project.Scripts.Inventory
                 cellService.Amount = newAmount;
             }
 
-            return new AddItemsPayload(OwnerId, itemId, amount, itemsAddedAmount);
+            return new ItemTransactionInfo(OwnerId, itemId, amount, itemsAddedAmount);
         }
 
-        public RemoveItemsPayload RemoveItems(string itemId, int amount = 1)
+        public ItemTransactionInfo RemoveItems(string itemId, int amount = 1)
         {
+            int amountToRemove = 0;
+            
             if (Contains(itemId, amount) == false)
             {
-                return new RemoveItemsPayload(OwnerId, itemId, amount, false);
+                return new ItemTransactionInfo(OwnerId, itemId, amount, amountToRemove);
             }
 
-            int amountToRemove = amount;
+            amountToRemove = amount;
 
             for (int x = 0; x < Size.x; x++)
             {
@@ -128,7 +130,7 @@ namespace _Project.Scripts.Inventory
                     {
                         RemoveItems(position, itemId, amountToRemove);
 
-                        return new RemoveItemsPayload(OwnerId, itemId, amount, true);
+                        return new ItemTransactionInfo(OwnerId, itemId, amount, amount);
                     }
                 }
             }
@@ -136,13 +138,13 @@ namespace _Project.Scripts.Inventory
             throw new Exception("Something went wrong, couldn't remove some items");
         }
 
-        public RemoveItemsPayload RemoveItems(Vector2Int cellPosition, string itemId, int amount = 1)
+        public ItemTransactionInfo RemoveItems(Vector2Int cellPosition, string itemId, int amount = 1)
         {
             var cell = _cellsMap[cellPosition];
 
             if (cell.IsEmpty || cell.ItemId != itemId || cell.Amount < amount)
             {
-                return new RemoveItemsPayload(OwnerId, itemId, amount, false);
+                return new ItemTransactionInfo(OwnerId, itemId, amount, 0);
             }
 
             cell.Amount -= amount;
@@ -152,7 +154,7 @@ namespace _Project.Scripts.Inventory
                 cell.ItemId = null;
             }
 
-            return new RemoveItemsPayload(OwnerId, itemId, amount, true);
+            return new ItemTransactionInfo(OwnerId, itemId, amount, amount);
         }
 
         public int GetAmount(string itemId)

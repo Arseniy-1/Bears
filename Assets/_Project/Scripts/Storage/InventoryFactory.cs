@@ -25,7 +25,7 @@ namespace _Project.Scripts.Storage
 
         private string GenerateId()
         {
-            return "1";
+            return "1"; // to Scriptable object
         }
         
         private InventoryGridData CreateEmptyInventory(string ownerId)

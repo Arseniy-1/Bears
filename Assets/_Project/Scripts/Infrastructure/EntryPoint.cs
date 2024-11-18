@@ -12,10 +12,12 @@ namespace _Project.Scripts.Infrastructure
 {
     public class EntryPoint : MonoBehaviour
     {
-        private const string OWNER1 = "Player";
-        private const string OWNER2 = "chest_1";
+        // private const string OWNER1 = "Player";
+        // private const string OWNER2 = "chest_1";
 
         private readonly string[] _itemIds = {"Apple", "Seed", "Stone", "Buckshot"};
+
+        [SerializeField] private List<StorageSpawnPoint> _storageSpawnPoints;
         
         [SerializeField] private StorageView _storageViewPrefab;
         [SerializeField] private ScreenView _screenViewPrefab;
@@ -34,14 +36,7 @@ namespace _Project.Scripts.Infrastructure
             var gameStateProvider = new GameStatePlayerPrefsProvider();
             gameStateProvider.LoadGameState();
             
-            _inventoriesService = new InventoriesService(gameStateProvider);
-            GameStateData gameState = gameStateProvider.GameState;
-
-            _inventoryFactory = new InventoryFactory(_inventoriesService);
-            _storageViewFactory = new StorageViewFactory(_inventoryFactory, _inventoriesService, _storageViewPrefab);
-            _screenController = new ScreenController(_inventoriesService, _screenViewPrefab);
-
-            _storageViewFactory.Create();
+            InventoryInit(gameStateProvider);
 
             // foreach (InventoryGridData inventoryData in gameState.Inventories)
             // {
@@ -51,6 +46,18 @@ namespace _Project.Scripts.Infrastructure
 
             // _screenController.OnOpenInventoryOpened(OWNER1);
             // _openedOwnerId = OWNER1;
+        }
+
+        private void InventoryInit(GameStatePlayerPrefsProvider gameStateProvider)
+        {
+            _inventoriesService = new InventoriesService(gameStateProvider);
+            GameStateData gameState = gameStateProvider.GameState;
+
+            _inventoryFactory = new InventoryFactory(_inventoriesService);
+            _storageViewFactory = new StorageViewFactory(_inventoryFactory, _inventoriesService, _storageViewPrefab);
+            _screenController = new ScreenController(_inventoriesService, _screenViewPrefab);
+
+            _storageViewFactory.Create();
         }
 
         private void Update()

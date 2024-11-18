@@ -20,7 +20,8 @@ namespace _Project.Scripts.Storage
         {
             StorageView newView = GameObject.Instantiate(_viewPrefab); // add pos
 
-            string ownerId = _inventoryFactory.Create();
+            //string ownerId = inventoryIdsService(); 
+            string ownerId = _inventoryFactory.Create(); // onwerId as parameter of function
             var presenter = new StoragePresenter(ownerId, _inventoriesService);
             newView.Construct(presenter);
             
