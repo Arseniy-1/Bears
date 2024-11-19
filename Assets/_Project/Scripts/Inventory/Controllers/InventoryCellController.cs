@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Inventory.ReadOnly;
 using _Project.Scripts.Inventory.Views;
+using _Project.Scripts.Storage;
 using UnityEngine;
 
 namespace _Project.Scripts.Inventory.Controllers
@@ -16,10 +17,10 @@ namespace _Project.Scripts.Inventory.Controllers
             _cell = cell;
             _view = view;
 
-            _cell.ItemIdChanged += OnCellItemIdChanged;
+            _cell.ItemTypeChanged += OnCellItemTypeChanged;
             _cell.ItemAmountChanged += OnCellItemAmountChanged;
 
-            _view.Title = cell.ItemId;
+            _view.Title = cell.Type.ToString();
             _view.Amount = cell.Amount;
         }
 
@@ -28,9 +29,9 @@ namespace _Project.Scripts.Inventory.Controllers
             _view.Amount = newAmount;
         }
 
-        private void OnCellItemIdChanged(string newItemId)
+        private void OnCellItemTypeChanged(ItemType type)
         {
-            _view.Title = newItemId;
+            _view.Title = type.ToString();
         }
     }
 }

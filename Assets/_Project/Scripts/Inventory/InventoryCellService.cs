@@ -1,6 +1,7 @@
 ﻿using System;
 using _Project.Scripts.Inventory.Data;
 using _Project.Scripts.Inventory.ReadOnly;
+using _Project.Scripts.Storage;
 
 namespace _Project.Scripts.Inventory
 {
@@ -8,21 +9,23 @@ namespace _Project.Scripts.Inventory
     {
         private readonly InventoryCellData _data;
         
-        public event Action<string> ItemIdChanged;
+        public event Action<ItemType> ItemTypeChanged;
         public event Action<int> ItemAmountChanged;
         
-        public string ItemId
+        public ItemType Type
         {
-            get => _data.ItemId;
+            get => _data.Type;
             set
             {
-                if (_data.ItemId != value)
+                if (_data.Type != value)
                 {
-                    _data.ItemId = value;
-                    ItemIdChanged?.Invoke(value);
+                    _data.Type = value;
+                    ItemTypeChanged?.Invoke(value);
                 }
             }
         }
+
+        
 
         public int Amount
         {
@@ -37,7 +40,7 @@ namespace _Project.Scripts.Inventory
             } 
         }
 
-        public bool IsEmpty => Amount == 0 && string.IsNullOrEmpty(ItemId);
+        public bool IsEmpty => Amount == 0 && Type == ItemType.None;
 
         public InventoryCellService(InventoryCellData data)
         {

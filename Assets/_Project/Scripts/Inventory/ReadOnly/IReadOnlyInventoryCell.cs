@@ -1,14 +1,14 @@
 ﻿using System;
-using Unity.VisualScripting;
+using _Project.Scripts.Storage;
 
 namespace _Project.Scripts.Inventory.ReadOnly
 {
     public interface IReadOnlyInventoryCell
     {
-        event Action<string> ItemIdChanged;
+        event Action<ItemType> ItemTypeChanged;
         event Action<int> ItemAmountChanged;
         
-        string ItemId { get; }
+        ItemType Type { get; }
         int Amount { get; }
         bool IsEmpty { get; }
     }

@@ -25,7 +25,7 @@ namespace _Project.Scripts.Inventory.Views
                 {
                     IReadOnlyInventoryCell cell = cells[x, y];
                     
-                    line += ($"Cell ({x};{y}), Item: {cell.ItemId}, Amount: {cell.Amount}\n");
+                    line += ($"Cell ({x};{y}), Item: {cell.Type}, Amount: {cell.Amount}\n");
                 }
             }
             

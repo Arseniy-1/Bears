@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Storage;
+using UnityEngine;
 
 namespace _Project.Scripts.Item
 {
@@ -9,7 +10,7 @@ namespace _Project.Scripts.Item
 
         public void Collect()
         {
-            //Debug.Log($"collected {ItemType.Name} x{Count}");
+            //ebug.Log($"collected {ItemType.Name} x{Count}");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Project.Scripts.Infrastructure;
 using _Project.Scripts.Inventory.ReadOnly;
+using _Project.Scripts.Storage;
 using UnityEngine;
 
 namespace _Project.Scripts.Inventory
@@ -34,10 +35,10 @@ namespace _Project.Scripts.Inventory
         
         public ItemTransactionInfo AddItems(
             string ownerId,
-            string itemId,
+            ItemType type,
             int amount = 1)
         {
-            ItemTransactionInfo result = _inventoriesMap[ownerId].AddItems(itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].AddItems(type, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
@@ -46,10 +47,10 @@ namespace _Project.Scripts.Inventory
         public ItemTransactionInfo AddItems(
             string ownerId,
             Vector2Int position,
-            string itemId,
+            ItemType type,
             int amount = 1)
         {
-            ItemTransactionInfo result = _inventoriesMap[ownerId].AddItems(position, itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].AddItems(position, type, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
@@ -57,10 +58,10 @@ namespace _Project.Scripts.Inventory
 
         public ItemTransactionInfo RemoveItems(
             string ownerId,
-            string itemId,
+            ItemType type,
             int amount = 1)
         {
-            ItemTransactionInfo result = _inventoriesMap[ownerId].RemoveItems(itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].RemoveItems(type, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
@@ -69,17 +70,17 @@ namespace _Project.Scripts.Inventory
         public ItemTransactionInfo RemoveItems(
             string ownerId,
             Vector2Int position,
-            string itemId,
+            ItemType type,
             int amount = 1)
         {
-            ItemTransactionInfo result = _inventoriesMap[ownerId].RemoveItems(position, itemId, amount);
+            ItemTransactionInfo result = _inventoriesMap[ownerId].RemoveItems(position, type, amount);
             _gameStateSaver.SaveGameState();
             
             return result;
         }
 
-        public bool Contains(string ownerId, string itemId, int amount = 1) => 
-            _inventoriesMap[ownerId].Contains(itemId, amount);
+        public bool Contains(string ownerId, ItemType type, int amount = 1) => 
+            _inventoriesMap[ownerId].Contains(type, amount);
 
         public IReadOnlyInventoryGrid GetInventory(string ownerId) => 
             _inventoriesMap[ownerId];

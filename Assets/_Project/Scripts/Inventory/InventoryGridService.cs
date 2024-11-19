@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Project.Scripts.Inventory.Data;
 using _Project.Scripts.Inventory.ReadOnly;
+using _Project.Scripts.Storage;
 using UnityEngine;
 
 namespace _Project.Scripts.Inventory
@@ -11,8 +12,8 @@ namespace _Project.Scripts.Inventory
         private readonly InventoryGridData _data;
         private readonly Dictionary<Vector2Int, InventoryCellService> _cellsMap = new ();
         
-        public event Action<string, int> ItemsAdded;
-        public event Action<string, int> ItemsRemoved;
+        public event Action<ItemType, int> ItemsAdded;
+        public event Action<ItemType, int> ItemsRemoved;
         public event Action<Vector2Int> SizeChanged;
 
         public string OwnerId => _data.OwnerId;
@@ -51,32 +52,32 @@ namespace _Project.Scripts.Inventory
             }
         }
 
-        public ItemTransactionInfo AddItems(string itemId, int amount = 1)
+        public ItemTransactionInfo AddItems(ItemType type, int amount = 1)
         {
             int remainingAmount = amount;
-            int itemsAddedToSlotWithSameItemsAmount = AddToCellsWithSameItems(itemId, remainingAmount, out remainingAmount);
+            int itemsAddedToSlotWithSameItemsAmount = AddToCellsWithSameItems(type, remainingAmount, out remainingAmount);
 
             if (remainingAmount <= 0)
             {
-                return new ItemTransactionInfo(OwnerId, itemId, amount, itemsAddedToSlotWithSameItemsAmount);
+                return new ItemTransactionInfo(OwnerId, type, amount, itemsAddedToSlotWithSameItemsAmount);
             }
 
-            int itemsAddedToAvailableSlotsAmount = AddToFirstAvailableCells(itemId, remainingAmount, out remainingAmount);
+            int itemsAddedToAvailableSlotsAmount = AddToFirstAvailableCells(type, remainingAmount, out remainingAmount);
             int totalAddedItemsAmount = itemsAddedToSlotWithSameItemsAmount + itemsAddedToAvailableSlotsAmount;
             
-            return new ItemTransactionInfo(OwnerId, itemId,amount, totalAddedItemsAmount);
+            return new ItemTransactionInfo(OwnerId, type,amount, totalAddedItemsAmount);
         }
 
-        public ItemTransactionInfo AddItems(Vector2Int cellPosition, string itemId, int amount = 1)
+        public ItemTransactionInfo AddItems(Vector2Int cellPosition, ItemType type, int amount = 1)
         {
             InventoryCellService cellService = _cellsMap[cellPosition];
             int newAmount = cellService.Amount + amount;
             int itemsAddedAmount = 0;
 
             if (cellService.IsEmpty) 
-                cellService.ItemId = itemId;
+                cellService.Type = type;
 
-            int itemCellCapacity = GetItemCellCapacity(itemId);
+            int itemCellCapacity = GetItemCellCapacity(type);
 
             if (newAmount > itemCellCapacity)
             {
@@ -85,7 +86,7 @@ namespace _Project.Scripts.Inventory
                 itemsAddedAmount += itemsToAddAmount;
                 cellService.Amount = itemCellCapacity;
 
-                var payload = AddItems(itemId, itemsReaminingAmount);
+                var payload = AddItems(type, itemsReaminingAmount);
                 itemsAddedAmount += payload.ItemsChangedAmount;
             }
             else
@@ -94,16 +95,16 @@ namespace _Project.Scripts.Inventory
                 cellService.Amount = newAmount;
             }
 
-            return new ItemTransactionInfo(OwnerId, itemId, amount, itemsAddedAmount);
+            return new ItemTransactionInfo(OwnerId, type, amount, itemsAddedAmount);
         }
 
-        public ItemTransactionInfo RemoveItems(string itemId, int amount = 1)
+        public ItemTransactionInfo RemoveItems(ItemType type, int amount = 1)
         {
             int amountToRemove = 0;
             
-            if (Contains(itemId, amount) == false)
+            if (Contains(type, amount) == false)
             {
-                return new ItemTransactionInfo(OwnerId, itemId, amount, amountToRemove);
+                return new ItemTransactionInfo(OwnerId, type, amount, amountToRemove);
             }
 
             amountToRemove = amount;
@@ -115,7 +116,7 @@ namespace _Project.Scripts.Inventory
                     var position = new Vector2Int(x, y);
                     InventoryCellService cellService = _cellsMap[position];
 
-                    if (cellService.ItemId != itemId)
+                    if (cellService.Type != type)
                     {
                         continue;
                     }
@@ -124,13 +125,13 @@ namespace _Project.Scripts.Inventory
                     {
                         amountToRemove -= cellService.Amount;
                         
-                        RemoveItems(position, itemId, cellService.Amount);
+                        RemoveItems(position, type, cellService.Amount);
                     }
                     else
                     {
-                        RemoveItems(position, itemId, amountToRemove);
+                        RemoveItems(position, type, amountToRemove);
 
-                        return new ItemTransactionInfo(OwnerId, itemId, amount, amount);
+                        return new ItemTransactionInfo(OwnerId, type, amount, amount);
                     }
                 }
             }
@@ -138,26 +139,26 @@ namespace _Project.Scripts.Inventory
             throw new Exception("Something went wrong, couldn't remove some items");
         }
 
-        public ItemTransactionInfo RemoveItems(Vector2Int cellPosition, string itemId, int amount = 1)
+        public ItemTransactionInfo RemoveItems(Vector2Int cellPosition, ItemType type, int amount = 1)
         {
             var cell = _cellsMap[cellPosition];
 
-            if (cell.IsEmpty || cell.ItemId != itemId || cell.Amount < amount)
+            if (cell.IsEmpty || cell.Type != type || cell.Amount < amount)
             {
-                return new ItemTransactionInfo(OwnerId, itemId, amount, 0);
+                return new ItemTransactionInfo(OwnerId, type, amount, 0);
             }
 
             cell.Amount -= amount;
 
             if (cell.Amount == 0)
             {
-                cell.ItemId = null;
+                cell.Type = ItemType.None;
             }
 
-            return new ItemTransactionInfo(OwnerId, itemId, amount, amount);
+            return new ItemTransactionInfo(OwnerId, type, amount, amount);
         }
 
-        public int GetAmount(string itemId)
+        public int GetAmount(ItemType type)
         {
             int amount = 0;
             List<InventoryCellData> cells = _data.Cells;
@@ -165,28 +166,28 @@ namespace _Project.Scripts.Inventory
             // to Linq
             foreach (InventoryCellData cell in cells)
             {
-                if (cell.ItemId == itemId) 
+                if (cell.Type == type) 
                     amount += cell.Amount;
             }
 
             return amount;
         }
 
-        public bool Contains(string itemId, int amount) => 
-            GetAmount(itemId) >= amount;
+        public bool Contains(ItemType type, int amount) => 
+            GetAmount(type) >= amount;
 
         public void SwapCells(Vector2Int cellPositionA, Vector2Int cellPositionB)
         {
             InventoryCellService cellServiceA = _cellsMap[cellPositionA];
             InventoryCellService cellServiceB = _cellsMap[cellPositionB];
 
-            string tempCellItemId = cellServiceA.ItemId;
+            ItemType itemTypeA = cellServiceA.Type;
             int tempCellItemAmount = cellServiceA.Amount;
 
-            cellServiceA.ItemId = cellServiceB.ItemId;
+            cellServiceA.Type = cellServiceB.Type;
             cellServiceA.Amount = cellServiceB.Amount;
             
-            cellServiceB.ItemId = tempCellItemId;
+            cellServiceB.Type = itemTypeA;
             cellServiceB.Amount = tempCellItemAmount;
         }
 
@@ -212,7 +213,7 @@ namespace _Project.Scripts.Inventory
         }
 
         // can be refactored
-        private int AddToFirstAvailableCells(string itemId, int amount, out int remainingAmount)
+        private int AddToFirstAvailableCells(ItemType type, int amount, out int remainingAmount)
         {
             int itemsAddedAmount = 0;
             remainingAmount = amount;
@@ -227,9 +228,9 @@ namespace _Project.Scripts.Inventory
                     if(cellService.IsEmpty == false)
                         continue;
 
-                    cellService.ItemId = itemId;
+                    cellService.Type = type;
                     int newAmount = remainingAmount;
-                    int cellItemCapacity = GetItemCellCapacity(itemId);
+                    int cellItemCapacity = GetItemCellCapacity(type);
 
                     if (newAmount > cellItemCapacity)
                     {
@@ -253,7 +254,7 @@ namespace _Project.Scripts.Inventory
         }
 
         // can be refactored
-        private int AddToCellsWithSameItems(string itemId, int amount, out int remainingAmount)
+        private int AddToCellsWithSameItems(ItemType type, int amount, out int remainingAmount)
         {
             var itemsAddedAmount = 0;
             remainingAmount = amount;
@@ -270,14 +271,14 @@ namespace _Project.Scripts.Inventory
                         continue;
                     }
 
-                    int cellItemCapacity = GetItemCellCapacity(itemId);
+                    int cellItemCapacity = GetItemCellCapacity(type);
 
                     if (cellService.Amount >= cellItemCapacity)
                     {
                         continue;
                     }
 
-                    if (cellService.ItemId != itemId)
+                    if (cellService.Type != type)
                     {
                         continue;
                     }
@@ -312,7 +313,7 @@ namespace _Project.Scripts.Inventory
 
         
         // move to service
-        private int GetItemCellCapacity(string itemId)
+        private int GetItemCellCapacity(ItemType type)
         {
             return 99;
         }

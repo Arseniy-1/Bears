@@ -15,17 +15,17 @@ namespace _Project.Scripts.Infrastructure
         // private const string OWNER1 = "Player";
         // private const string OWNER2 = "chest_1";
 
-        private readonly string[] _itemIds = {"Apple", "Seed", "Stone", "Buckshot"};
-
+        [SerializeField] private List<StorageDataSO> _defaultStorageData;
+        
         [SerializeField] private List<StorageSpawnPoint> _storageSpawnPoints;
         
-        [SerializeField] private StorageView _storageViewPrefab;
-        [SerializeField] private ScreenView _screenViewPrefab;
+        [SerializeField] private Storage.Storage storagePrefab;
+        [SerializeField] private InventoryWindowView inventoryWindowView;
         
         private InventoriesService _inventoriesService;
-        private ScreenController _screenController;
+        private InventoriesWindowView _inventoriesWindowView;
         private InventoryFactory _inventoryFactory;
-        private StorageViewFactory _storageViewFactory;
+        private StorageFactory _storageFactory;
 
         private string _openedOwnerId;
 
@@ -54,10 +54,14 @@ namespace _Project.Scripts.Infrastructure
             GameStateData gameState = gameStateProvider.GameState;
 
             _inventoryFactory = new InventoryFactory(_inventoriesService);
-            _storageViewFactory = new StorageViewFactory(_inventoryFactory, _inventoriesService, _storageViewPrefab);
-            _screenController = new ScreenController(_inventoriesService, _screenViewPrefab);
+            _storageFactory = new StorageFactory(_defaultStorageData, _inventoryFactory, _inventoriesService, storagePrefab);
+            _inventoriesWindowView = new InventoriesWindowView(_inventoriesService, inventoryWindowView);
+            StorageSpawner storageSpawner = new StorageSpawner(_storageFactory);
 
-            _storageViewFactory.Create();
+            foreach (StorageSpawnPoint spawnPoint in _storageSpawnPoints)
+            {
+                storageSpawner.Spawn(spawnPoint);
+            }
         }
 
         private void Update()

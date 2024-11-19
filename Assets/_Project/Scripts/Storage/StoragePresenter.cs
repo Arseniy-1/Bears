@@ -6,10 +6,12 @@ namespace _Project.Scripts.Storage
     {
         private string _ownerId;
         private readonly InventoriesService _inventoriesService;
+        
+        public string OwnerId => _ownerId;
 
-        public StoragePresenter(string ownerId, InventoriesService inventoriesService)
+        public StoragePresenter(StorageDataSO storageData, InventoriesService inventoriesService)
         {
-            _ownerId = ownerId;
+            _ownerId = storageData.ownerId;
             _inventoriesService = inventoriesService;
         }
 

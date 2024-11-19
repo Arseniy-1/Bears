@@ -1,11 +1,12 @@
 ﻿using System;
+using _Project.Scripts.Storage;
 
 namespace _Project.Scripts.Inventory.Data
 {
     [Serializable]
     public class InventoryCellData
     {
-        public string ItemId;
+        public ItemType Type;
         public int Amount;
     }
 }

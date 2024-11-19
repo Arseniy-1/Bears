@@ -4,23 +4,24 @@ using UnityEngine;
 
 namespace _Project.Scripts.Inventory.Controllers
 {
-    public class ScreenController
+    public class InventoriesWindowView
     {
         private readonly InventoriesService _inventoriesService;
-        private readonly ScreenView _view;
+        private readonly InventoryWindowView _view;
 
         private InvetoryGridController _currentInventoryController;
 
-        public ScreenController(InventoriesService inventoriesService, ScreenView view)
+        public InventoriesWindowView(InventoriesService inventoriesService, InventoryWindowView view)
         {
             _inventoriesService = inventoriesService;
             _view = view;
 
-            _inventoriesService.InventoryPresenterOpening += OnOpenInventoryOpened;
+            _inventoriesService.InventoryPresenterOpening += OnInventoryOpening;
         }
 
-        private void OnOpenInventoryOpened(string ownerId)
+        private void OnInventoryOpening(string ownerId)
         {
+            Debug.Log($"opening {ownerId}");
             IReadOnlyInventoryGrid inventory = _inventoriesService.GetInventory(ownerId);
             InventoryView invetoryView = _view.InventoryView;
 

@@ -26,7 +26,9 @@ namespace _Project.Scripts.Inventory.Controllers
                 }
             }
 
+            Debug.Log($"InvGrCtrl view: {view.OwnerId}, data {inventory.OwnerId}" );
             view.OwnerId = inventory.OwnerId;
+            
         }
     }
 }

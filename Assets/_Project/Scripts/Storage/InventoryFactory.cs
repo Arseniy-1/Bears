@@ -14,23 +14,16 @@ namespace _Project.Scripts.Storage
             _inventoriesService = inventoriesService;
         }
 
-        public string Create()
+        public void Create(StorageDataSO storageDataSo)
         {
-            string ownerId = GenerateId();
-            InventoryGridData inventoryGridData = CreateEmptyInventory(ownerId);
+            InventoryGridData inventoryGridData = LoadFromSO(storageDataSo);
 
             _inventoriesService.RegisterInventory(inventoryGridData);
-            return ownerId;
         }
 
-        private string GenerateId()
+        private InventoryGridData LoadFromSO(StorageDataSO storageDataSo)
         {
-            return "1"; // to Scriptable object
-        }
-        
-        private InventoryGridData CreateEmptyInventory(string ownerId)
-        {
-            var size = new Vector2Int(3, 4); // load from configs
+            Vector2Int size = storageDataSo.Size; // load from configs
             var cellsData = new List<InventoryCellData>();
             var length = size.x * size.y;
 
@@ -39,7 +32,7 @@ namespace _Project.Scripts.Storage
 
             var inventoryData = new InventoryGridData
             {
-                OwnerId = ownerId,
+                OwnerId = storageDataSo.ownerId,
                 Size = size,
                 Cells = cellsData
             };

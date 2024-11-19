@@ -1,16 +1,17 @@
 ﻿using System;
+using _Project.Scripts.Storage;
 using Unity.VisualScripting;
 
 namespace _Project.Scripts.Inventory.ReadOnly
 {
     public interface IReadOnlyInventory
     {
-        event Action<string, int> ItemsAdded;
-        event Action<string, int> ItemsRemoved;
+        event Action<ItemType, int> ItemsAdded;
+        event Action<ItemType, int> ItemsRemoved;
         
         string OwnerId { get; }
 
-        int GetAmount(string itemId);
-        bool Contains(string itemId, int amount);
+        int GetAmount(ItemType type);
+        bool Contains(ItemType type, int amount);
     }
 }

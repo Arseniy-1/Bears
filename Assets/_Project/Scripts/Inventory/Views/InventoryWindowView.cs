@@ -2,7 +2,7 @@
 
 namespace _Project.Scripts.Inventory.Views
 {
-    public class ScreenView : MonoBehaviour
+    public class InventoryWindowView : MonoBehaviour
     {
         [SerializeField] private InventoryView _inventoryView;
 
