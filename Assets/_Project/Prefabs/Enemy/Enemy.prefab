@@ -148,9 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <GunHolder>k__BackingField: {fileID: 2687033564565863634}
-  health:
-    _maxHealth: 0
-    _currentHealthPoint: 0
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 5
 --- !u!114 &7170747867369391590
@@ -266,6 +263,14 @@ PrefabInstance:
     - target: {fileID: 1079142274653617283, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: m_Name
       value: ShootGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652018517579382704, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: _spread
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652018517579382704, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: _reloadTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
