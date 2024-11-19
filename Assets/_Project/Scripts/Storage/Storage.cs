@@ -18,7 +18,6 @@ namespace _Project.Scripts.Storage
         public void OnPointerClick(PointerEventData eventData)
         {
             _presenter.OnClick();
-            Debug.Log($"storage clicked {OwnerId}");
         }
     }
 }

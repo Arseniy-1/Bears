@@ -17,11 +17,11 @@ namespace _Project.Scripts.Storage
             _prefab = prefab;
         }
 
-        public Storage Create(StorageDataSO storageData) // entrypoint or spawner calls it, changes it's transform
+        public Storage Create(StorageDataSO storageData)
         {
             Storage storage = GameObject.Instantiate(_prefab);
 
-            _inventoryFactory.Create(storageData); // onwerId as parameter of function
+            _inventoryFactory.Create(storageData);
             var presenter = new StoragePresenter(storageData, _inventoriesService);
             storage.Construct(presenter);
             

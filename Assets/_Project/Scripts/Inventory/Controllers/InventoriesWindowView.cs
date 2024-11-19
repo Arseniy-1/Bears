@@ -21,7 +21,6 @@ namespace _Project.Scripts.Inventory.Controllers
 
         private void OnInventoryOpening(string ownerId)
         {
-            Debug.Log($"opening {ownerId}");
             IReadOnlyInventoryGrid inventory = _inventoriesService.GetInventory(ownerId);
             InventoryView invetoryView = _view.InventoryView;
 

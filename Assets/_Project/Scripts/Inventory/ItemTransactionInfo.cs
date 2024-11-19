@@ -26,7 +26,7 @@ namespace _Project.Scripts.Inventory
 
         public override string ToString()
         {
-            return $"OwnerId: {InventoryOwnerId}, itemId {_type}, ToChange: {ItemsToChangeAmount}, Changed: {ItemsChangedAmount} Success {Success}";
+            return $"OwnerId: {InventoryOwnerId}, itemId {_type.ToString()}, ToChange: {ItemsToChangeAmount}, Changed: {ItemsChangedAmount} Success {Success}";
         }
     }
 }
