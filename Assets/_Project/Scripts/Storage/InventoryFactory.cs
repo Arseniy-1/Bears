@@ -30,6 +30,9 @@ namespace _Project.Scripts.Storage
             for (int i = 0; i < length; i++)
                 cellsData.Add(new InventoryCellData());
 
+            for (int i = 0; i < storageDataSo.Cells.Count; i++) 
+                cellsData[i] = storageDataSo.Cells[i];
+
             var inventoryData = new InventoryGridData
             {
                 OwnerId = storageDataSo.ownerId,

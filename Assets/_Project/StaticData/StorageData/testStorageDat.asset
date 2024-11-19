@@ -13,25 +13,7 @@ MonoBehaviour:
   m_Name: testStorageDat
   m_EditorClassIdentifier: 
   ownerId: test
-  defaultItems:
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
-  - Type: 0
-    Amount: 3
+  Cells:
   - Type: 0
     Amount: 3
   - Type: 0

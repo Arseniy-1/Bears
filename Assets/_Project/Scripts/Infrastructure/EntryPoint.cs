@@ -15,7 +15,7 @@ namespace _Project.Scripts.Infrastructure
         // private const string OWNER1 = "Player";
         // private const string OWNER2 = "chest_1";
 
-        [SerializeField] private List<StorageDataSO> _defaultStorageData;
+        //[SerializeField] private List<StorageDataSO> _defaultStorageData;
         
         [SerializeField] private List<StorageSpawnPoint> _storageSpawnPoints;
         
@@ -54,7 +54,7 @@ namespace _Project.Scripts.Infrastructure
             GameStateData gameState = gameStateProvider.GameState;
 
             _inventoryFactory = new InventoryFactory(_inventoriesService);
-            _storageFactory = new StorageFactory(_defaultStorageData, _inventoryFactory, _inventoriesService, storagePrefab);
+            _storageFactory = new StorageFactory(_inventoryFactory, _inventoriesService, storagePrefab);
             _inventoriesWindowView = new InventoriesWindowView(_inventoriesService, inventoryWindowView);
             StorageSpawner storageSpawner = new StorageSpawner(_storageFactory);
 

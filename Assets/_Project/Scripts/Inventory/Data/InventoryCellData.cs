@@ -8,5 +8,11 @@ namespace _Project.Scripts.Inventory.Data
     {
         public ItemType Type;
         public int Amount;
+
+        public InventoryCellData()
+        {
+            Type = ItemType.None;
+            Amount = 0;
+        }
     }
 }

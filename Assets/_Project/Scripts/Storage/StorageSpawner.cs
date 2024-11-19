@@ -11,7 +11,7 @@
         
         public void Spawn(StorageSpawnPoint storageSpawnPoint)
         {
-            Storage storage = _storageFactory.Create();
+            Storage storage = _storageFactory.Create(storageSpawnPoint.StorageData);
             storage.transform.position = storageSpawnPoint.transform.position;
         }
     }

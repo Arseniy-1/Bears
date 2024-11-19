@@ -8,7 +8,7 @@ namespace _Project.Scripts.Storage
     public class StorageDataSO : ScriptableObject
     {
         [SerializeField] public string ownerId;
-        [SerializeField] public List<InventoryCellData> defaultItems;
+        [SerializeField] public List<InventoryCellData> Cells;
         [SerializeField] public Vector2Int Size;
 
     }
