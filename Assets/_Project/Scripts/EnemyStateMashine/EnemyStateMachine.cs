@@ -64,20 +64,21 @@ public class EnemyIdleState : IState
     {
         if (_enemy.GunHolder.TargetScanner.HasTarget)
         {
-            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
+            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) <
+                _enemy.DetectionRange)
             {
                 _stateSwitcher.SwitchState<EnemyMoveState>();
             }
-
-            if (_enemy.transform.position == _enemy.Waypoints[_currentWaypoint].position)
-            {
-                _currentWaypoint = (_currentWaypoint + 1) % _enemy.Waypoints.Count;
-            }
-
-            _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, _enemy.Waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
-            float direction = (_enemy.Waypoints[_currentWaypoint].position.x - _enemy.Position.x);
-            _enemy.Turning.CorrectFlip((int)direction);
         }
+
+        if (_enemy.transform.position == _enemy.Waypoints[_currentWaypoint].position)
+        {
+            _currentWaypoint = (_currentWaypoint + 1) % _enemy.Waypoints.Count;
+        }
+
+        _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position,
+            _enemy.Waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
+        _enemy.Turning.CorrectFlip((int)(_enemy.Waypoints[_currentWaypoint].position.x - _enemy.Position.x));
     }
 }
 
@@ -115,11 +116,13 @@ public class EnemyMoveState : IState
             _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
             _enemy.Turning.CorrectFlip((int)currentDirection.x);
 
-            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
+            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) <
+                _enemy.AttackRange)
             {
                 _stateSwitcher.SwitchState<EnemyAttackState>();
             }
-            else if(Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) > _enemy.DetectionRange)
+            else if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) >
+                     _enemy.DetectionRange)
             {
                 _stateSwitcher.SwitchState<EnemyIdleState>();
             }
@@ -160,7 +163,8 @@ public class EnemyAttackState : IState
     {
         if (_enemy.GunHolder.TargetScanner.HasTarget)
         {
-            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
+            if (Vector3.Distance(_enemy.Position, _enemy.GunHolder.TargetScanner.ClosestTarget.Position) <
+                _enemy.AttackRange)
             {
                 _enemy.GunHolder.SpotTarget();
                 _enemy.Turning.CorrectFlip((int)_enemy.GunHolder.TargetScanner.ClosestTarget.Position.x);
