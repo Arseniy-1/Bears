@@ -148,9 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <GunHolder>k__BackingField: {fileID: 2687033564565863634}
-  health:
-    _maxHealth: 0
-    _currentHealthPoint: 0
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 5
 --- !u!114 &7170747867369391590
@@ -165,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3b9308d8d24514ea92ec3f3b840084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scanRadius: 150
+  _scanRadius: 10
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128

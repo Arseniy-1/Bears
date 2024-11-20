@@ -38,7 +38,7 @@ public class TargetScanner : MonoBehaviour
         foreach (Collider2D hit in hits)
             if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
                 targets.Add(target);
-
+        
         List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - Position).magnitude).ToList();
 
         if (sortedTargets.Count > 0)
