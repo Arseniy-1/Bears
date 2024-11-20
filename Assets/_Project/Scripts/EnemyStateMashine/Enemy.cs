@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Project.Scripts.Player;
+using _Project.Scripts.Spawner;
 using UnityEngine;
 
 public class Enemy : Character
@@ -12,6 +13,13 @@ public class Enemy : Character
     private EnemyStateMachine _stateMachine;
     public Turning Turning { get; private set; }
 
+    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, AmmoSpawner ammoSpawner)
+    {
+        GunHolder.Construct(ammoSpawner);
+        _stateMachine = enemyStateMachine;
+        Waypoints = waypoints;
+    }
+
     private void Start()
     {
         Turning = new Turning(this);
@@ -20,12 +28,6 @@ public class Enemy : Character
     private void Update()
     {
         _stateMachine?.Update();
-    }
-
-    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints)
-    {
-        _stateMachine = enemyStateMachine;
-        Waypoints = waypoints;
     }
 
     private void OnDrawGizmos()
