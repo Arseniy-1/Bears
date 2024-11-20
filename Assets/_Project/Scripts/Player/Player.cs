@@ -32,6 +32,7 @@ public class Player : Character
     private void Start()
     {
         _mover = new Mover(this, _rigidbody2D, _inputHandler);
+        health = new Health(healthValue);
     }
 
     private void Update()
