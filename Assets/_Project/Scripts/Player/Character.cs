@@ -4,15 +4,21 @@ using UnityEngine;
 public class Character : MonoBehaviour, IDamagable, ITarget
 {
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
+    [SerializeField] protected float maxHealth;
 
-    [SerializeField] protected Health health;
+    public Health Health { get; protected set; }
+    public Vector2 Position => transform.position;
+
+    private void Start()
+    {
+        Health = new Health(maxHealth);
+    }
 
     protected virtual void Interact(IInteractable interactable){}
 
-    public Vector2 Position => transform.position;
-
     public void TakeDamage(float amount)
     {
-        health.TakeDamage(amount);
+        var hp = Health.TakeDamage(amount);
+        Debug.Log(hp);
     }
 }
