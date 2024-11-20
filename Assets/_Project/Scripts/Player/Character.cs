@@ -5,7 +5,9 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 {
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
 
-    [SerializeField] protected Health health;
+    [SerializeField] protected float healthValue;
+    
+    public Health health { get; protected set; }
 
     protected virtual void Interact(IInteractable interactable){}
 
