@@ -14,11 +14,10 @@ public class Character : MonoBehaviour, IDamagable, ITarget
         Health = new Health(maxHealth);
         Health.Died += TakeDead;
     }
-
-    private void OnDestroy()
-    {
-        Health.Died -= TakeDead;
-    }
+    
+    [SerializeField] protected float healthValue;
+    
+    public Health health { get; protected set; }
 
     protected virtual void Interact(IInteractable interactable){}
 

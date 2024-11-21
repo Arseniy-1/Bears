@@ -1,12 +1,13 @@
-﻿using System;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using _Project.Scripts.Spawner;
 using UnityEngine;
 
 public class EnemyFabric : MonoBehaviour
 {
     [SerializeField] private Enemy _enemyPrefab;
-    
+    [SerializeField] private AmmoSpawner _ammoSpawner;
+
     public void Create(Transform transform, List<Transform> waypoints)
     {
         Enemy enemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
@@ -25,6 +26,6 @@ public class EnemyFabric : MonoBehaviour
             state.Initialize(enemyStateMashine);
         }
 
-        enemy.Construct(enemyStateMashine, waypoints);
+        enemy.Construct(enemyStateMashine, waypoints, _ammoSpawner);
     }
 }

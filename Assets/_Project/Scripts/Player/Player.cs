@@ -29,6 +29,12 @@ public class Player : Character
     {
         _collisionHandler.CollisionDetected -= Interact;
     }
+    
+    private void Start()
+    {
+        _mover = new Mover(this, _rigidbody2D, _inputHandler);
+        health = new Health(healthValue);
+    }
 
     private void Update()
     {

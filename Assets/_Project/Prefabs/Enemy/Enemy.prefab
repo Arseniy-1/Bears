@@ -265,6 +265,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootGun
       objectReference: {fileID: 0}
+    - target: {fileID: 5652018517579382704, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: _spread
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652018517579382704, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
+      propertyPath: _reloadTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

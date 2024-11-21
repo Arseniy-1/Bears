@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Spawner;
+using UnityEngine;
 
 public class GunHolder : MonoBehaviour
 {
@@ -6,7 +7,13 @@ public class GunHolder : MonoBehaviour
     [SerializeField] private Weapon _currentWeapon;
 
     public TargetScanner TargetScanner => _targetScaner;
-    
+
+    public void Construct(AmmoSpawner ammoSpawner)
+    {
+        if (_currentWeapon is ShootGun) 
+            (_currentWeapon as ShootGun).Construct(ammoSpawner);
+    }
+
     public void EquipWeapon(Weapon weapon)
     {
         if (_currentWeapon.gameObject.activeSelf)
