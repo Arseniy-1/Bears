@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+
+using System.Collections.Generic;
 using _Project.Scripts.Spawner;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class EnemyFabric : MonoBehaviour
     public void Create(Transform transform, List<Transform> waypoints)
     {
         Enemy enemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
-
+        
         List<IState> enemyStates = new List<IState>
         {
             new EnemyIdleState(enemy),

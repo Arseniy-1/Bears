@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
     private float _currentTime = 0;
 
     public Transform Transform { get; private set; }
-    public bool IsReloaded { get; protected set; } = false;
+    public bool IsReloaded { get; protected set; }
 
     private void FixedUpdate()
     {

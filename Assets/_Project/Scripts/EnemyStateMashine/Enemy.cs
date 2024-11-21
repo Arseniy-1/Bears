@@ -12,19 +12,15 @@ public class Enemy : Character
 
     private EnemyStateMachine _stateMachine;
     public Turning Turning { get; private set; }
-
+    
     public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, AmmoSpawner ammoSpawner)
     {
         GunHolder.Construct(ammoSpawner);
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
-    }
-
-    private void Start()
-    {
         Turning = new Turning(this);
     }
-
+    
     private void Update()
     {
         _stateMachine?.Update();
