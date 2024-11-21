@@ -1,18 +1,20 @@
 ﻿using _Project.Scripts.Spawner;
+using System;
 using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private TargetScanner _targetScaner;
     [SerializeField] private Weapon _currentWeapon;
+    private Type _currentWeaponType => _currentWeapon.GetType();
 
     public TargetScanner TargetScanner => _targetScaner;
 
     public void Construct(TargetScanner targetScanner, MotherAmmoBoss motherAmmo)
     {
         _targetScaner = targetScanner;
-        
-        if (_currentWeapon is RangeWeapon<Ammo> weapon)
+
+        if (_currentWeapon is ShootGun weapon)
         {
             weapon.Construct(motherAmmo);
         }
@@ -24,7 +26,7 @@ public class WeaponHolder : MonoBehaviour
         {
             return;
         }
-        
+
         _currentWeapon = weapon;
         _currentWeapon.Transform.parent = transform;
         _currentWeapon.Transform.position = transform.position;

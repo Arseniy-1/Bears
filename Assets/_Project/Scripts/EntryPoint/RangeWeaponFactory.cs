@@ -9,7 +9,7 @@ public class RangeWeaponFactory<T> : MonoBehaviour where T : Ammo
     {
         RangeWeapon<T> weapon = Instantiate(_weapon, parent);
         weapon.transform.parent = parent;
-        weapon.Construct(ammoSpawner);
+        //weapon.Construct(ammoSpawner);
 
         return weapon;
     }

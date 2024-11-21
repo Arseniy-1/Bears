@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd926ee35639e84e86286d47fd4476c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetScaner: {fileID: 0}
+  _targetScaner: {fileID: 9172468816375255916}
   _currentWeapon: {fileID: 8325902022692906825}
 --- !u!1 &7092250327509489669
 GameObject:
@@ -214,8 +214,8 @@ MonoBehaviour:
   _scanRadius: 120
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _scanDelay: 0
+    m_Bits: 128
+  _scanDelay: 1
 --- !u!1001 &4466316440415148281
 PrefabInstance:
   m_ObjectHideFlags: 0

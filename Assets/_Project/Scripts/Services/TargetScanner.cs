@@ -19,9 +19,13 @@ public class TargetScanner : MonoBehaviour
 
     public TargetScanner(Character character)
     {
-        _delay = new WaitForSeconds(_scanDelay);
     }
 
+    private void Start()
+    {
+        _delay = new WaitForSeconds(_scanDelay);
+        StartCoroutine(Scaning());
+    }
     private IEnumerator Scaning()
     {
         while (enabled)
@@ -37,21 +41,24 @@ public class TargetScanner : MonoBehaviour
         HashSet<ITarget> targets = new HashSet<ITarget>();
 
         foreach (Collider2D hit in hits)
-            if (hit.TryGetComponent(out ITarget target) /*&& (_targetLayer & (1 << hit.gameObject.layer)) != 0*/)
+            if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
                 targets.Add(target);
 
         List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - Position).magnitude).ToList();
-        Debug.Log(sortedTargets.Count);
+
         if (sortedTargets.Count > 0)
         {
             ClosestTarget = sortedTargets.ToArray()[0];
-            Debug.Log("*");
-            Debug.Log(ClosestTarget);
-            Debug.Log("*");
         }
         else
         {
             ClosestTarget = null;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _scanRadius);
     }
 }

@@ -59,6 +59,7 @@ public abstract class RangeWeapon<T> : Weapon where T : Ammo
 
     protected override void Attack()
     {
+        Debug.Log(AmmoSpawner==null);
         Ammo ammo = AmmoSpawner.Spawn<T>();
         ammo.Init(ShootPoint.transform.position, GetBulletDirection());
 
@@ -66,9 +67,4 @@ public abstract class RangeWeapon<T> : Weapon where T : Ammo
     }
 
     protected abstract Quaternion GetBulletDirection();
-
-    private void OnDrawGizmos()
-    {
-        //Gizmos.DrawLine(ShootPoint.transform.position, ShootPoint.transform.);
-    }
 }

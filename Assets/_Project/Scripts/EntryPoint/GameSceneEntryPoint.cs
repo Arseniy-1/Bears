@@ -8,10 +8,19 @@ public class GameSceneEntryPoint : MonoBehaviour
     [SerializeField] private List<DoneEnemy> _enemyWays;
     [SerializeField] private EnemyFabric _enemyFabric;
     [SerializeField] private MotherAmmoBoss _motherAmmoBoss;
+    [SerializeField] private List<Weapon> _playerWeapons;
 
     private void Awake()
     {
         MotherAmmoBoss ammoBoss = _motherAmmoBoss;
+
+        foreach (Weapon weapon in _playerWeapons)
+        {
+            if (weapon is RangeWeapon<Ammo> rangeWeapon)
+            {
+                rangeWeapon.Construct(ammoBoss);
+            }
+        }
 
         foreach (DoneEnemy doneEnemy in _enemyWays)
         {

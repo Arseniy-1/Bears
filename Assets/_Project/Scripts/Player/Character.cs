@@ -16,9 +16,4 @@ public class Character : MonoBehaviour, IDamagable, ITarget
     {
         health.TakeDamage(amount);
     }
-
-    public void ActiveteCoroutine(IEnumerator enumerator)
-    {
-        StartCoroutine(enumerator);
-    }
 }
