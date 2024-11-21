@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681c28dd40cb4b059c8ef786379eb14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 2
+  _reloadTime: 5
   ShootPoint: {fileID: 170871092894882204}
   WeaponAnimator: {fileID: 8222165744207115121}
   _ammoPrefab: {fileID: 8971809276139737897, guid: 585f638940758be4ebdc73537852b403, type: 3}
