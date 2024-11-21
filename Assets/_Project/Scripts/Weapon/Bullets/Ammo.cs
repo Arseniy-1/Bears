@@ -3,7 +3,7 @@ using System.Collections;
 using _Project.Scripts.Spawner;
 using UnityEngine;
 
-public class Ammo : MonoBehaviour, ISpawnable<Ammo>
+public abstract class Ammo : MonoBehaviour, IDestoyable<Ammo>
 {
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;
@@ -12,8 +12,8 @@ public class Ammo : MonoBehaviour, ISpawnable<Ammo>
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
     private WaitForSeconds _waitLife;
-    
-    public event Action<Ammo> Destroying;
+
+    public event Action<Ammo> Destroed;
 
     private void Awake()
     {
@@ -24,9 +24,11 @@ public class Ammo : MonoBehaviour, ISpawnable<Ammo>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IDamagable damagable))
+        {
             damagable.TakeDamage(_damage);
 
-        Destory();
+            Destory();
+        }
     }
 
     public void Activate()
@@ -38,16 +40,16 @@ public class Ammo : MonoBehaviour, ISpawnable<Ammo>
     {
         transform.position = startPosition;
         transform.rotation = rotation;
-        
-        if(_coroutine != null)
+
+        if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(WaitDestroy());
     }
 
-    private void Destory()
+    protected virtual void Destory()
     {
-        Destroying?.Invoke(this);
+        Destroed?.Invoke(this);
     }
 
     private IEnumerator WaitDestroy()

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Spawner
 {
-    public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, ISpawnable<T>
+    public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
     {
         [SerializeField] private T _prefab;
 
@@ -28,7 +28,7 @@ namespace _Project.Scripts.Spawner
         {
             T spawnedObject = _pool.Get();
 
-            spawnedObject.Destroying += OnSpawnedDestroy;
+            spawnedObject.Destroed += OnSpawnedDestroy;
             spawnedObject.gameObject.SetActive(true);
 
             _activeCount++;
@@ -40,7 +40,7 @@ namespace _Project.Scripts.Spawner
 
         protected void OnSpawnedDestroy(T spawnableObject)
         {
-            spawnableObject.Destroying -= OnSpawnedDestroy;
+            spawnableObject.Destroed -= OnSpawnedDestroy;
             spawnableObject.gameObject.SetActive(false);
             _pool.Release(spawnableObject);
 
@@ -48,4 +48,5 @@ namespace _Project.Scripts.Spawner
             CounterChanged?.Invoke(_pool.EntitiesCount, _activeCount, _spawnsCount);
         }
     }
+
 }

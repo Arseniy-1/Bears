@@ -1,17 +1,21 @@
 ﻿using _Project.Scripts.Spawner;
 using UnityEngine;
 
-public class GunHolder : MonoBehaviour
+public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private TargetScanner _targetScaner;
     [SerializeField] private Weapon _currentWeapon;
 
     public TargetScanner TargetScanner => _targetScaner;
 
-    public void Construct(AmmoSpawner ammoSpawner)
+    public void Construct(TargetScanner targetScanner, MotherAmmoBoss motherAmmo)
     {
-        if (_currentWeapon is ShootGun) 
-            (_currentWeapon as ShootGun).Construct(ammoSpawner);
+        _targetScaner = targetScanner;
+        
+        if (_currentWeapon is RangeWeapon<Ammo> weapon)
+        {
+            weapon.Construct(motherAmmo);
+        }
     }
 
     public void EquipWeapon(Weapon weapon)

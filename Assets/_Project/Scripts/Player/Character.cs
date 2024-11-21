@@ -1,12 +1,12 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable, ITarget
 {
-    [field: SerializeField] public TargetScanner TargetScanner { get; private set; }
-    [field: SerializeField] public GunHolder GunHolder { get; private set; }
+    [field: SerializeField] public TargetScanner TargetScanner { get; protected set; }
+    [field: SerializeField] public WeaponHolder WeaponHolder { get; protected set; }
 
-    [SerializeField] protected Health health;
+    [field: SerializeField] protected Health health = new Health();
 
     protected virtual void Interact(IInteractable interactable){}
 
@@ -15,5 +15,10 @@ public class Character : MonoBehaviour, IDamagable, ITarget
     public void TakeDamage(float amount)
     {
         health.TakeDamage(amount);
+    }
+
+    public void ActiveteCoroutine(IEnumerator enumerator)
+    {
+        StartCoroutine(enumerator);
     }
 }

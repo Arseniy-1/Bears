@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System;
 
+[Serializable]
 public class TargetScanner : MonoBehaviour
 {
     [SerializeField] private float _scanRadius = 150f;
@@ -13,12 +15,11 @@ public class TargetScanner : MonoBehaviour
     public ITarget ClosestTarget { get; private set; }
     public bool HasTarget => ClosestTarget != null;
 
-    public Vector2 Position => transform.position;
+    Vector2 Position => transform.position;
 
-    private void Start()
+    public TargetScanner(Character character)
     {
         _delay = new WaitForSeconds(_scanDelay);
-        StartCoroutine(Scaning());
     }
 
     private IEnumerator Scaning()
@@ -36,14 +37,17 @@ public class TargetScanner : MonoBehaviour
         HashSet<ITarget> targets = new HashSet<ITarget>();
 
         foreach (Collider2D hit in hits)
-            if (hit.TryGetComponent(out ITarget target) && (_targetLayer & (1 << hit.gameObject.layer)) != 0)
+            if (hit.TryGetComponent(out ITarget target) /*&& (_targetLayer & (1 << hit.gameObject.layer)) != 0*/)
                 targets.Add(target);
 
         List<ITarget> sortedTargets = targets.OrderBy(target => (target.Position - Position).magnitude).ToList();
-
+        Debug.Log(sortedTargets.Count);
         if (sortedTargets.Count > 0)
         {
             ClosestTarget = sortedTargets.ToArray()[0];
+            Debug.Log("*");
+            Debug.Log(ClosestTarget);
+            Debug.Log("*");
         }
         else
         {

@@ -1,19 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-
+[Serializable]
 public class Health
 {
-    private readonly float _maxHealth;
-    private float _currentHealthPoint;
+    [SerializeField] private float _maxHealth;
+    [SerializeField] private float _currentHealthPoint;
 
     public event Action<float, float> HealthChanged;
-    public event Action Died;
+    public event Action LostHealth;
 
-    public Health(float maxHealth)
+    public Health()
     {
-        _currentHealthPoint = maxHealth;
-        _maxHealth = maxHealth;
+        _currentHealthPoint = _maxHealth;
     }
 
     public void Heal(float amount)
@@ -34,7 +33,7 @@ public class Health
         _currentHealthPoint = Mathf.Clamp(_currentHealthPoint - amount, 0, _maxHealth);
 
         if (_currentHealthPoint == 0)
-            Died?.Invoke();
+            LostHealth?.Invoke();
 
         HealthChanged?.Invoke(_currentHealthPoint, _maxHealth);
 

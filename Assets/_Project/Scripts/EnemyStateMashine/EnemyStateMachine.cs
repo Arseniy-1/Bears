@@ -49,7 +49,7 @@ public class EnemyIdleState : IState
     public virtual void Enter()
     {
         Debug.Log(GetType());
-        _enemy.GunHolder.ReturnWeapon();
+        //_enemy.WeaponHolder.ReturnWeapon();
     }
 
     public virtual void Exit()
@@ -91,7 +91,7 @@ public class EnemyActivitysState : IState
     public virtual void Enter()
     {
         Debug.Log(GetType());
-        _enemy.GunHolder.ReturnWeapon();
+        _enemy.WeaponHolder.ReturnWeapon();
     }
 
     public virtual void Exit()
@@ -146,7 +146,7 @@ public class EnemyMoveState : IState
         {
             Vector2 direction = (_enemy.TargetScanner.ClosestTarget.Position - _enemy.Position).normalized;
             Vector3 currentDirection = new Vector3(direction.x, direction.y, 0);
-            _enemy.GunHolder.SpotTarget();
+            _enemy.WeaponHolder.SpotTarget();
             _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
             _enemy.Turning.CorrectFlip((int)currentDirection.x);
 
@@ -197,9 +197,9 @@ public class EnemyAttackState : IState
         {
             if (Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
             {
-                _enemy.GunHolder.SpotTarget();
+                _enemy.WeaponHolder.SpotTarget();
                 _enemy.Turning.CorrectFlip((int)_enemy.TargetScanner.ClosestTarget.Position.x);
-                _enemy.GunHolder.Shoot();
+                _enemy.WeaponHolder.Shoot();
             }
             else
             {

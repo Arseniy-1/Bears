@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using _Project.Scripts.Player;
 using _Project.Scripts.Spawner;
@@ -13,11 +12,11 @@ public class Enemy : Character
     private EnemyStateMachine _stateMachine;
     public Turning Turning { get; private set; }
 
-    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, AmmoSpawner ammoSpawner)
+    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, MotherAmmoBoss ammoBoss)
     {
-        GunHolder.Construct(ammoSpawner);
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
+        WeaponHolder.Construct(TargetScanner, ammoBoss);
     }
 
     private void Start()
@@ -27,7 +26,8 @@ public class Enemy : Character
 
     private void Update()
     {
-        _stateMachine?.Update();
+        _stateMachine.Update();
+        Debug.Log(TargetScanner.ClosestTarget);
     }
 
     private void OnDrawGizmos()

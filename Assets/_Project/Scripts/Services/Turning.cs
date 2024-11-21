@@ -18,7 +18,7 @@ namespace _Project.Scripts.Player
                 var isFlipped = !((int)_character.TargetScanner.ClosestTarget.Position.x >
                                   (int)_character.transform.position.x);
                 _character.transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
-                _character.GunHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
+                _character.WeaponHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
             else if (posX != 0)
             {
