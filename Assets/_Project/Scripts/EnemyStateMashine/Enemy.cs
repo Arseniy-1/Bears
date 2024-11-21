@@ -12,11 +12,6 @@ public class Enemy : Character
     private EnemyStateMachine _stateMachine;
     public Turning Turning { get; private set; }
 
-    private void Start()
-    {
-        Turning = new Turning(this);
-    }
-
     private void Update()
     {
         _stateMachine?.Update();
@@ -26,6 +21,7 @@ public class Enemy : Character
     {
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
+        Turning = new Turning(this);
     }
 
     private void OnDrawGizmos()

@@ -32,10 +32,10 @@ public class Health
             return 0;
 
         _currentHealthPoint = Mathf.Clamp(_currentHealthPoint - amount, 0, _maxHealth);
-
+        
         if (_currentHealthPoint == 0)
             Died?.Invoke();
-
+        
         HealthChanged?.Invoke(_currentHealthPoint, _maxHealth);
 
         if (_currentHealthPoint < amount)

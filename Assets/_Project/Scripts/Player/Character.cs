@@ -5,20 +5,32 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 {
     [field: SerializeField] public GunHolder GunHolder { get; private set; }
     [SerializeField] protected float maxHealth;
-
-    public Health Health { get; protected set; }
+    [SerializeField] private HealthBar _healthBar;
+    
+    public Health Health { get; private set; }
     public Vector2 Position => transform.position;
-
-    private void Start()
+    
+    protected virtual void Start()
     {
         Health = new Health(maxHealth);
+        Health.Died += TakeDead;
+        _healthBar.SetCharacter(this);
+    }
+
+    private void OnDestroy()
+    {
+        Health.Died -= TakeDead;
     }
 
     protected virtual void Interact(IInteractable interactable){}
 
     public void TakeDamage(float amount)
     {
-        var hp = Health.TakeDamage(amount);
-        Debug.Log(hp);
+        Health.TakeDamage(amount);
+    }
+    
+    private void TakeDead()
+    {
+        Destroy(gameObject);
     }
 }

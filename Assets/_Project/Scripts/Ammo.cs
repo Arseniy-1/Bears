@@ -19,9 +19,10 @@ public class Ammo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IDamagable damagable))
-            damagable.TakeDamage(_damage);
-
-        Destroy(gameObject);
+        if (collision.TryGetComponent(out IDamagable damageable))
+        {
+            damageable.TakeDamage(_damage);
+            Destroy(gameObject);
+        }
     }
 }

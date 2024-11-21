@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <GunHolder>k__BackingField: {fileID: 2687033564565863634}
-  health:
-    _maxHealth: 0
-    _currentHealthPoint: 0
+  maxHealth: 0
+  _healthBar: {fileID: 8847771884747594086, guid: da4f676f9f2094f42aabc3efa41a313c, type: 3}
+  _canvas: {fileID: 904515951360568227, guid: ab7fd79347b077840811792fb5d2655a, type: 3}
   <DetectionRange>k__BackingField: 10
   <AttackRange>k__BackingField: 5
 --- !u!114 &7170747867369391590
