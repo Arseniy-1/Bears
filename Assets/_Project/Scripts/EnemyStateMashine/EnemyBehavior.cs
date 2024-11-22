@@ -3,7 +3,7 @@ using _Project.Scripts.Player;
 using _Project.Scripts.Spawner;
 using UnityEngine;
 
-public class Enemy : Character
+public class EnemyBehavior : Character
 {
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }

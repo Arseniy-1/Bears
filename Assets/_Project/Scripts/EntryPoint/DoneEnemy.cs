@@ -6,5 +6,5 @@ using UnityEngine;
 public class DoneEnemy
 {
     [field: SerializeField] public List<Transform> Waypoints { get; private set; }
-    [field: SerializeField] public Enemy Enemy { get; private set; }
+    [field: SerializeField] public EnemyBehavior Enemy { get; private set; }
 }

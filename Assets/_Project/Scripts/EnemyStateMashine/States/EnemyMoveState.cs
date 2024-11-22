@@ -2,10 +2,10 @@
 
 public class EnemyMoveState : IState
 {
-    private readonly Enemy _enemy;
+    private readonly EnemyBehavior _enemy;
     private IStateSwitcher _stateSwitcher;
 
-    public EnemyMoveState(Enemy entity)
+    public EnemyMoveState(EnemyBehavior entity)
     {
         _enemy = entity;
     }

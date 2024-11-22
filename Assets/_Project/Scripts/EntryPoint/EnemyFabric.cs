@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyFabric : MonoBehaviour
 {
-    public Enemy Create(Transform transform, Enemy enemyPrefab, List<Transform> waypoints, MainAmmoSpawner ammoSpawner)
+    public EnemyBehavior Create(Transform transform, EnemyBehavior enemyPrefab, List<Transform> waypoints, MainAmmoSpawner ammoSpawner)
     {
-        Enemy enemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
+        EnemyBehavior enemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
 
         List<IState> enemyStates = new List<IState>
             {

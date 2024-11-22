@@ -2,10 +2,10 @@
 
 public class EnemyIdleState : IState
 {
-    private readonly Enemy _enemy;
+    private readonly EnemyBehavior _enemy;
     private IStateSwitcher _stateSwitcher;
 
-    public EnemyIdleState(Enemy entity)
+    public EnemyIdleState(EnemyBehavior entity)
     {
         _enemy = entity;
     }
@@ -27,7 +27,8 @@ public class EnemyIdleState : IState
 
     public virtual void Update()
     {
-        if (_enemy.TargetScanner.ClosestTarget != null && Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
+        if (_enemy.TargetScanner.ClosestTarget != null && 
+            Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
         {
             _stateSwitcher.SwitchState<EnemyMoveState>();
         }

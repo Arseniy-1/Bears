@@ -2,10 +2,10 @@
 
 public class EnemyAttackState : IState
 {
-    protected readonly Enemy _enemy;
+    protected readonly EnemyBehavior _enemy;
     protected IStateSwitcher _stateSwitcher;
 
-    public EnemyAttackState(Enemy enemy)
+    public EnemyAttackState(EnemyBehavior enemy)
     {
         _enemy = enemy;
     }
