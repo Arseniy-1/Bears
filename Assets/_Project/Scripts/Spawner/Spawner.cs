@@ -5,7 +5,7 @@ namespace _Project.Scripts.Spawner
 {
     public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
     {
-        [SerializeField] private T _prefab;
+        [field: SerializeField] public T Prefab;
 
         [SerializeField] private int _startAmount = 1;
 
@@ -16,7 +16,7 @@ namespace _Project.Scripts.Spawner
 
         protected virtual void Awake()
         {
-            _pool = new Pool<T>(_prefab, transform, transform, _startAmount);
+            _pool = new Pool<T>(Prefab, transform, transform, _startAmount);
         }
 
         protected virtual void Start()

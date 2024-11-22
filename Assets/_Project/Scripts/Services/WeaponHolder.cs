@@ -10,11 +10,11 @@ public class WeaponHolder : MonoBehaviour
 
     public TargetScanner TargetScanner => _targetScaner;
 
-    public void Construct(TargetScanner targetScanner, MotherAmmoBoss motherAmmo)
+    public void Construct(TargetScanner targetScanner, MainAmmoSpawner motherAmmo)
     {
         _targetScaner = targetScanner;
 
-        if (_currentWeapon is ShootGun weapon)
+        if (_currentWeapon is RangeWeapon weapon)
         {
             weapon.Construct(motherAmmo);
         }

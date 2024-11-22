@@ -1,9 +1,8 @@
-﻿using _Project.Scripts.Spawner;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private float _reloadTime;
+    [SerializeField, Range(0.01f, 20)] private float _reloadTime;
 
     [SerializeField] protected Animator WeaponAnimator;
 
@@ -44,27 +43,4 @@ public abstract class Weapon : MonoBehaviour
         IsReloaded = true;
         //todo: Play reload animation
     }
-}
-
-public abstract class RangeWeapon<T> : Weapon where T : Ammo
-{
-    [SerializeField] protected Transform ShootPoint;
-
-    protected MotherAmmoBoss AmmoSpawner;
-
-    public void Construct(MotherAmmoBoss ammoSpawner)
-    {
-        AmmoSpawner = ammoSpawner;
-    }
-
-    protected override void Attack()
-    {
-        Debug.Log(AmmoSpawner==null);
-        Ammo ammo = AmmoSpawner.Spawn<T>();
-        ammo.Init(ShootPoint.transform.position, GetBulletDirection());
-
-        ammo.Activate();
-    }
-
-    protected abstract Quaternion GetBulletDirection();
 }

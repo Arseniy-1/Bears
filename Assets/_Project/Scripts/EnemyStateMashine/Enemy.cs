@@ -12,7 +12,7 @@ public class Enemy : Character
     private EnemyStateMachine _stateMachine;
     public Turning Turning { get; private set; }
 
-    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, MotherAmmoBoss ammoBoss)
+    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, MainAmmoSpawner ammoBoss)
     {
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
