@@ -1,4 +1,7 @@
-public interface IStateSwitcher
+namespace EnemyStateMashine
 {
-    void SwitchState<T>() where T : IState;
+    public interface IStateSwitcher
+    {
+        void SwitchState<T>() where T : IState;
+    }
 }

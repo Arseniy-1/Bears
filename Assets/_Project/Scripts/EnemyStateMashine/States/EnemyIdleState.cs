@@ -1,40 +1,43 @@
 ﻿using UnityEngine;
 
-public class EnemyIdleState : IState
+namespace EnemyStateMashine
 {
-    private readonly EnemyBehavior _enemy;
-    private IStateSwitcher _stateSwitcher;
-
-    public EnemyIdleState(EnemyBehavior entity)
+    public class EnemyIdleState : IState
     {
-        _enemy = entity;
-    }
+        private readonly EnemyBehavior _enemy;
+        private IStateSwitcher _stateSwitcher;
 
-    public void Initialize(IStateSwitcher stateSwitcher)
-    {
-        _stateSwitcher = stateSwitcher;
-    }
-
-    public virtual void Enter()
-    {
-        Debug.Log(GetType());
-        //_enemy.WeaponHolder.ReturnWeapon();
-    }
-
-    public virtual void Exit()
-    {
-    }
-
-    public virtual void Update()
-    {
-        if (_enemy.TargetScanner.ClosestTarget != null && 
-            Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
+        public EnemyIdleState(EnemyBehavior entity)
         {
-            _stateSwitcher.SwitchState<EnemyMoveState>();
+            _enemy = entity;
         }
-        else
+
+        public void Initialize(IStateSwitcher stateSwitcher)
         {
-            _stateSwitcher.SwitchState<EnemyActivitysState>();
+            _stateSwitcher = stateSwitcher;
+        }
+
+        public virtual void Enter()
+        {
+            Debug.Log(GetType());
+            //_enemy.WeaponHolder.ReturnWeapon();
+        }
+
+        public virtual void Exit()
+        {
+        }
+
+        public virtual void Update()
+        {
+            if (_enemy.TargetScanner.ClosestTarget != null &&
+                Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
+            {
+                _stateSwitcher.SwitchState<EnemyMoveState>();
+            }
+            else
+            {
+                _stateSwitcher.SwitchState<EnemyActivitysState>();
+            }
         }
     }
 }

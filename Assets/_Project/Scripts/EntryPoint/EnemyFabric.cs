@@ -1,6 +1,7 @@
 ﻿using _Project.Scripts.Spawner;
 using System.Collections.Generic;
 using UnityEngine;
+using EnemyStateMashine;
 
 public class EnemyFabric : MonoBehaviour
 {

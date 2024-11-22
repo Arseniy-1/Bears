@@ -322,9 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1022acebaa8e19a478ab14e82248f66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawners:
-  - {fileID: 976105153}
+  _ammoSpawners:
   - {fileID: 976105154}
+  - {fileID: 976105153}
   - {fileID: 976105156}
 --- !u!114 &976105156
 MonoBehaviour:
@@ -575,8 +575,6 @@ GameObject:
   - component: {fileID: 1893099131}
   - component: {fileID: 1893099130}
   - component: {fileID: 1893099129}
-  - component: {fileID: 1893099133}
-  - component: {fileID: 1893099132}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
@@ -614,15 +612,15 @@ MonoBehaviour:
     - {fileID: 1927836396}
     - {fileID: 1952957015}
     - {fileID: 471639938}
-    <Enemy>k__BackingField: {fileID: 4310476032478087993, guid: 144f53a5999457f4197f070d25751408, type: 3}
+    <Enemy>k__BackingField: {fileID: 813159654703967003, guid: 144f53a5999457f4197f070d25751408, type: 3}
   - <Waypoints>k__BackingField:
     - {fileID: 757495641}
     - {fileID: 645155600}
     - {fileID: 1692766597}
     - {fileID: 1446945977}
-    <Enemy>k__BackingField: {fileID: 4310476032478087993, guid: 402e2702307ef65439c3e545e8ea424c, type: 3}
+    <Enemy>k__BackingField: {fileID: 6594224948346613601, guid: 402e2702307ef65439c3e545e8ea424c, type: 3}
   _enemyFabric: {fileID: 1893099129}
-  _motherAmmoBoss: {fileID: 976105155}
+  _mainAmmoSpawner: {fileID: 976105155}
   _playerWeapons: []
 --- !u!4 &1893099131
 Transform:
@@ -639,31 +637,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1893099132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893099128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69095f39c494c40448894ebcb762fce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1893099133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893099128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac1fc7a5a471ed4d8b4467d01194345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponHolder: {fileID: 877734338284073153, guid: 04d6e47cdd6ceff48a422eb49fda31b8, type: 3}
 --- !u!1 &1927836395
 GameObject:
   m_ObjectHideFlags: 0

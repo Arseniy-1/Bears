@@ -1,10 +1,13 @@
-public interface IState
+namespace EnemyStateMashine
 {
-    public void Enter();
+    public interface IState
+    {
+        public void Enter();
 
-    public void Update();
+        public void Update();
 
-    public void Exit();
+        public void Exit();
 
-    public void Initialize(IStateSwitcher stateSwitcher);
+        public void Initialize(IStateSwitcher stateSwitcher);
+    }
 }

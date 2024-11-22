@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class Health
+public class Health :MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _currentHealthPoint;
@@ -10,7 +9,7 @@ public class Health
     public event Action<float, float> HealthChanged;
     public event Action LostHealth;
 
-    public Health()
+    private void Awake()
     {
         _currentHealthPoint = _maxHealth;
     }
