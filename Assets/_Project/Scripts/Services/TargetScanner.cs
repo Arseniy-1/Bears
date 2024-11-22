@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System;
 
+[Serializable]
 public class TargetScanner : MonoBehaviour
 {
     [SerializeField] private float _scanRadius = 150f;
@@ -13,14 +15,17 @@ public class TargetScanner : MonoBehaviour
     public ITarget ClosestTarget { get; private set; }
     public bool HasTarget => ClosestTarget != null;
 
-    public Vector2 Position => transform.position;
+    Vector2 Position => transform.position;
+
+    public TargetScanner(Character character)
+    {
+    }
 
     private void Start()
     {
         _delay = new WaitForSeconds(_scanDelay);
         StartCoroutine(Scaning());
     }
-
     private IEnumerator Scaning()
     {
         while (enabled)
@@ -49,5 +54,11 @@ public class TargetScanner : MonoBehaviour
         {
             ClosestTarget = null;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _scanRadius);
     }
 }

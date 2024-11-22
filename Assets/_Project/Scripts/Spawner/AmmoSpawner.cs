@@ -1,7 +1,8 @@
-﻿namespace _Project.Scripts.Spawner
+﻿using UnityEngine;
+
+namespace _Project.Scripts.Spawner
 {
-    public class AmmoSpawner : Spawner<Ammo>
+    public class AmmoSpawner : Spawner<Ammo> 
     {
-        
     }
 }

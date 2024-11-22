@@ -47,7 +47,7 @@ public class Player : Character
         
         if (interactable is Weapon weapon)
         {
-            GunHolder.EquipWeapon(weapon);
+            WeaponHolder.EquipWeapon(weapon);
         }
 
         if (interactable is Resource resource)

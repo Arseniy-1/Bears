@@ -1,33 +1,19 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable, ITarget
 {
-    [field: SerializeField] public GunHolder GunHolder { get; private set; }
-    [SerializeField] protected float maxHealth;
-    
-    public Health Health { get; private set; }
-    public Vector2 Position => transform.position;
-    
-    protected virtual void Start()
-    {
-        Health = new Health(maxHealth);
-        Health.Died += TakeDead;
-    }
-    
-    [SerializeField] protected float healthValue;
-    
-    public Health health { get; protected set; }
+    [field: SerializeField] public TargetScanner TargetScanner { get; protected set; }
+    [field: SerializeField] public WeaponHolder WeaponHolder { get; protected set; }
+
+    [field: SerializeField] protected Health health = new Health();
 
     protected virtual void Interact(IInteractable interactable){}
 
+    public Vector2 Position => transform.position;
+
     public void TakeDamage(float amount)
     {
-        Health.TakeDamage(amount);
-    }
-    
-    private void TakeDead()
-    {
-        Destroy(gameObject);
+        health.TakeDamage(amount);
     }
 }

@@ -25,7 +25,7 @@ namespace _Project.Scripts.Player
             float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
           
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
-            _character.GunHolder.SpotTarget();
+            _character.WeaponHolder.SpotTarget();
             _turning.CorrectFlip((int)currentHorizontalSpeed);
         }
     }
