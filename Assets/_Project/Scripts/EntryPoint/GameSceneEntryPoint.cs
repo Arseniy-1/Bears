@@ -6,7 +6,7 @@ public class GameSceneEntryPoint : MonoBehaviour
 {
     [SerializeField] private List<DoneEnemy> _enemys;
     [SerializeField] private EnemyFabric _enemyFabric;
-    [SerializeField] private MainAmmoSpawner _motherAmmoBoss;
+    [SerializeField] private MainAmmoSpawner _mainAmmoSpawner;
     [SerializeField] private List<Weapon> _playerWeapons;
 
     private void Awake()
@@ -15,13 +15,13 @@ public class GameSceneEntryPoint : MonoBehaviour
         {
             if (weapon is RangeWeapon rangeWeapon)
             {
-                rangeWeapon.Construct(_motherAmmoBoss);
+                rangeWeapon.Construct(_mainAmmoSpawner);
             }
         }
 
         foreach (DoneEnemy doneEnemy in _enemys)
         {
-            _enemyFabric.Create(doneEnemy.Waypoints[0].transform, doneEnemy.Enemy, doneEnemy.Waypoints, _motherAmmoBoss);
+            _enemyFabric.Create(doneEnemy.Waypoints[0].transform, doneEnemy.Enemy, doneEnemy.Waypoints, _mainAmmoSpawner);
             //TargetScanner targetScanner = new TargetScanner(enemy);
         }
     }
