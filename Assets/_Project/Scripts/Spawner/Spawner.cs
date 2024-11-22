@@ -5,14 +5,17 @@ namespace _Project.Scripts.Spawner
 {
     public class Spawner<T> : MonoBehaviour where T : MonoBehaviour, IDestoyable<T>
     {
-        [field: SerializeField] public T Prefab;
+        [SerializeField] private T Prefab;
 
         [SerializeField] private int _startAmount = 1;
 
         protected Pool<T> _pool;
         protected int _activeCount = 0;
         protected int _spawnsCount = 0;
+        
         public event Action<int, int, int> CounterChanged;
+        
+        public Type PrefabType => Prefab.GetType();
 
         protected virtual void Awake()
         {

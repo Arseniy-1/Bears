@@ -18,7 +18,7 @@ public class EnemyFabric : MonoBehaviour
 
         EnemyStateMachine enemyStateMashine = new EnemyStateMachine(enemyStates);
 
-        foreach (var state in enemyStates)
+        foreach (IState state in enemyStates)
         {
             state.Initialize(enemyStateMashine);
         }

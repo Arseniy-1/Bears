@@ -10,7 +10,7 @@ namespace _Project.Scripts.Spawner
 
         public Ammo Spawn(Ammo ammo)
         {
-            var spawner = _spawners.FirstOrDefault(spawner => spawner.Prefab.GetType() == ammo.GetType());
+            var spawner = _spawners.FirstOrDefault(spawner => spawner.PrefabType == ammo.GetType());
 
             return spawner.Spawn();
         }

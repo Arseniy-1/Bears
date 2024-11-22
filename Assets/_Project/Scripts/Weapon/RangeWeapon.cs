@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class RangeWeapon : Weapon
 {
     [SerializeField, Range(0, 1), Header("(Разброс) Среднее значение: 0,2")] private float _spread;
-    [SerializeField] protected Transform ShootPoint;
+    [SerializeField, Header("(Точка спавна пуль)")] protected Transform ShootPoint;
     [SerializeField] private Ammo _bulletPrefab;
 
     protected MainAmmoSpawner AmmoSpawner;
@@ -16,7 +16,6 @@ public abstract class RangeWeapon : Weapon
 
     protected override void Attack()
     {
-        Debug.Log(AmmoSpawner == null);
         Ammo ammo = AmmoSpawner.Spawn(_bulletPrefab);
         ammo.Init(ShootPoint.transform.position, GetBulletDirection());
 

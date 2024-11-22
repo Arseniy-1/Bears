@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 976105155}
   - component: {fileID: 976105154}
   - component: {fileID: 976105153}
+  - component: {fileID: 976105156}
   m_Layer: 0
   m_Name: AmmoSpawner
   m_TagString: Untagged
@@ -324,6 +325,21 @@ MonoBehaviour:
   _spawners:
   - {fileID: 976105153}
   - {fileID: 976105154}
+  - {fileID: 976105156}
+--- !u!114 &976105156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976105150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ece20f6707249b1a2c45e62d5936a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 1704910093865336221, guid: 801ae658d49a3774c93b46a6436dd27a, type: 3}
+  _startAmount: 1
 --- !u!1 &987116008
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +620,7 @@ MonoBehaviour:
     - {fileID: 645155600}
     - {fileID: 1692766597}
     - {fileID: 1446945977}
-    <Enemy>k__BackingField: {fileID: 4310476032478087993, guid: 4e3301a4f987e0c489cedd6181914fe9, type: 3}
+    <Enemy>k__BackingField: {fileID: 4310476032478087993, guid: 402e2702307ef65439c3e545e8ea424c, type: 3}
   _enemyFabric: {fileID: 1893099129}
   _motherAmmoBoss: {fileID: 976105155}
   _playerWeapons: []

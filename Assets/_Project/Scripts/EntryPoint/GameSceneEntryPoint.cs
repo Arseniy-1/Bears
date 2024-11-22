@@ -1,5 +1,4 @@
 ﻿using _Project.Scripts.Spawner;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,27 +11,18 @@ public class GameSceneEntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        MainAmmoSpawner ammoBoss = _motherAmmoBoss;
-
         foreach (Weapon weapon in _playerWeapons)
         {
             if (weapon is RangeWeapon rangeWeapon)
             {
-                rangeWeapon.Construct(ammoBoss);
+                rangeWeapon.Construct(_motherAmmoBoss);
             }
         }
 
         foreach (DoneEnemy doneEnemy in _enemys)
         {
-            _enemyFabric.Create(doneEnemy.Waypoints[0].transform, doneEnemy.Enemy, doneEnemy.Waypoints, ammoBoss);
+            _enemyFabric.Create(doneEnemy.Waypoints[0].transform, doneEnemy.Enemy, doneEnemy.Waypoints, _motherAmmoBoss);
             //TargetScanner targetScanner = new TargetScanner(enemy);
         }
     }
-}
-
-[Serializable]
-public class DoneEnemy
-{
-    [field: SerializeField] public List<Transform> Waypoints { get; private set; }
-    [field: SerializeField] public Enemy Enemy { get; private set; }
 }
