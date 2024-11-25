@@ -7,6 +7,7 @@
         for (int i = 0; i < _bulletCount; i++)
         {
             base.Attack();
+            
         }
     }
 }
