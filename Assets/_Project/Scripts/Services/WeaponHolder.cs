@@ -7,24 +7,29 @@ public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private TargetScanner _targetScaner;
     [SerializeField] private Weapon _currentWeapon;
-    [SerializeField] private Transform _weaponPosition;
-    [SerializeField] private Transform _weaponRotation;
+    [SerializeField] private Transform _positionHandRight;
+    [SerializeField] private Transform _positionHandLeft;
+    [SerializeField] private Transform _test;
 
     public TargetScanner TargetScanner => _targetScaner;
     public bool HasWeapon => _currentWeapon != null;
-    
+
     private Type _currentWeaponType => _currentWeapon.GetType();
-    private float _offsetX = -0.44f;
-    private float _offsetY = 0.44f;
-    private float _offsetRotationY = 151.5f;
+    private readonly float _offset = 0.1f;
 
     private void Update()
     {
         if (HasWeapon)
         {
-            _currentWeapon.Transform.position = new Vector3(_weaponPosition.position.x + _offsetX, _weaponPosition.position.y + _offsetY);
-            _currentWeapon.Transform.rotation = Quaternion.Euler(0, 0, _weaponRotation.transform.rotation.eulerAngles.z - _offsetRotationY);
+            CalculateOffset();
         }
+    }
+
+    private void CalculateOffset()
+    {
+        float angle = transform.rotation.eulerAngles.z;
+        _positionHandLeft.position = _currentWeapon.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(transform.localScale.x * _test.transform.localScale.x, 0, 0);
+        _positionHandRight.position = _currentWeapon.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(_offset, 0, 0);
     }
 
     public void Construct(TargetScanner targetScanner, MainAmmoSpawner ammoSpawner)
@@ -46,7 +51,7 @@ public class WeaponHolder : MonoBehaviour
 
         _currentWeapon = weapon;
         _currentWeapon.Transform.parent = transform;
-        _currentWeapon.Transform.position = _weaponPosition.position;
+        _currentWeapon.Transform.position = _positionHandRight.position;
         _currentWeapon.Transform.rotation = transform.rotation;
         _currentWeapon.Transform.localScale = transform.localScale;
     }
