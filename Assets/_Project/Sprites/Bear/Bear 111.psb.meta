@@ -109,8 +109,8 @@ ScriptedImporter:
     spriteBone:
     - name: "\u0422\u0435\u043B\u043E_13"
       guid: ed69e1c71aa88c444947dc796af3ed10
-      position: {x: 117.93867, y: 0.000047566773, z: 0}
-      rotation: {x: 0, y: 0, z: -0.04676283, w: 0.998906}
+      position: {x: 117.93867, y: -0.0000071390614, z: 0}
+      rotation: {x: 0, y: 0, z: -0.046763163, w: 0.998906}
       length: 40.188644
       parentId: 1
       color:
@@ -118,18 +118,18 @@ ScriptedImporter:
         rgba: 4294967040
     - name: "\u0422\u0435\u043B\u043E_12"
       guid: 54cb153a64b04b546a9c39f070cb936d
-      position: {x: 140.44167, y: -0.00004984603, z: 0}
-      rotation: {x: 0, y: 0, z: -0.21423033, w: 0.9767832}
-      length: 117.93861
+      position: {x: 140.44157, y: -0.000004599746, z: 0}
+      rotation: {x: 0, y: 0, z: -0.21422994, w: 0.9767833}
+      length: 117.93859
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4278255360
-    - name: "\u0422\u0435\u043B\u043E_11"
+    - name: "\u0420\u0443\u043A\u0430\u041F"
       guid: afbd6107866ae0a4ab8ba95dc9235d5f
       position: {x: 296.3546, y: 185.02155, z: 0}
-      rotation: {x: 0, y: 0, z: -0.93333775, w: 0.35899946}
-      length: 140.44177
+      rotation: {x: 0, y: 0, z: -0.93333787, w: 0.35899943}
+      length: 140.44165
       parentId: -1
       color:
         serializedVersion: 2
@@ -538,11 +538,11 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278190335
-    - name: "\u0422\u0435\u043B\u043E_11"
+    - name: "\u0420\u0443\u043A\u0430\u041F"
       guid: afbd6107866ae0a4ab8ba95dc9235d5f
       position: {x: 44.65562, y: 103.02075, z: 0}
-      rotation: {x: 0, y: 0, z: -0.41779783, w: 0.90854007}
-      length: 140.44177
+      rotation: {x: 0, y: 0, z: -0.41779786, w: 0.90854}
+      length: 140.44165
       parentId: 0
       color:
         serializedVersion: 2
@@ -2579,11 +2579,11 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4286578943
-    - name: "\u0422\u0435\u043B\u043E_11"
+    - name: "\u0420\u0443\u043A\u0430\u041F"
       guid: afbd6107866ae0a4ab8ba95dc9235d5f
       position: {x: 75.354614, y: 143.02155, z: 0}
-      rotation: {x: 0, y: 0, z: -0.93333775, w: 0.35899946}
-      length: 140.44177
+      rotation: {x: 0, y: 0, z: -0.93333787, w: 0.35899943}
+      length: 140.44165
       parentId: -1
       color:
         serializedVersion: 2
@@ -3058,11 +3058,11 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278255488
-    - name: "\u0422\u0435\u043B\u043E_11"
+    - name: "\u0420\u0443\u043A\u0430\u041F"
       guid: afbd6107866ae0a4ab8ba95dc9235d5f
       position: {x: 165.35461, y: 130.02155, z: 0}
-      rotation: {x: 0, y: 0, z: -0.93333775, w: 0.35899946}
-      length: 140.44177
+      rotation: {x: 0, y: 0, z: -0.93333787, w: 0.35899943}
+      length: 140.44165
       parentId: -1
       color:
         serializedVersion: 2
@@ -3112,7 +3112,7 @@ ScriptedImporter:
     - position: {x: 135.896, y: 44.237}
       boneWeight:
         weight0: 0.99
-        weight1: 0.01
+        weight1: 0.00999999
         weight2: 0
         weight3: 0
         boneIndex0: 0
@@ -3122,7 +3122,7 @@ ScriptedImporter:
     - position: {x: 147.77701, y: 55.993}
       boneWeight:
         weight0: 0.99
-        weight1: 0.01
+        weight1: 0.00999999
         weight2: 0
         weight3: 0
         boneIndex0: 0
@@ -4941,17 +4941,17 @@ ScriptedImporter:
     - name: bone_9
       guid: d92d3741ff2f1884c8b558345b5a218c
       position: {x: 206.21814, y: 57.2688, z: 0}
-      rotation: {x: 0, y: 0, z: -0.99982727, w: 0.018590288}
-      length: 130.13329
+      rotation: {x: 0, y: 0, z: -0.9998272, w: 0.018590583}
+      length: 130.13333
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: bone_10
       guid: d3b63cd331193de4497208b3c8cccd70
-      position: {x: 130.13336, y: 0.000047538677, z: 0}
-      rotation: {x: 0, y: 0, z: -0.0000005065519, w: 1}
-      length: 23.784197
+      position: {x: 130.13329, y: -0.000039058166, z: 0}
+      rotation: {x: 0, y: 0, z: -0.0000007598279, w: 1}
+      length: 23.784199
       parentId: 0
       color:
         serializedVersion: 2
@@ -5368,7 +5368,7 @@ ScriptedImporter:
     - name: bone_5
       guid: 13559bb43fe99074ead5980423776791
       position: {x: 106.105484, y: 0.000027212205, z: 0}
-      rotation: {x: 0, y: 0, z: -0.0078048487, w: 0.9999696}
+      rotation: {x: 0, y: 0, z: -0.0078048483, w: 0.99996954}
       length: 107.85718
       parentId: 3
       color:
@@ -5386,8 +5386,8 @@ ScriptedImporter:
     - name: bone_9
       guid: d92d3741ff2f1884c8b558345b5a218c
       position: {x: 144.89581, y: -0.000027108297, z: 0}
-      rotation: {x: 0, y: 0, z: -0.3905253, w: 0.9205922}
-      length: 130.13332
+      rotation: {x: 0, y: 0, z: -0.390525, w: 0.9205923}
+      length: 130.13333
       parentId: 5
       color:
         serializedVersion: 2
@@ -5430,35 +5430,35 @@ ScriptedImporter:
         rgba: 4278255615
     - name: bone_10
       guid: d3b63cd331193de4497208b3c8cccd70
-      position: {x: 130.13333, y: 0.000040381987, z: 0}
-      rotation: {x: 0, y: 0, z: -0.00000043897245, w: 1}
+      position: {x: 130.1333, y: -0.000016960288, z: 0}
+      rotation: {x: 0, y: 0, z: -0.0000007598846, w: 1}
       length: 23.784197
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4278255360
-    - name: "\u0422\u0435\u043B\u043E_11"
+    - name: "\u0420\u0443\u043A\u0430\u041F"
       guid: afbd6107866ae0a4ab8ba95dc9235d5f
       position: {x: 44.65564, y: 103.020744, z: 0}
-      rotation: {x: 0, y: 0, z: -0.41779783, w: 0.90854007}
-      length: 140.44174
+      rotation: {x: 0, y: 0, z: -0.41779786, w: 0.90854}
+      length: 140.44165
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255615
     - name: "\u0422\u0435\u043B\u043E_12"
       guid: 54cb153a64b04b546a9c39f070cb936d
-      position: {x: 140.44167, y: 0.00000070867463, z: 0}
-      rotation: {x: 0, y: 0, z: -0.21423034, w: 0.9767832}
-      length: 117.93859
+      position: {x: 140.44171, y: -0.0000014216384, z: 0}
+      rotation: {x: 0, y: 0, z: -0.21422996, w: 0.9767833}
+      length: 117.93861
       parentId: 12
       color:
         serializedVersion: 2
         rgba: 4278255360
     - name: "\u0422\u0435\u043B\u043E_13"
       guid: ed69e1c71aa88c444947dc796af3ed10
-      position: {x: 117.93863, y: 0.00004903381, z: 0}
-      rotation: {x: 0, y: 0, z: -0.046762843, w: 0.998906}
+      position: {x: 117.93853, y: -0.000007855964, z: 0}
+      rotation: {x: 0, y: 0, z: -0.046763178, w: 0.9989061}
       length: 40.18865
       parentId: 13
       color:

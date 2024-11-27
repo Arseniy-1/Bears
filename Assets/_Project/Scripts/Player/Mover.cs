@@ -19,7 +19,7 @@ namespace _Project.Scripts.Player
             _character = character;
         }
 
-        public void Run(float speed)
+        public bool HasRun(float speed)
         {
             float currentHorizontalSpeed = _inputHandler.HorizontalDirection * speed;
             float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
@@ -27,9 +27,8 @@ namespace _Project.Scripts.Player
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _character.WeaponHolder.SpotTarget();
             _turning.CorrectFlip((int)currentHorizontalSpeed);
-
-            _character.Anim.SetBool("HasEquip", _character.WeaponHolder.HasWeapon);
-            _character.Anim.SetFloat("Speed", Mathf.Abs(_inputHandler.VerticalDirection) + Mathf.Abs(_inputHandler.HorizontalDirection));
+            
+            return currentHorizontalSpeed != 0 || currentVerticalSpeed != 0;
         }
     }
 }
