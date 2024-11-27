@@ -10,7 +10,7 @@ namespace _Project.Scripts.Player
         private readonly Character _character;
 
         public float HorizontalSpeed => _rigidbody2D.velocity.x;
-      
+
         public Mover(Character character, Rigidbody2D rigidbody2D, InputHandler inputHandler)
         {
             _turning = new Turning(character);
@@ -19,14 +19,16 @@ namespace _Project.Scripts.Player
             _character = character;
         }
 
-        public void Run(float speed)
+        public bool HasRun(float speed)
         {
             float currentHorizontalSpeed = _inputHandler.HorizontalDirection * speed;
             float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
-          
+
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _character.WeaponHolder.SpotTarget();
             _turning.CorrectFlip((int)currentHorizontalSpeed);
+            
+            return currentHorizontalSpeed != 0 || currentVerticalSpeed != 0;
         }
     }
 }

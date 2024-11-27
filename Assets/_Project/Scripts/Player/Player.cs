@@ -12,6 +12,12 @@ public class Player : Character
     private Rigidbody2D _rigidbody2D;
     private Mover _mover;
 
+    private readonly int _longIdle = Animator.StringToHash("LongIdle");
+    private readonly int _hasEquip = Animator.StringToHash("HasEquip");
+    private readonly int _run = Animator.StringToHash("Speed");
+    private readonly float _afkTimer = 230f;
+    private float _afk;
+
     private void Awake()
     {
         _collisionHandler = GetComponent<CollisionHandler>();
@@ -29,7 +35,7 @@ public class Player : Character
     {
         _collisionHandler.CollisionDetected -= Interact;
     }
-    
+
     private void Start()
     {
         _mover = new Mover(this, _rigidbody2D, _inputHandler);
@@ -38,13 +44,33 @@ public class Player : Character
 
     private void Update()
     {
-        _mover.Run(_speed);
+        var isRun = _mover.HasRun(_speed);
+
+        if (isRun)
+        {
+            _afk = 0;
+        }
+        else
+        {
+            _afk += Time.deltaTime;
+            
+            if (_afk > _afkTimer)
+            {
+                WeaponHolder.ReturnWeapon();
+                Anim.SetTrigger(_longIdle);
+                _afk = 0;
+            }
+        }
+        
+        Anim.SetBool(_hasEquip, WeaponHolder.HasWeapon);
+        Anim.SetFloat(_run,
+            Mathf.Abs(_inputHandler.VerticalDirection) + Mathf.Abs(_inputHandler.HorizontalDirection));
     }
 
     protected override void Interact(IInteractable interactable)
     {
         interactable.ViewAction();
-        
+
         if (interactable is Weapon weapon)
         {
             WeaponHolder.EquipWeapon(weapon);
@@ -55,4 +81,6 @@ public class Player : Character
             resource.Put(); // TODO - кладём в инвентарь.
         }
     }
+
+    public void ReturnWeapon() => WeaponHolder.ReturnWeapon();
 }
