@@ -44,9 +44,7 @@ public class Player : Character
 
     private void Update()
     {
-        var isRun = _mover.HasRun(_speed);
-
-        if (isRun)
+        if (_mover.HasRun(_speed))
         {
             _afk = 0;
         }
