@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 170871092894882204}
   - component: {fileID: 5424781930286575202}
-  - component: {fileID: 5652018517579382704}
+  - component: {fileID: 1071070677154819851}
   - component: {fileID: 8222165744207115121}
   m_Layer: 0
   m_Name: ShootGun
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1079142274653617283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19, y: -0.64, z: 0}
+  m_LocalPosition: {x: 0.72, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 1cf9246ce2dc2044ea52295de8c24f8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5652018517579382704
+--- !u!114 &1071070677154819851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681c28dd40cb4b059c8ef786379eb14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 5
-  WeaponAnimator: {fileID: 8222165744207115121}
-  ShootPoint: {fileID: 170871092894882204}
+  _reloadTime: 2.1
+  WeaponAnimator: {fileID: 0}
+  _spread: 0.211
+  ShootPoint: {fileID: 1285180867897563712}
   _bulletPrefab: {fileID: 8131903852335191508, guid: f40ae4cd583a31a4399c1891e3df23ec, type: 3}
-  _spread: 0.3
 --- !u!95 &8222165744207115121
 Animator:
   serializedVersion: 5
