@@ -349,7 +349,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.29
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -451,13 +451,26 @@ GameObject:
   m_Component:
   - component: {fileID: 1893099131}
   - component: {fileID: 1893099130}
+  - component: {fileID: 1893099129}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &1893099129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893099128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369866487819b8c4a92e98140c40bba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1893099130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemys: []
-  _enemyFabric: {fileID: 0}
+  _enemyFabric: {fileID: 1893099129}
   _mainAmmoSpawner: {fileID: 0}
   _playerWeapons: []
 --- !u!4 &1893099131
@@ -633,4 +646,3 @@ SceneRoots:
   - {fileID: 8743703316369247639}
   - {fileID: 1000347171}
   - {fileID: 517988363}
-  - {fileID: 1478952731}

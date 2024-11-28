@@ -612,12 +612,6 @@ MonoBehaviour:
     - {fileID: 1927836396}
     - {fileID: 1952957015}
     - {fileID: 471639938}
-    <Enemy>k__BackingField: {fileID: 813159654703967003, guid: 144f53a5999457f4197f070d25751408, type: 3}
-  - <Waypoints>k__BackingField:
-    - {fileID: 757495641}
-    - {fileID: 645155600}
-    - {fileID: 1692766597}
-    - {fileID: 1446945977}
     <Enemy>k__BackingField: {fileID: 6594224948346613601, guid: 402e2702307ef65439c3e545e8ea424c, type: 3}
   _enemyFabric: {fileID: 1893099129}
   _mainAmmoSpawner: {fileID: 976105155}
