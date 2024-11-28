@@ -10,9 +10,7 @@ public class Character : MonoBehaviour, IDamagable, ITarget
     [field: SerializeField] public Animator Anim { get; protected set; }
     [field: SerializeField] protected Health health = new Health();
 
-    protected virtual void Interact(IInteractable interactable)
-    {
-    }
+    protected virtual void Interact(IInteractable interactable) { }
 
     public Vector2 Position => transform.position;
 
