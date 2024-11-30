@@ -11,7 +11,7 @@ public class Player : Character
     private InputHandler _inputHandler;
     private Rigidbody2D _rigidbody2D;
     private Mover _mover;
-
+    
     private readonly int _longIdle = Animator.StringToHash("LongIdle");
     private readonly int _hasEquip = Animator.StringToHash("HasEquip");
     private readonly int _run = Animator.StringToHash("Speed");
