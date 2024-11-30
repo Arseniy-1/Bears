@@ -1,13 +1,13 @@
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-namespace _Project.Scripts.Player
+namespace Player
 {
-    public class Turning
+    public class Turning : MonoBehaviour
     {
-        private readonly Character _character;
+        private Character _character;
 
-        public Turning(Character character)
+        public void Initialize(Character character)
         {
             _character = character;
         }

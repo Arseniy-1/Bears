@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [field: SerializeField] public SpriteRenderer View;
+    
     [SerializeField, Range(0.01f, 20)] private float _reloadTime;
 
     [SerializeField] protected Animator WeaponAnimator;

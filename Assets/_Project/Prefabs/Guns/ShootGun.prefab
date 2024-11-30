@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681c28dd40cb4b059c8ef786379eb14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  View: {fileID: 3896254029335555596, guid: 5f5e40d67c979b94e9b7cf1d477b8545, type: 3}
   _reloadTime: 2.1
   WeaponAnimator: {fileID: 0}
   _spread: 0.211

@@ -2,28 +2,23 @@ using System.Collections.Generic;
 using _Project.Scripts.Player;
 using _Project.Scripts.Spawner;
 using UnityEngine;
-
 using EnemyStateMashine;
 
 public class EnemyBehavior : Character
 {
+    private EnemyStateMachine _stateMachine;
+
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
+    [field: SerializeField] public Turning Turning { get; private set; }
+    
     public List<Transform> Waypoints { get; private set; }
-
-    private EnemyStateMachine _stateMachine;
-    public Turning Turning { get; private set; }
 
     public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, MainAmmoSpawner ammoBoss)
     {
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
         WeaponHolder.Construct(TargetScanner, ammoBoss);
-    }
-
-    private void Start()
-    {
-        Turning = new Turning(this);
     }
 
     private void Update()

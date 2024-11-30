@@ -1,34 +1,33 @@
+using TMPro.EditorUtilities;
 using UnityEngine;
 
-namespace _Project.Scripts.Player
+namespace Player
 {
-    public class Mover
+    public class PlayerMover : MonoBehaviour
     {
-        private readonly InputHandler _inputHandler;
-        private readonly Rigidbody2D _rigidbody2D;
-        private readonly Turning _turning;
-        private readonly Character _character;
+        [SerializeField] private Turning _turning;
 
-        public float HorizontalSpeed => _rigidbody2D.velocity.x;
+        private InputHandler _inputHandler;
+        private Rigidbody2D _rigidbody2D;
+        private Player _character;
 
-        public Mover(Character character, Rigidbody2D rigidbody2D, InputHandler inputHandler)
+        public bool IsRunning() => _inputHandler.HorizontalDirection + _inputHandler.VerticalDirection != 0;
+
+        public void Initialize(Character character, Rigidbody2D rigidbody2D, InputHandler inputHandler)
         {
-            _turning = new Turning(character);
             _rigidbody2D = rigidbody2D;
             _inputHandler = inputHandler;
             _character = character;
         }
 
-        public bool HasRun(float speed)
+        private void Run()
         {
-            float currentHorizontalSpeed = _inputHandler.HorizontalDirection * speed;
-            float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
+            float currentHorizontalSpeed = _inputHandler.HorizontalDirection;
+            float currentVerticalSpeed = _inputHandler.VerticalDirection;
 
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _character.WeaponHolder.SpotTarget();
             _turning.CorrectFlip((int)currentHorizontalSpeed);
-            
-            return currentHorizontalSpeed != 0 || currentVerticalSpeed != 0;
         }
     }
 }
