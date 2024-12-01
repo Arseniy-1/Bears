@@ -1,10 +1,9 @@
 using _Project.Scripts.Item.Resource;
-using _Project.Scripts.Player;
+using PlayerSystem;
 using UnityEngine;
 
-public class Player : Character
+public class PlayerBehaviour : Character
 {
-    [SerializeField] private float _speed;
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private PlayerMover _mover;
 
@@ -18,7 +17,6 @@ public class Player : Character
         _inputHandler = GetComponent<InputHandler>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _mover.Initialize(this, _rigidbody2D, _inputHandler);
-        
     }
 
     private void OnEnable()
@@ -31,14 +29,9 @@ public class Player : Character
         _collisionHandler.CollisionDetected -= Interact;
     }
 
-    private void Start()
-    {
-        Health = new Health();
-    }
-
     private void FixedUpdate()
     {
-        if (_mover.IsRunning(_speed))
+        if (_mover.IsRunning())
         {
             if (WeaponHolder.HasWeapon)
             {

@@ -8,17 +8,20 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Weapon _currentWeapon;
 
-    public IReadOnlyList<Weapon> Weapons => _weapons;
-    public Weapon CurrentWeapon => _currentWeapon;
 
     [SerializeField] private TargetScanner _targetScaner;
-    [SerializeField] private Transform _rightHandPosition;
-    [SerializeField] private Transform _positionHandLeft;
+
+    [SerializeField] private Transform _rightHand;
+    [SerializeField] private Transform _leftHand;
+
     [SerializeField] private Transform _flipView;
 
     private int _currentWeaponIndex;
 
     private readonly float _offset = 0.1f;
+
+    public Weapon CurrentWeapon => _currentWeapon;
+    public IReadOnlyList<Weapon> Weapons => _weapons;
 
     public event Action WeaponChanged;
 
@@ -28,15 +31,17 @@ public class WeaponHolder : MonoBehaviour
     {
         if (HasWeapon)
         {
-            CalculateOffset();
+            PutHands();
         }
     }
 
-    private void CalculateOffset()
+    private void PutHands()
     {
-        float angle = transform.rotation.eulerAngles.z;
-        _positionHandLeft.position = _currentWeapon.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(transform.localScale.x * _flipView.transform.localScale.x, 0, 0);
-        _rightHandPosition.position = _currentWeapon.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(_offset, 0, 0);
+        _rightHand.transform.parent = _currentWeapon.RightHandPosition;
+        _rightHand.transform.position = _currentWeapon.RightHandPosition.position;
+
+        _leftHand.transform.parent = _currentWeapon.LeftHandPosition;
+        _leftHand.transform.position = _currentWeapon.LeftHandPosition.position;
     }
 
     public void SwitchWeapon()

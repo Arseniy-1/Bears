@@ -9,6 +9,13 @@ public class WeaponSelectorView : MonoBehaviour
 
     [SerializeField] private WeaponHolder _weaponHolder;
 
+    private Queue<Image> _gunsViewStack = new();
+
+    private void Start()
+    {
+        //UpdateView();
+    }
+
     private void OnEnable()
     {
         _weaponHolder.WeaponChanged += UpdateView;
@@ -21,9 +28,6 @@ public class WeaponSelectorView : MonoBehaviour
 
     private void UpdateView()
     {
-        foreach (Weapon weapon  in _weaponHolder.Weapons)
-        {
-            _currentGunView.sprite = _weaponHolder.CurrentWeapon.View.sprite;
-        }
+        _currentGunView.sprite = _weaponHolder.CurrentWeapon.Icon.sprite;
     }
 }

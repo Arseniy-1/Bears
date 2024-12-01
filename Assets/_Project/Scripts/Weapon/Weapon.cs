@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [field: SerializeField] public SpriteRenderer View;
-    
     [SerializeField, Range(0.01f, 20)] private float _reloadTime;
+
+    private float _currentTime = 0;
 
     [SerializeField] protected Animator WeaponAnimator;
 
-    private float _currentTime = 0;
+    [field: SerializeField] public Transform RightHandPosition { get; private set; }
+    [field: SerializeField] public Transform LeftHandPosition { get; private set; }
+    [field: SerializeField] public SpriteRenderer Icon { get; private set; }
 
     public Transform Transform { get; private set; }
     public bool IsReloaded { get; protected set; }

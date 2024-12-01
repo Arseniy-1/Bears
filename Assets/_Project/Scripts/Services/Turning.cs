@@ -1,7 +1,7 @@
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-namespace Player
+namespace PlayerSystem
 {
     public class Turning : MonoBehaviour
     {
@@ -18,12 +18,12 @@ namespace Player
             {
                 var isFlipped = !((int)_character.TargetScanner.ClosestTarget.Position.x >
                                   (int)_character.transform.position.x);
-                _character.transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+                transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
                 _character.WeaponHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
             else if (posX != 0)
             {
-                _character.transform.localScale = posX > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+                transform.localScale = posX > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
             }
         }
     }

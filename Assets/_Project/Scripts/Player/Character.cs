@@ -15,6 +15,6 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 
     public void TakeDamage(float amount)
     {
-        //Health.TakeDamage(amount);
+        Health.TakeDamage(amount);
     }
 }

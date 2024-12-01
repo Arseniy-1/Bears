@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using _Project.Scripts.Player;
 using _Project.Scripts.Spawner;
 using UnityEngine;
 using EnemyStateMashine;
+using PlayerSystem;
 
 public class EnemyBehavior : Character
 {
@@ -24,7 +24,6 @@ public class EnemyBehavior : Character
     private void Update()
     {
         _stateMachine.Update();
-        Debug.Log(TargetScanner.ClosestTarget);
     }
 
     private void OnDrawGizmos()
