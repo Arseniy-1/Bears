@@ -7,9 +7,7 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 
     [field: SerializeField] protected Health Health;
 
-    protected virtual void Interact(IInteractable interactable)
-    {
-    }
+    protected virtual void Interact(IInteractable interactable) { }
 
     public Vector2 Position => transform.position;
 

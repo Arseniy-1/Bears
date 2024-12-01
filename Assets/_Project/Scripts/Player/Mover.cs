@@ -1,40 +1,35 @@
 using UnityEngine;
 
-namespace PlayerSystem
+namespace _Project.Scripts.Player
 {
-    public class PlayerMover : MonoBehaviour
+    public class Mover
     {
-        [SerializeField] private Turning _turning;
-        [SerializeField] private float _speed;//TODO Вынести в SO
+        private readonly InputHandler _inputHandler;
+        private readonly Rigidbody2D _rigidbody2D;
+        private readonly Turning _turning;
+        private readonly Character _character;
+        //private readonly Character _character1;
 
-        private InputHandler _inputHandler;
-        private Rigidbody2D _rigidbody2D;
-        private PlayerBehaviour _character;
+        public float HorizontalSpeed => _rigidbody2D.velocity.x;
 
-        public bool IsRunning() => _inputHandler.HorizontalDirection != 0 || _inputHandler.VerticalDirection != 0;
-
-        private void Update()
+        public Mover(Character character, Rigidbody2D rigidbody2D, InputHandler inputHandler)
         {
-            Run();
-        }
-
-        public void Initialize(PlayerBehaviour player, Rigidbody2D rigidbody2D, InputHandler inputHandler)
-        {
+            _turning = new Turning(character);
             _rigidbody2D = rigidbody2D;
             _inputHandler = inputHandler;
-            _character = player;
-
-            _turning.Initialize(_character);
+            _character = character;
         }
 
-        private void Run()
+        public bool HasRun(float speed)
         {
-            float currentHorizontalSpeed = _inputHandler.HorizontalDirection * _speed; 
-            float currentVerticalSpeed = _inputHandler.VerticalDirection * _speed; 
+            float currentHorizontalSpeed = _inputHandler.HorizontalDirection * speed;
+            float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
 
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _character.WeaponHolder.SpotTarget();
             _turning.CorrectFlip((int)currentHorizontalSpeed);
+            
+            return currentHorizontalSpeed != 0 || currentVerticalSpeed != 0;
         }
     }
 }
