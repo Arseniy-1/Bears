@@ -8,7 +8,6 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Weapon _currentWeapon;
 
-
     [SerializeField] private TargetScanner _targetScaner;
 
     [SerializeField] private Transform _rightHand;
@@ -74,7 +73,7 @@ public class WeaponHolder : MonoBehaviour
 
         _currentWeapon.gameObject.SetActive(true);
 
-        WeaponChanged.Invoke();
+        WeaponChanged?.Invoke();
     }
 
     public void Shoot()

@@ -1,35 +1,41 @@
+﻿using System;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
-namespace _Project.Scripts.Player
+namespace PlayerSystem
 {
-    public class Mover
+    public class PlayerMover : MonoBehaviour
     {
-        private readonly InputHandler _inputHandler;
-        private readonly Rigidbody2D _rigidbody2D;
-        private readonly Turning _turning;
-        private readonly Character _character;
-        //private readonly Character _character1;
+        [SerializeField] private float _speed;//TODO Вынести скорость
+        [SerializeField] private Turning _turning;
 
-        public float HorizontalSpeed => _rigidbody2D.velocity.x;
+        private InputHandler _inputHandler;
+        private Rigidbody2D _rigidbody2D;
+        private PlayerBehaviour _player;
 
-        public Mover(Character character, Rigidbody2D rigidbody2D, InputHandler inputHandler)
+        public bool IsRunning() => _inputHandler.HorizontalDirection != 0 || _inputHandler.VerticalDirection != 0;
+
+        private void Update()
         {
-            _turning = new Turning(character);
-            _rigidbody2D = rigidbody2D;
-            _inputHandler = inputHandler;
-            _character = character;
+            Run();
         }
 
-        public bool HasRun(float speed)
+        private void Run()
         {
-            float currentHorizontalSpeed = _inputHandler.HorizontalDirection * speed;
-            float currentVerticalSpeed = _inputHandler.VerticalDirection * speed;
+            float currentHorizontalSpeed = _inputHandler.HorizontalDirection * _speed;
+            float currentVerticalSpeed = _inputHandler.VerticalDirection * _speed;
 
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
-            _character.WeaponHolder.SpotTarget();
-            _turning.CorrectFlip((int)currentHorizontalSpeed);
-            
-            return currentHorizontalSpeed != 0 || currentVerticalSpeed != 0;
+            _player.WeaponHolder.SpotTarget();
+        }
+
+        public void Initialize(PlayerBehaviour player, Rigidbody2D rigidbody2D, InputHandler inputHandler)
+        {
+            _rigidbody2D = rigidbody2D;
+            _inputHandler = inputHandler;
+            _player = player;
+            _player = player;
+            _turning.Initialize(_player);
         }
     }
 }
