@@ -8,9 +8,6 @@ namespace _Project.Scripts.Player
         private readonly Rigidbody2D _rigidbody2D;
         private readonly Turning _turning;
         private readonly Character _character;
-        //private readonly Character _character1;
-
-        public float HorizontalSpeed => _rigidbody2D.velocity.x;
 
         public Mover(Character character, Rigidbody2D rigidbody2D, InputHandler inputHandler)
         {
