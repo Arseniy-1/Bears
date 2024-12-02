@@ -1,13 +1,16 @@
-﻿public class ShootGun : RangeWeapon
+﻿using UnityEngine;
+
+public class ShootGun : RangeWeapon
 {
     private readonly int _bulletCount = 6;
 
     protected override void Attack()
     {
+        ShowAttackAnimation();
+
         for (int i = 0; i < _bulletCount; i++)
         {
             base.Attack();
-            
         }
     }
 }

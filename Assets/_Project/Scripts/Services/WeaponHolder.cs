@@ -1,35 +1,50 @@
 ﻿using _Project.Scripts.Spawner;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class WeaponHolder : MonoBehaviour
 {
-    [SerializeField] private TargetScanner _targetScaner;
+    //TODO: Вынести локику смены оружия, тк оружие меняет только Player
+    [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Weapon _currentWeapon;
-    [SerializeField] private Transform _positionHandRight;
-    [SerializeField] private Transform _positionHandLeft;
+
+    [SerializeField] private TargetScanner _targetScaner;
+
+    [SerializeField] private Transform _rightHand;
+    [SerializeField] private Transform _leftHand;
+
     [SerializeField] private Transform _flipView;
 
-    public TargetScanner TargetScanner => _targetScaner;
-    public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
+    private int _currentWeaponIndex;
 
-    private Type _currentWeaponType => _currentWeapon.GetType();
-    private readonly float _offset = 0.1f;
+    public event Action WeaponChanged;
+
+    public Weapon CurrentWeapon => _currentWeapon;
+    public IReadOnlyList<Weapon> Weapons => _weapons;
+    public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
 
     private void Update()
     {
         if (HasWeapon)
         {
-            CalculateOffset();
+            PutHands();
         }
     }
 
-    private void CalculateOffset()
+    private void PutHands()
     {
-        float angle = transform.rotation.eulerAngles.z;
-        _positionHandLeft.position = _currentWeapon.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(transform.localScale.x * _flipView.transform.localScale.x, 0, 0);
-        _positionHandRight.position = _currentWeapon.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(_offset, 0, 0);
+        _rightHand.transform.parent = _currentWeapon.RightHandPosition;
+        _rightHand.transform.position = _currentWeapon.RightHandPosition.position;
+
+        _leftHand.transform.parent = _currentWeapon.LeftHandPosition;
+        _leftHand.transform.position = _currentWeapon.LeftHandPosition.position;
+    }
+
+    public void SwitchWeapon()
+    {
+        _currentWeaponIndex = (_currentWeaponIndex + 1) % _weapons.Count;
+        EquipWeapon(_weapons[_currentWeaponIndex]);
     }
 
     public void Construct(TargetScanner targetScanner, MainAmmoSpawner ammoSpawner)
@@ -42,18 +57,21 @@ public class WeaponHolder : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(Weapon weapon)
+    public void EquipWeapon(Weapon pickedWeapon)
     {
-        if (_currentWeapon.gameObject.activeSelf)
+        if (pickedWeapon.gameObject.activeSelf)
         {
             return;
         }
 
-        _currentWeapon = weapon;
-        _currentWeapon.Transform.parent = transform;
-        _currentWeapon.Transform.position = _positionHandRight.position;
-        _currentWeapon.Transform.rotation = transform.rotation;
-        _currentWeapon.Transform.localScale = transform.localScale;
+        _currentWeapon = pickedWeapon;
+
+        foreach (Weapon weapon in _weapons)
+            weapon.gameObject.SetActive(false);
+
+        _currentWeapon.gameObject.SetActive(true);
+
+        WeaponChanged?.Invoke();
     }
 
     public void Shoot()
@@ -68,14 +86,9 @@ public class WeaponHolder : MonoBehaviour
         _currentWeapon.gameObject.SetActive(false);
     }
 
-    public void TakeWeapon()
-    {
-        _currentWeapon.gameObject.SetActive(true);
-    }
-
     public void SpotTarget()
     {
-        if (TargetScanner.HasTarget)
+        if (_targetScaner.HasTarget)
         {
             Vector3 targetPosition = _targetScaner.ClosestTarget.Position;
             var direction = targetPosition - transform.position;
@@ -83,4 +96,10 @@ public class WeaponHolder : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+}
+
+public class WeaponCell : MonoBehaviour
+{
+    [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
+    [field: SerializeField] public Weapon Weapon { get; private set; }
 }
