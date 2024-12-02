@@ -8,13 +8,13 @@ using UnityEngine;
 public class CameraFollower : MonoBehaviour
 {
     [SerializeField, Range(0.5f, 3f), Header("Скорость отдаления")] 
-    private float _speedDistance = 1.5f;
+    private float _distanceRateOut = 1.5f;
     
     [SerializeField, Range(9f, 15f), Header("Максимальное отдаление камеры")] 
     private float _focusMovement = 10f;
     
     [SerializeField, Range(2f, 8f), Header("Скорость приближения")] 
-    private float _speedApproach = 4f;
+    private float _distanceRateIn = 4f;
     
     [SerializeField, Range(4f, 8f), Header("Максимальное приблежение камеры")]
     private float _focusRest = 7f;
@@ -35,11 +35,11 @@ public class CameraFollower : MonoBehaviour
     {
         if (_rigidbodyPlayer.velocity.magnitude > _minSpeedPlayer)
         {
-            _animation = _camera.DOOrthoSize(_focusMovement, _speedDistance).SetEase(Ease.Linear);
+            _animation = _camera.DOOrthoSize(_focusMovement, _distanceRateOut).SetEase(Ease.Linear);
         }
         else
         {
-            _animation = _camera.DOOrthoSize(_focusRest, _speedApproach).SetEase(Ease.Linear).SetDelay(1f);
+            _animation = _camera.DOOrthoSize(_focusRest, _distanceRateIn).SetEase(Ease.Linear).SetDelay(1f);
         }
         
         transform.position = new Vector3(_player.position.x, _player.position.y, -1);

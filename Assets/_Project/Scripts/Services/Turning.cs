@@ -12,7 +12,7 @@ namespace _Project.Scripts.Player
             _character = character;
         }
 
-        public void CorrectFlip(int posX)
+        public void CorrectFlip(int direction)
         {
             if (_character.TargetScanner.HasTarget)
             {
@@ -21,9 +21,9 @@ namespace _Project.Scripts.Player
                 _character.transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
                 _character.WeaponHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
-            else if (posX != 0)
+            else if (direction != 0)
             {
-                _character.transform.localScale = posX > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+                _character.transform.localScale = direction > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
             }
         }
     }

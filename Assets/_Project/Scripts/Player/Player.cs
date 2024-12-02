@@ -79,6 +79,4 @@ public class Player : Character
             resource.Put(); // TODO - кладём в инвентарь.
         }
     }
-
-    public void ReturnWeapon() => WeaponHolder.ReturnWeapon();
 }
