@@ -5,14 +5,13 @@ namespace PlayerSystem
 {
     public class Turning : MonoBehaviour
     {
-        private Character _character;
+        [SerializeField] private Character _character;
 
         public void Initialize(Character character)
         {
-            _character = character;
         }
 
-        public void CorrectFlip(int posX)
+        public void CorrectFlip(float posX)
         {
             if (_character.TargetScanner.HasTarget)
             {

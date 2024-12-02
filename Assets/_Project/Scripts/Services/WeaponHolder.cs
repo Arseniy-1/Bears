@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
+    //TODO: Вынести локику смены оружия, тк оружие меняет только Player
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Weapon _currentWeapon;
 
@@ -17,13 +18,10 @@ public class WeaponHolder : MonoBehaviour
 
     private int _currentWeaponIndex;
 
-    private readonly float _offset = 0.1f;
+    public event Action WeaponChanged;
 
     public Weapon CurrentWeapon => _currentWeapon;
     public IReadOnlyList<Weapon> Weapons => _weapons;
-
-    public event Action WeaponChanged;
-
     public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
 
     private void Update()

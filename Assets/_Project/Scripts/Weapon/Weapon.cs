@@ -31,6 +31,12 @@ public abstract class Weapon : MonoBehaviour
 
     protected abstract void Attack();
 
+    protected virtual void ShowAttackAnimation()
+    {
+        int attackAnim = Animator.StringToHash("Attack"); //TODO: хардкод
+        WeaponAnimator.Play(attackAnim);
+    }
+
     public virtual void TryAttack()
     {
         if (IsReloaded == false)
@@ -45,6 +51,5 @@ public abstract class Weapon : MonoBehaviour
     {
         _currentTime = 0;
         IsReloaded = true;
-        //todo: Play reload animation
     }
 }

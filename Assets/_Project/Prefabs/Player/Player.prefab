@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef1324751383a048a244347cb1e97be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _character: {fileID: 7893295441185522927}
 --- !u!61 &6913024393710789794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -536,11 +537,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 170871092894882204, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 170871092894882204, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.64
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 170871092894882204, guid: 80ae1efb6863538448d75255b52d5e1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -658,6 +659,10 @@ PrefabInstance:
     - target: {fileID: 1079142274653617283, guid: af0dfac50d31d4a45ae8caeb0da0780f, type: 3}
       propertyPath: m_Name
       value: AK-47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079142274653617283, guid: af0dfac50d31d4a45ae8caeb0da0780f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

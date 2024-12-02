@@ -27,6 +27,8 @@ namespace PlayerSystem
 
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _player.WeaponHolder.SpotTarget();
+
+            _turning.CorrectFlip(_inputHandler.HorizontalDirection);
         }
 
         public void Initialize(PlayerBehaviour player, Rigidbody2D rigidbody2D, InputHandler inputHandler)
