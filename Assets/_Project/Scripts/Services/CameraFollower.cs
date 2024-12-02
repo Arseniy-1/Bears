@@ -45,8 +45,13 @@ public class CameraFollower : MonoBehaviour
         transform.position = new Vector3(_player.position.x, _player.position.y, -1);
     }
 
+    private void OnDisable()
+    {
+        _animation.Kill();
+    }
+
     private void OnDestroy()
     {
-        _animation.Kill(true);
+        _animation.Kill();
     }
 }

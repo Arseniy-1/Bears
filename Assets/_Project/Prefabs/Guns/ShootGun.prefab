@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadTime: 2.1
-  WeaponAnimator: {fileID: 0}
+  WeaponAnimator: {fileID: 8222165744207115121}
   _spread: 0.211
   ShootPoint: {fileID: 1285180867897563712}
   _bulletPrefab: {fileID: 8131903852335191508, guid: f40ae4cd583a31a4399c1891e3df23ec, type: 3}
@@ -114,7 +114,7 @@ Animator:
   m_GameObject: {fileID: 1079142274653617283}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72f0cafb888826542b6a2ba3b89c5d2d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
