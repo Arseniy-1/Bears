@@ -6,22 +6,22 @@ public class CharacterAnimator : MonoBehaviour
 
     public void StartIdle()
     {
-        _animator.Play(Constans.AnimatorConstans.IdleAnimation);
+        _animator.Play(Constants.AnimatorConstants.IdleAnimation);
     }
 
     public void StartRunning()
     {
-        _animator.Play(Constans.AnimatorConstans.RunningAnimation);
+        _animator.Play(Constants.AnimatorConstants.RunningAnimation);
     }
 
     public void StartInactivity()
     {
-        _animator.Play(Constans.AnimatorConstans.ActivityAnimation);
+        _animator.Play(Constants.AnimatorConstants.ActivityAnimation);
     }
 
     public void StartRunningWithWeapon()
     {
-        _animator.Play(Constans.AnimatorConstans.RunInWeaponAnimation);
+        _animator.Play(Constants.AnimatorConstants.RunInWeaponAnimation);
     }
 }
 
