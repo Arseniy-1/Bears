@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-static class Constans
+static class Constants
 {
-    public static class AnimatorConstans
+    public static class AnimatorConstants
     {
         public const string LongInactivity = nameof(LongInactivity);
         public const string IdleInWeapon = nameof(IdleInWeapon);
