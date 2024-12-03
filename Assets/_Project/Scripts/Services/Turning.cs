@@ -1,29 +1,28 @@
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-namespace _Project.Scripts.Player
+namespace PlayerSystem
 {
-    public class Turning
+    public class Turning : MonoBehaviour
     {
-        private readonly Character _character;
+        [SerializeField] private Character _character;
 
-        public Turning(Character character)
+        public void Initialize(Character character)
         {
-            _character = character;
         }
 
-        public void CorrectFlip(int direction)
+        public void CorrectFlip(float posX)
         {
             if (_character.TargetScanner.HasTarget)
             {
                 var isFlipped = !((int)_character.TargetScanner.ClosestTarget.Position.x >
                                   (int)_character.transform.position.x);
-                _character.transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+                transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
                 _character.WeaponHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
-            else if (direction != 0)
+            else if (posX != 0)
             {
-                _character.transform.localScale = direction > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+                transform.localScale = posX > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
             }
         }
     }

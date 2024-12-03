@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 8d1a635a7019b9b448e456f3c5245d49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reloadTime: 0.2
   WeaponAnimator: {fileID: 8222165744207115121}
+  <RightHandPosition>k__BackingField: {fileID: 0}
+  <LeftHandPosition>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 0}
   _spread: 0.1
   ShootPoint: {fileID: 1285180867897563712}
   _bulletPrefab: {fileID: 5861358357120908433, guid: 33a33cead1f5dce4897b0016d9f58572, type: 3}

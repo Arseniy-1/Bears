@@ -17,6 +17,7 @@ public class Riffle : RangeWeapon
 
         for (int i = 0; i < _bulletCount; i++)
         {
+            ShowAttackAnimation();
             base.Attack();
             yield return delay;
         }
