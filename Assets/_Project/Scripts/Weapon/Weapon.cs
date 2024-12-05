@@ -17,6 +17,8 @@ public abstract class Weapon : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        
         if (_currentTime < _reloadTime && IsReloaded == false)
             _currentTime += Time.deltaTime;
 

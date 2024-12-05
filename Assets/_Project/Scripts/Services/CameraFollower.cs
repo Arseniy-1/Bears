@@ -53,8 +53,13 @@ public class CameraFollower : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        _animation.Kill();
+    }
+
     private void OnDestroy()
     {
-        _animation.Kill(true);
+        _animation.Kill();
     }
 }
