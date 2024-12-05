@@ -1,28 +1,53 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour 
 {
     [SerializeField] private Animator _animator;
 
+    private Coroutine _checkIdleTime;
+    private float _minIdleDuration = 15f;
+    private float _maxIdleDuration = 48f;
+
     public void StartIdle()
     {
-        _animator.Play(Constans.AnimatorConstans.IdleAnimation);
+        if (IsPlayingInactivity() == false)
+        {
+            _animator.Play(Constants.AnimatorConstants.IdleAnimation);
+        }
+        
+
+        if (_checkIdleTime == null)
+        {
+            _checkIdleTime = StartCoroutine(CheckIdleTime());
+        }
     }
 
     public void StartRunning()
     {
-        _animator.Play(Constans.AnimatorConstans.RunningAnimation);
-    }
-
-    public void StartInactivity()
-    {
-        _animator.Play(Constans.AnimatorConstans.ActivityAnimation);
+        _animator.Play(Constants.AnimatorConstants.RunningAnimation);
     }
 
     public void StartRunningWithWeapon()
     {
-        _animator.Play(Constans.AnimatorConstans.RunInWeaponAnimation);
+        _animator.Play(Constants.AnimatorConstants.RunInWeaponAnimation);
     }
+    
+    private IEnumerator CheckIdleTime()
+    {
+        var waitTime = new WaitForSeconds(Random.Range(_minIdleDuration, _maxIdleDuration));
+        
+        while (enabled)
+        {
+            yield return waitTime;
+            _animator.Play(Constants.AnimatorConstants.ActivityAnimation);
+            //TODO Реализовать отключение оружия
+        }
+        
+        _checkIdleTime = null;
+    }
+    
+    private bool IsPlayingInactivity() => _animator.GetCurrentAnimatorStateInfo(0).IsName(Constants.AnimatorConstants.LongInactivity);
 }
 
 public class AnimatorController : MonoBehaviour
