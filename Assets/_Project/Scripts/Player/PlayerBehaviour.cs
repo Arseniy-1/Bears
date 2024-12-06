@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerBehaviour : Character
 {
-    [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private PlayerMover _mover;
 
     private CollisionHandler _collisionHandler;
@@ -35,16 +34,16 @@ public class PlayerBehaviour : Character
         {
             if (WeaponHolder.HasWeapon)
             {
-                _characterAnimator.StartRunningWithWeapon();
+                Animator.StartRunningWithWeapon();
             }
             else
             {
-                _characterAnimator.StartRunning();
+                Animator.StartRunning();
             }
         }
         else
         {
-            _characterAnimator.StartIdle();
+            Animator.StartIdle();
         }
     }
 

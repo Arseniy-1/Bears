@@ -200,10 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3d47fc991783045a39c02c053e90a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 7542641321809418745}
   <TargetScanner>k__BackingField: {fileID: 6517323033660533977}
   <WeaponHolder>k__BackingField: {fileID: 6196839880509929658}
   Health: {fileID: 6201159671167043319}
-  _characterAnimator: {fileID: 7542641321809418745}
   _mover: {fileID: 3645376373435061582}
 --- !u!114 &3645376373435061582
 MonoBehaviour:

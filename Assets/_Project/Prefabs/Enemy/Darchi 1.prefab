@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1779581836500994761}
   - component: {fileID: 3954475257293321457}
   - component: {fileID: 8246112805256849453}
+  - component: {fileID: 1819078545911228337}
   - component: {fileID: 5528680206074021944}
   m_Layer: 6
   m_Name: Darchi 1
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff027c32cd0959745a41e113e0c8516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 1819078545911228337}
   <TargetScanner>k__BackingField: {fileID: 3954475257293321457}
   <WeaponHolder>k__BackingField: {fileID: 7282723676922449663}
   Health: {fileID: 8246112805256849453}
@@ -85,6 +87,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealthPoint: 100
+--- !u!114 &1819078545911228337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198293869288859640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ac65dd92be39342a1d56816663467b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1248155949959928533}
 --- !u!61 &5528680206074021944
 BoxCollider2D:
   m_ObjectHideFlags: 0
