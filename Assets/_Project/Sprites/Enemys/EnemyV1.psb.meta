@@ -1806,27 +1806,6 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 79, y: 38}
     spritePosition: {x: 51, y: 51}
-  - name: "\u0421\u043B\u043E\u0439 1"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 63
-      y: 57
-      width: 0
-      height: 0
-    spriteID: 6b57c9dfd8d080c4f9b9f6a8ae3305b5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 63, y: 57}
-    spritePosition: {x: 0, y: 134}
   - name: RShin
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2242,6 +2221,18 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0.5, y: 0}
@@ -2357,16 +2348,6 @@ ScriptedImporter:
     spriteID: 6beca8e37180f89428baeabfd97010d8
     layerID: 22
     mosaicPosition: {x: 79, y: 38}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: "\u0421\u043B\u043E\u0439 1"
-    spriteName: "\u0421\u043B\u043E\u0439 1"
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 6b57c9dfd8d080c4f9b9f6a8ae3305b5
-    layerID: 31
-    mosaicPosition: {x: 63, y: 57}
     flatten: 0
     isImported: 1
     isVisible: 1
