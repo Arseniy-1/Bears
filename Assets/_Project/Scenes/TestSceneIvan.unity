@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Darchi 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198293869288859640, guid: dd05c2cf0a758d047ad249499f4fa4ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4525170860518732271, guid: dd05c2cf0a758d047ad249499f4fa4ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -256,61 +260,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2221190928316964992, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9960006
-      objectReference: {fileID: 0}
-    - target: {fileID: 2221190928316964992, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.08934665
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754143230194239176, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.93580866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754143230194239176, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.3525083
-      objectReference: {fileID: 0}
-    - target: {fileID: 3437825759361028262, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1064f2340b712da4fae7332a8e5f7361, type: 2}
-    - target: {fileID: 6913467589190400587, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6913467589190400587, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7437393595352208443, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7437393595352208443, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226349710868591980, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8230291
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226349710868591980, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5679993
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474930969333263649, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.011232701
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514608610414131524, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5772241
-      objectReference: {fileID: 0}
-    - target: {fileID: 8514608610414131524, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.81658584
       objectReference: {fileID: 0}
     - target: {fileID: 8936091276163598251, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
       propertyPath: m_LocalPosition.x
@@ -352,17 +304,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9045661299331418629, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9235906
-      objectReference: {fileID: 0}
-    - target: {fileID: 9045661299331418629, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.38338035
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7999406590537674368, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c08371f77a56de459b7a8fcf9c5f960, type: 3}
