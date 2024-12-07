@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : Character
 {
-    [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private PlayerMover _mover;
+    [SerializeField] private WeaponSelector _weaponSelector;
 
     private CollisionHandler _collisionHandler;
     private InputHandler _inputHandler;
@@ -35,16 +35,16 @@ public class PlayerBehaviour : Character
         {
             if (WeaponHolder.HasWeapon)
             {
-                _characterAnimator.StartRunningWithWeapon();
+                CharacterAnimator.StartRunningWithWeapon();
             }
             else
             {
-                _characterAnimator.StartRunning();
+                CharacterAnimator.StartRunning();
             }
         }
         else
         {
-            _characterAnimator.StartIdle();
+            CharacterAnimator.StartIdle();
         }
     }
 
@@ -52,7 +52,7 @@ public class PlayerBehaviour : Character
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            WeaponHolder.SwitchWeapon();
+            _weaponSelector.SwitchWeapon();
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {

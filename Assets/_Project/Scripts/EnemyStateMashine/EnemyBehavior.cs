@@ -6,11 +6,11 @@ using PlayerSystem;
 
 public class EnemyBehavior : Character
 {
-    private EnemyStateMachine _stateMachine;
-
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public Turning Turning { get; private set; }
+    
+    private EnemyStateMachine _stateMachine;
     
     public List<Transform> Waypoints { get; private set; }
 

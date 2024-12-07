@@ -6,7 +6,6 @@ using UnityEngine;
 public class WeaponHolder : MonoBehaviour
 {
     //TODO: Вынести локику смены оружия, тк оружие меняет только Player
-    [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Weapon _currentWeapon;
 
     [SerializeField] private TargetScanner _targetScaner;
@@ -16,12 +15,9 @@ public class WeaponHolder : MonoBehaviour
 
     [SerializeField] private Transform _flipView;
 
-    private int _currentWeaponIndex;
-
     public event Action WeaponChanged;
 
     public Weapon CurrentWeapon => _currentWeapon;
-    public IReadOnlyList<Weapon> Weapons => _weapons;
     public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
 
     private void Update()
@@ -39,12 +35,6 @@ public class WeaponHolder : MonoBehaviour
 
         _leftHand.transform.parent = _currentWeapon.LeftHandPosition;
         _leftHand.transform.position = _currentWeapon.LeftHandPosition.position;
-    }
-
-    public void SwitchWeapon()
-    {
-        _currentWeaponIndex = (_currentWeaponIndex + 1) % _weapons.Count;
-        EquipWeapon(_weapons[_currentWeaponIndex]);
     }
 
     public void Construct(TargetScanner targetScanner, MainAmmoSpawner ammoSpawner)
@@ -65,11 +55,6 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _currentWeapon = pickedWeapon;
-
-        foreach (Weapon weapon in _weapons)
-            weapon.gameObject.SetActive(false);
-
-        _currentWeapon.gameObject.SetActive(true);
 
         WeaponChanged?.Invoke();
     }
@@ -96,10 +81,4 @@ public class WeaponHolder : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
-}
-
-public class WeaponCell : MonoBehaviour
-{
-    [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
-    [field: SerializeField] public Weapon Weapon { get; private set; }
 }

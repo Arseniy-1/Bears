@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Sirenix.OdinInspector;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField, Range(0.01f, 20)] private float _reloadTime;
@@ -38,7 +38,7 @@ public abstract class Weapon : MonoBehaviour
         int attackAnim = Animator.StringToHash("Attack"); //TODO: хардкод
         WeaponAnimator.Play(attackAnim);
     }
-
+    [Button]
     public virtual void TryAttack()
     {
         if (IsReloaded == false)

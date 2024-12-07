@@ -315,7 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd926ee35639e84e86286d47fd4476c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapons: []
+  _weapons:
+  - {fileID: 241831489604837713}
   _currentWeapon: {fileID: 241831489604837713}
   _targetScaner: {fileID: 3954475257293321457}
   _rightHand: {fileID: 5156723379928739190}

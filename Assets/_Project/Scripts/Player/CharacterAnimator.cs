@@ -7,11 +7,13 @@ public class CharacterAnimator : MonoBehaviour
     public void StartIdle()
     {
         _animator.Play(Constants.AnimatorConstants.IdleAnimation);
+        Debug.Log("Idle");
     }
 
     public void StartRunning()
     {
         _animator.Play(Constants.AnimatorConstants.RunningAnimation);
+        Debug.Log("Run");
     }
 
     public void StartInactivity()
@@ -21,11 +23,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void StartRunningWithWeapon()
     {
-        _animator.Play(Constants.AnimatorConstants.RunInWeaponAnimation);
+        _animator.Play(Constants.AnimatorConstants.RunWithWeaponAnimation);
+        Debug.Log("RunWW");
     }
-}
-
-public class AnimatorController : MonoBehaviour
-{
-
 }
