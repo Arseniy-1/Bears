@@ -3,13 +3,9 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace PlayerSystem
 {
-    public class Turning : MonoBehaviour
+    public class Flipper : MonoBehaviour
     {
         [SerializeField] private Character _character;
-
-        public void Initialize(Character character)
-        {
-        }
 
         public void CorrectFlip(float posX)
         {

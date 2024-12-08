@@ -1,5 +1,7 @@
 using _Project.Scripts.Item.Resource;
+using EnemyStateMashine;
 using PlayerSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : Character
@@ -8,15 +10,23 @@ public class PlayerBehaviour : Character
     [SerializeField] private WeaponSelector _weaponSelector;
 
     private CollisionHandler _collisionHandler;
-    private InputHandler _inputHandler;
     private Rigidbody2D _rigidbody2D;
+    private EntityStateMachine _stateMachine;
+
+    [field: SerializeField] public InputHandler InputHandler {  get; private set; }
 
     private void Awake()
     {
+        List<IState> states = new List<IState>
+        {
+            new 
+        };
+
+        _stateMachine = new EntityStateMachine();
         _collisionHandler = GetComponent<CollisionHandler>();
-        _inputHandler = GetComponent<InputHandler>();
+        InputHandler = GetComponent<InputHandler>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _mover.Initialize(this, _rigidbody2D, _inputHandler);
+        _mover.Initialize(this, _rigidbody2D, InputHandler);
     }
 
     private void OnEnable()

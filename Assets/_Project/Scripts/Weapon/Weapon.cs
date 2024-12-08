@@ -38,6 +38,7 @@ public abstract class Weapon : MonoBehaviour
         int attackAnim = Animator.StringToHash("Attack"); //TODO: хардкод
         WeaponAnimator.Play(attackAnim);
     }
+
     [Button]
     public virtual void TryAttack()
     {

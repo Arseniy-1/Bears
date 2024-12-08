@@ -7,9 +7,9 @@ namespace EnemyStateMashine
         private readonly EnemyBehavior _enemy;
         private IStateSwitcher _stateSwitcher;
 
-        public EnemyMoveState(EnemyBehavior entity)
+        public EnemyMoveState(EnemyBehavior enemy)
         {
-            _enemy = entity;
+            _enemy = enemy;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)

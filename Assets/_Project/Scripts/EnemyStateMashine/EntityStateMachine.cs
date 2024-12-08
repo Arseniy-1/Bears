@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace EnemyStateMashine
 {
-    public class EnemyStateMachine : IStateSwitcher
+    public class EntityStateMachine : IStateSwitcher
     {
         private List<IState> _states;
         private IState _currentState;
 
-        public EnemyStateMachine(List<IState> states)
+        public EntityStateMachine(List<IState> states)
         {
             _states = states;
 

@@ -1,13 +1,11 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.TextCore.Text;
+﻿using UnityEngine;
 
 namespace PlayerSystem
 {
     public class PlayerMover : MonoBehaviour
     {
         [SerializeField] private float _speed;//TODO Вынести скорость
-        [SerializeField] private Turning _turning;
+        [SerializeField] private Flipper _flipper;
 
         private InputHandler _inputHandler;
         private Rigidbody2D _rigidbody2D;
@@ -28,7 +26,7 @@ namespace PlayerSystem
             _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
             _player.WeaponHolder.SpotTarget();
 
-            _turning.CorrectFlip(_inputHandler.HorizontalDirection);
+            _flipper.CorrectFlip(_inputHandler.HorizontalDirection);
         }
 
         public void Initialize(PlayerBehaviour player, Rigidbody2D rigidbody2D, InputHandler inputHandler)
@@ -37,7 +35,6 @@ namespace PlayerSystem
             _inputHandler = inputHandler;
             _player = player;
             _player = player;
-            _turning.Initialize(_player);
         }
     }
 }

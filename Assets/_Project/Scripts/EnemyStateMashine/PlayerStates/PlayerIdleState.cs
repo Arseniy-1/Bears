@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace EnemyStateMashine
 {
-    public class EnemyIdleState : IState
+    public class PlayerIdleState : IState
     {
-        private readonly EnemyBehavior _enemy;
+        private readonly PlayerBehaviour _player;
         private IStateSwitcher _stateSwitcher;
 
-        public EnemyIdleState(EnemyBehavior enemy)
+        public PlayerIdleState(PlayerBehaviour player)
         {
-            _enemy = enemy;
+            _player = player;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
@@ -28,8 +28,8 @@ namespace EnemyStateMashine
 
         public virtual void Update()
         {
-            if (_enemy.TargetScanner.ClosestTarget != null &&
-                Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.DetectionRange)
+            if (_player.TargetScanner.ClosestTarget != null &&
+                Vector3.Distance(_player.Position, _player.TargetScanner.ClosestTarget.Position) < _player.DetectionRange)
             {
                 _stateSwitcher.SwitchState<EnemyMoveState>();
             }

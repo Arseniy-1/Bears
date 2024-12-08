@@ -17,7 +17,7 @@ public class EnemyFabric : MonoBehaviour
             new EnemyActivitysState(enemy)
             };
 
-        EnemyStateMachine enemyStateMashine = new EnemyStateMachine(enemyStates);
+        EntityStateMachine enemyStateMashine = new EntityStateMachine(enemyStates);
 
         foreach (IState state in enemyStates)
         {
