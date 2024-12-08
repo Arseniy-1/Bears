@@ -7,7 +7,6 @@ namespace PlayerSystem
         [SerializeField] private float _speed;//TODO Вынести скорость
         [SerializeField] private Flipper _flipper;
 
-        private InputHandler _inputHandler;
         private Rigidbody2D _rigidbody2D;
         private PlayerBehaviour _player;
 
@@ -15,24 +14,24 @@ namespace PlayerSystem
 
         private void Update()
         {
-            Run();
+            //Run();
         }
 
-        private void Run()
+        public void Run(Vector2 direction)
         {
-            float currentHorizontalSpeed = _inputHandler.HorizontalDirection * _speed;
-            float currentVerticalSpeed = _inputHandler.VerticalDirection * _speed;
+            //float currentHorizontalSpeed = _inputHandler.HorizontalDirection * _speed;
+            //float currentVerticalSpeed = _inputHandler.VerticalDirection * _speed;
 
-            _rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
+            //_rigidbody2D.velocity = new Vector2(currentHorizontalSpeed, currentVerticalSpeed);
+            _rigidbody2D.velocity = direction;
             _player.WeaponHolder.SpotTarget();
 
-            _flipper.CorrectFlip(_inputHandler.HorizontalDirection);
+            _flipper.CorrectFlip();
         }
 
-        public void Initialize(PlayerBehaviour player, Rigidbody2D rigidbody2D, InputHandler inputHandler)
+        public void Initialize(PlayerBehaviour player, Rigidbody2D rigidbody2D)
         {
             _rigidbody2D = rigidbody2D;
-            _inputHandler = inputHandler;
             _player = player;
             _player = player;
         }

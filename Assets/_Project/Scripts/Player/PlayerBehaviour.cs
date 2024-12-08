@@ -17,12 +17,12 @@ public class PlayerBehaviour : Character
 
     private void Awake()
     {
-        List<IState> states = new List<IState>
-        {
-            new 
-        };
+        //List<IState> states = new List<IState>
+        //{
+        //    new 
+        //};
 
-        _stateMachine = new EntityStateMachine();
+        //_stateMachine = new EntityStateMachine();
         _collisionHandler = GetComponent<CollisionHandler>();
         InputHandler = GetComponent<InputHandler>();
         _rigidbody2D = GetComponent<Rigidbody2D>();

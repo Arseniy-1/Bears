@@ -28,15 +28,7 @@ namespace EnemyStateMashine
 
         public virtual void Update()
         {
-            if (_player.TargetScanner.ClosestTarget != null &&
-                Vector3.Distance(_player.Position, _player.TargetScanner.ClosestTarget.Position) < _player.DetectionRange)
-            {
-                _stateSwitcher.SwitchState<EnemyMoveState>();
-            }
-            else
-            {
-                _stateSwitcher.SwitchState<EnemyActivitysState>();
-            }
+
         }
     }
 }
