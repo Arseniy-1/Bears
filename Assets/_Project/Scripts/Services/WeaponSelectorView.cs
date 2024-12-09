@@ -13,7 +13,7 @@ public class WeaponSelectorView : MonoBehaviour
 
     private void Start()
     {
-        //UpdateView();
+        UpdateView();
     }
 
     private void OnEnable()
