@@ -14,6 +14,7 @@ public class CharacterAnimator : MonoBehaviour
         if (IsPlayingInactivity() == false)
         {
             _animator.Play(Constants.AnimatorConstants.IdleAnimation);
+            //TODO Реализовать enable оружия
         }
         
 
@@ -41,7 +42,7 @@ public class CharacterAnimator : MonoBehaviour
         {
             yield return waitTime;
             _animator.Play(Constants.AnimatorConstants.ActivityAnimation);
-            //TODO Реализовать отключение оружия
+            //TODO Реализовать disable оружия
         }
         
         _checkIdleTime = null;
