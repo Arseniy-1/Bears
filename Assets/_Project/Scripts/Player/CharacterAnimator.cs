@@ -26,4 +26,16 @@ public class CharacterAnimator : MonoBehaviour
         _animator.Play(Constants.AnimatorConstants.RunWithWeaponAnimation);
         Debug.Log("RunWW");
     }
+
+    public void StartCollecting()
+    {
+        _animator.Play(Constants.AnimatorConstants.CollectAnimation);
+        Debug.Log("Collect");
+    }
+
+    public void StartJumping()
+    {
+        _animator.Play(Constants.AnimatorConstants.JumpAnimation);
+        Debug.Log("Jump");
+    }
 }

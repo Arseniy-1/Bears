@@ -35,7 +35,6 @@ namespace EnemyStateMashine
                 Vector3 currentDirection = new Vector3(direction.x, direction.y, 0);
                 _enemy.WeaponHolder.SpotTarget();
                 _enemy.transform.position += currentDirection * 2 * Time.deltaTime; //Магическое число - скорость
-                _enemy.Turning.CorrectFlip((int)currentDirection.x);
 
                 if (Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
                 {

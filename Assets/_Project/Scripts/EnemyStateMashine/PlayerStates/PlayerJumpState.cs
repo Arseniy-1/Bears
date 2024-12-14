@@ -1,15 +1,16 @@
+﻿using System.Collections;
 using UnityEngine;
 
 namespace EnemyStateMashine
 {
-    public class PlayerIdleState : IState
+    public class PlayerJumpState : IState
     {
         private readonly PlayerBehaviour _player;
         private IStateSwitcher _stateSwitcher;
 
-        public PlayerIdleState(PlayerBehaviour player)
+        public PlayerJumpState(PlayerBehaviour enemy)
         {
-            _player = player;
+            _player = enemy;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
@@ -17,9 +18,16 @@ namespace EnemyStateMashine
             _stateSwitcher = stateSwitcher;
         }
 
+        public IEnumerator Jumping()
+        {
+            yield return new WaitForSeconds(2);
+
+            _stateSwitcher.SwitchState<PlayerIdleState>();
+        }
+
         public virtual void Enter()
         {
-            _player.CharacterAnimator.StartIdle();
+            _player.CharacterAnimator.StartJumping();
             Debug.Log(GetType());
         }
 
@@ -29,11 +37,12 @@ namespace EnemyStateMashine
 
         public virtual void Update()
         {
-            if (_player.Mover.IsRunning)
-            {
-                Debug.Log(_stateSwitcher == null);
-                _stateSwitcher.SwitchState<PlayerMoveState>();
-            }
+
+        }
+
+        public void OnJumpButtonPressed()
+        {
+
         }
     }
 }

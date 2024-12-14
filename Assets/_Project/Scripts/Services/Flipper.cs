@@ -7,8 +7,15 @@ namespace PlayerSystem
     {
         [SerializeField] private Character _character;
 
-        public void CorrectFlip(float posX)
+        private void FixedUpdate()
         {
+            CorrectFlip();
+        }
+
+        private void CorrectFlip()
+        {
+            float horizontalSpeed = _character.CharacterRigidbody2D.velocity.x;
+
             if (_character.TargetScanner.HasTarget)
             {
                 var isFlipped = !((int)_character.TargetScanner.ClosestTarget.Position.x >
@@ -16,9 +23,9 @@ namespace PlayerSystem
                 transform.localScale = isFlipped ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
                 _character.WeaponHolder.transform.localScale = isFlipped ? new Vector3(-1, -1, 1) : new Vector3(1, 1, 1);
             }
-            else if (posX != 0)
+            else if (horizontalSpeed != 0)
             {
-                transform.localScale = posX > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+                transform.localScale = horizontalSpeed > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
             }
         }
     }

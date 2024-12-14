@@ -33,7 +33,6 @@ namespace EnemyStateMashine
                 if (Vector3.Distance(_enemy.Position, _enemy.TargetScanner.ClosestTarget.Position) < _enemy.AttackRange)
                 {
                     _enemy.WeaponHolder.SpotTarget();
-                    _enemy.Turning.CorrectFlip((int)_enemy.TargetScanner.ClosestTarget.Position.x);
                     _enemy.WeaponHolder.Shoot();
                 }
                 else

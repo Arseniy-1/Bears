@@ -19,6 +19,7 @@ public class EnemyBehavior : Character
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
         WeaponHolder.Construct(TargetScanner, ammoBoss);
+        CharacterRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()

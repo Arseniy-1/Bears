@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    //TODO: Вынести локику смены оружия, тк оружие меняет только Player
     [SerializeField] private Weapon _currentWeapon;
 
     [SerializeField] private TargetScanner _targetScaner;

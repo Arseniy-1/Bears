@@ -1,15 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemyStateMashine
 {
-    public class PlayerIdleState : IState
+    public class PlayerCollectingState : IState
     {
         private readonly PlayerBehaviour _player;
         private IStateSwitcher _stateSwitcher;
 
-        public PlayerIdleState(PlayerBehaviour player)
+        public PlayerCollectingState(PlayerBehaviour enemy)
         {
-            _player = player;
+            _player = enemy;
         }
 
         public void Initialize(IStateSwitcher stateSwitcher)
@@ -19,7 +19,7 @@ namespace EnemyStateMashine
 
         public virtual void Enter()
         {
-            _player.CharacterAnimator.StartIdle();
+            //_enemy.CharacterAnimator.StartRunning();
             Debug.Log(GetType());
         }
 
@@ -29,11 +29,7 @@ namespace EnemyStateMashine
 
         public virtual void Update()
         {
-            if (_player.Mover.IsRunning)
-            {
-                Debug.Log(_stateSwitcher == null);
-                _stateSwitcher.SwitchState<PlayerMoveState>();
-            }
+
         }
     }
 }

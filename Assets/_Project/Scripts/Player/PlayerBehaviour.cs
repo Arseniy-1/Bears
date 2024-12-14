@@ -6,69 +6,66 @@ using UnityEngine;
 
 public class PlayerBehaviour : Character
 {
-    [SerializeField] private PlayerMover _mover;
+    [field: SerializeField] public PlayerInputController PlayerInputController { get; private set; }
+    [field: SerializeField] public PlayerMover Mover { get; private set; }
+
     [SerializeField] private WeaponSelector _weaponSelector;
 
     private CollisionHandler _collisionHandler;
-    private Rigidbody2D _rigidbody2D;
     private EntityStateMachine _stateMachine;
-
-    [field: SerializeField] public InputHandler InputHandler {  get; private set; }
 
     private void Awake()
     {
-        //List<IState> states = new List<IState>
-        //{
-        //    new 
-        //};
-
-        //_stateMachine = new EntityStateMachine();
         _collisionHandler = GetComponent<CollisionHandler>();
-        InputHandler = GetComponent<InputHandler>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _mover.Initialize(this, _rigidbody2D, InputHandler);
+        CharacterRigidbody2D = GetComponent<Rigidbody2D>();
+        Mover.Initialize(this);
     }
 
     private void OnEnable()
     {
         _collisionHandler.CollisionDetected += Interact;
+        PlayerInputController.ShootButtonPressed += Shoot;
+        PlayerInputController.SwitchButtonPressed += SwitchWeapon;
     }
 
     private void OnDisable()
     {
         _collisionHandler.CollisionDetected -= Interact;
+        PlayerInputController.ShootButtonPressed -= Shoot;
+        PlayerInputController.SwitchButtonPressed -= SwitchWeapon;
     }
 
     private void FixedUpdate()
     {
-        if (_mover.IsRunning())
+        Debug.Log(TargetScanner.HasTarget == false);
+        if (TargetScanner.HasTarget)
         {
-            if (WeaponHolder.HasWeapon)
-            {
-                CharacterAnimator.StartRunningWithWeapon();
-            }
-            else
-            {
-                CharacterAnimator.StartRunning();
-            }
-        }
-        else
-        {
-            CharacterAnimator.StartIdle();
+            Debug.Log("&&!11");
+            WeaponHolder.SpotTarget();
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            _weaponSelector.SwitchWeapon();
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            WeaponHolder.Shoot();
-        }
+        _stateMachine.Update();
     }
+
+    public void Construct(EntityStateMachine playerStateMashine)
+    {
+        _stateMachine = playerStateMashine;
+    }
+
+    //TODO: Так быть не должно, это не логика Player
+    private void SwitchWeapon()
+    {
+        _weaponSelector.SwitchWeapon();
+    }
+
+    private void Shoot()
+    {
+        WeaponHolder.Shoot();
+    }
+    //
 
     protected override void Interact(IInteractable interactable)
     {

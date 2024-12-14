@@ -11,19 +11,18 @@ namespace PlayerSystem
         private bool _isMoving = false;
         private float _currentTime = 0f;
 
-        private void Update()
+        public void Jump()
         {
             Vector3 targetPosition = _character.transform.position + transform.right * _jumpDistance;
 
-            if (Input.GetKeyDown(KeyCode.Space) && _isMoving == false)
+            if (_isMoving == false)
             {
                 _character.transform.position = Vector3.Lerp(_character.transform.position, targetPosition, _currentTime);
 
                 _currentTime = 0f;
                 _isMoving = true;
             }
-
-            if (_isMoving)
+            else
             {
                 _currentTime += Time.deltaTime * _moveSpeed;
                 _character.transform.position = Vector3.Lerp(_character.transform.position, targetPosition, _currentTime);
