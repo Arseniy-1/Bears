@@ -12,7 +12,7 @@ static class Constants
         public const string Jump = nameof(Jump);
 
         public static readonly int ActivityAnimation = Animator.StringToHash(LongInactivity);
-        public static readonly int IdleAnimation = Animator.StringToHash(IdleWithWeapon);
+        public static readonly int IdleWithWeaponAnimation = Animator.StringToHash(IdleWithWeapon);
         public static readonly int RunningAnimation = Animator.StringToHash(Run);
         public static readonly int RunWithWeaponAnimation = Animator.StringToHash(RunWithWeapon);
         public static readonly int CollectAnimation = Animator.StringToHash(Collecting);

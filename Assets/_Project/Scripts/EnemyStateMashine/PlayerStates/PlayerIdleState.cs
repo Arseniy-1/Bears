@@ -19,21 +19,27 @@ namespace EnemyStateMashine
 
         public virtual void Enter()
         {
-            _player.CharacterAnimator.StartIdle();
+            _player.PlayerInputController.JumpButtonPressed += OnJumpButtonPressed;
+            _player.CharacterAnimator.StartIdleWithWeapon();
             Debug.Log(GetType());
         }
 
         public virtual void Exit()
         {
+            _player.PlayerInputController.JumpButtonPressed -= OnJumpButtonPressed;
         }
 
         public virtual void Update()
         {
             if (_player.Mover.IsRunning)
             {
-                Debug.Log(_stateSwitcher == null);
                 _stateSwitcher.SwitchState<PlayerMoveState>();
             }
+        }
+
+        public void OnJumpButtonPressed()
+        {
+            _stateSwitcher.SwitchState<PlayerJumpState>();
         }
     }
 }

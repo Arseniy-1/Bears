@@ -4,10 +4,10 @@ public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
-    public void StartIdle()
+    public void StartIdleWithWeapon()
     {
-        _animator.Play(Constants.AnimatorConstants.IdleAnimation);
-        Debug.Log("Idle");
+        _animator.Play(Constants.AnimatorConstants.IdleWithWeaponAnimation);
+        Debug.Log("Idle****");
     }
 
     public void StartRunning()

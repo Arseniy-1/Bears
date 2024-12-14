@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace EnemyStateMashine
 {
@@ -28,6 +29,8 @@ namespace EnemyStateMashine
         public virtual void Enter()
         {
             _player.CharacterAnimator.StartJumping();
+            _player.Jumper.Jump();
+            _stateSwitcher.SwitchState<PlayerIdleState>();
             Debug.Log(GetType());
         }
 

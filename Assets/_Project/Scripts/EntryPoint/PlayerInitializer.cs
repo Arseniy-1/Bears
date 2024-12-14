@@ -10,7 +10,8 @@ public class PlayerInitializer : MonoBehaviour
         {
             new PlayerIdleState(player),
             new PlayerMoveState(player),
-            new PlayerCollectingState(player)
+            new PlayerCollectingState(player),
+            new PlayerJumpState(player)
         };
 
         EntityStateMachine playerStateMashine = new EntityStateMachine(playerStates);

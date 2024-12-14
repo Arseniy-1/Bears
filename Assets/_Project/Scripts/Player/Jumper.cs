@@ -1,35 +1,43 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace PlayerSystem
 {
     public class Jumper : MonoBehaviour
     {
-        [SerializeField, Range(0.01f, 3)] private float _moveSpeed = 2;
-        [SerializeField, Range(0, 1)] private float _jumpDistance = 0.2f;
-        [SerializeField] private Character _character;
+        public float moveDistance = 1f; // Расстояние, на которое нужно переместить объект
+        public float moveSpeed = 2f;   // Скорость перемещения
 
-        private bool _isMoving = false;
-        private float _currentTime = 0f;
+        private Vector3 startPosition;
+        private Vector3 targetPosition;
+        private bool isMoving = false;
+        private float t = 0f;
 
+        // Метод, который запускает движение
+
+        [Button]
         public void Jump()
         {
-            Vector3 targetPosition = _character.transform.position + transform.right * _jumpDistance;
-
-            if (_isMoving == false)
+            if (!isMoving)
             {
-                _character.transform.position = Vector3.Lerp(_character.transform.position, targetPosition, _currentTime);
-
-                _currentTime = 0f;
-                _isMoving = true;
+                startPosition = transform.position;
+                targetPosition = startPosition + transform.right * moveDistance; // Вперед относительно направления объекта
+                t = 0f;
+                isMoving = true;
             }
-            else
-            {
-                _currentTime += Time.deltaTime * _moveSpeed;
-                _character.transform.position = Vector3.Lerp(_character.transform.position, targetPosition, _currentTime);
+        }
 
-                if (_currentTime >= 1f)
+        void Update()
+        {
+            if (isMoving)
+            {
+                t += Time.deltaTime * moveSpeed;
+                transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+                if (t >= 1f)
                 {
-                    _isMoving = false;
+                    transform.position = targetPosition; // Обеспечиваем точное попадание в конечную точку
+                    isMoving = false;
                 }
             }
         }

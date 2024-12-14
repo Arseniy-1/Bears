@@ -8,6 +8,7 @@ public class PlayerBehaviour : Character
 {
     [field: SerializeField] public PlayerInputController PlayerInputController { get; private set; }
     [field: SerializeField] public PlayerMover Mover { get; private set; }
+    [field: SerializeField] public Jumper Jumper { get; private set; }
 
     [SerializeField] private WeaponSelector _weaponSelector;
 
@@ -37,10 +38,8 @@ public class PlayerBehaviour : Character
 
     private void FixedUpdate()
     {
-        Debug.Log(TargetScanner.HasTarget == false);
         if (TargetScanner.HasTarget)
         {
-            Debug.Log("&&!11");
             WeaponHolder.SpotTarget();
         }
     }
