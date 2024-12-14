@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : Character
 {
+    public static Rigidbody2D Instance { get; private set; }
+    
     [SerializeField] private PlayerMover _mover;
 
     private CollisionHandler _collisionHandler;
@@ -16,6 +18,7 @@ public class PlayerBehaviour : Character
         _inputHandler = GetComponent<InputHandler>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _mover.Initialize(this, _rigidbody2D, _inputHandler);
+        Instance = _rigidbody2D;
     }
 
     private void OnEnable()
