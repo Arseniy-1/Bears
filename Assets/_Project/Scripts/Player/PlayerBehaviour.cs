@@ -1,7 +1,6 @@
 using _Project.Scripts.Item.Resource;
 using EnemyStateMashine;
 using PlayerSystem;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : Character

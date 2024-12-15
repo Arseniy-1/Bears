@@ -19,24 +19,25 @@ public class WeaponHolder : MonoBehaviour
     public Weapon CurrentWeapon => _currentWeapon;
     public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
 
-    //private void Start()
-    //{
-    //    if (HasWeapon)
-    //    {
-    //        PutHands();
-    //    }
-    //}
+    private void Start()
+    {
+        if (HasWeapon)
+        {
+            PutHands();
+        }
+    }
 
     [Button]
     public void PutHands()
     {
-        _rightHand.transform.parent = null;
-        _rightHand.transform.parent = _currentWeapon.RightHand;
-        _rightHand.transform.position = Vector3.zero;
+        if(_currentWeapon.RightHand == null || _currentWeapon.LeftHand == null)
+            return;
 
-        _leftHand.transform.parent = null;
+        _rightHand.transform.parent = _currentWeapon.RightHand;
+        _rightHand.transform.position = _currentWeapon.RightHand.position;
+
         _leftHand.transform.parent = _currentWeapon.LeftHand;
-        _leftHand.transform.position = Vector3.zero;
+        _leftHand.transform.position = _currentWeapon.LeftHand.position;
 
         _currentWeapon.gameObject.SetActive(true); 
     }

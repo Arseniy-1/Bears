@@ -134,8 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reloadTime: 2.1
   WeaponAnimator: {fileID: 8222165744207115121}
-  <RightHandPosition>k__BackingField: {fileID: 3727394700594188081}
-  <LeftHandPosition>k__BackingField: {fileID: 10104648099826571}
+  <RightHand>k__BackingField: {fileID: 3727394700594188081}
+  <LeftHand>k__BackingField: {fileID: 10104648099826571}
   <Icon>k__BackingField: {fileID: 3896254029335555596, guid: 5f5e40d67c979b94e9b7cf1d477b8545, type: 3}
   _spread: 0.211
   ShootPoint: {fileID: 1285180867897563712}

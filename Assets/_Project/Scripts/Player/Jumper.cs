@@ -22,10 +22,15 @@ namespace PlayerSystem
         [Button]
         public void Jump()
         {
-            if (!_isMoving)
+            if (_isMoving == false)
             {
+                float directionSign = Mathf.Sign(_character.CharacterRigidbody2D.velocity.x);
+
+                if (directionSign == 0)
+                    return;
+
                 _startPosition = transform.position;
-                _targetPosition = _startPosition + transform.right * _distance ; // Вперед относительно направления объекта
+                _targetPosition = _startPosition + transform.right * _distance * directionSign;
                 _currentTime = 0f;
                 _isMoving = true;
             }
@@ -40,7 +45,7 @@ namespace PlayerSystem
 
                 if (_currentTime >= _actionTime)
                 {
-                    transform.position = _targetPosition; // Обеспечиваем точное попадание в конечную точку
+                    transform.position = _targetPosition;
                     _isMoving = false;
 
                     Debug.Log("OnJumpPerformedInvoke");
