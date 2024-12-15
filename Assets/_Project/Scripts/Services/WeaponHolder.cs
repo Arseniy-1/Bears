@@ -1,6 +1,6 @@
 ﻿using _Project.Scripts.Spawner;
+using Sirenix.OdinInspector;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
@@ -19,21 +19,35 @@ public class WeaponHolder : MonoBehaviour
     public Weapon CurrentWeapon => _currentWeapon;
     public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
 
-    private void Update()
+    //private void Start()
+    //{
+    //    if (HasWeapon)
+    //    {
+    //        PutHands();
+    //    }
+    //}
+
+    [Button]
+    public void PutHands()
     {
-        if (HasWeapon)
-        {
-            PutHands();
-        }
+        _rightHand.transform.parent = null;
+        _rightHand.transform.parent = _currentWeapon.RightHand;
+        _rightHand.transform.position = Vector3.zero;
+
+        _leftHand.transform.parent = null;
+        _leftHand.transform.parent = _currentWeapon.LeftHand;
+        _leftHand.transform.position = Vector3.zero;
+
+        _currentWeapon.gameObject.SetActive(true); 
     }
 
-    private void PutHands()
+    [Button]
+    public void DeselectWeapon()
     {
-        _rightHand.transform.parent = _currentWeapon.RightHandPosition;
-        _rightHand.transform.position = _currentWeapon.RightHandPosition.position;
+        _rightHand.transform.parent = null;
+        _leftHand.transform.parent = null;
 
-        _leftHand.transform.parent = _currentWeapon.LeftHandPosition;
-        _leftHand.transform.position = _currentWeapon.LeftHandPosition.position;
+        _currentWeapon.gameObject.SetActive(false); 
     }
 
     public void Construct(TargetScanner targetScanner, MainAmmoSpawner ammoSpawner)

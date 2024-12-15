@@ -1,43 +1,50 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using System;
 
 namespace PlayerSystem
 {
     public class Jumper : MonoBehaviour
     {
-        public float moveDistance = 1f; // Расстояние, на которое нужно переместить объект
-        public float moveSpeed = 2f;   // Скорость перемещения
+        [SerializeField] private Character _character;
 
-        private Vector3 startPosition;
-        private Vector3 targetPosition;
-        private bool isMoving = false;
-        private float t = 0f;
+        [SerializeField] private float _distance = 1f;
+        [SerializeField] private float _speed = 2f;   
+        [SerializeField] private float _actionTime = 2.5f;   
 
-        // Метод, который запускает движение
+        private Vector3 _startPosition;
+        private Vector3 _targetPosition;
+        private bool _isMoving = false;
+        private float _currentTime = 0f;
+
+        public event Action JumpPerformed;
 
         [Button]
         public void Jump()
         {
-            if (!isMoving)
+            if (!_isMoving)
             {
-                startPosition = transform.position;
-                targetPosition = startPosition + transform.right * moveDistance; // Вперед относительно направления объекта
-                t = 0f;
-                isMoving = true;
+                _startPosition = transform.position;
+                _targetPosition = _startPosition + transform.right * _distance ; // Вперед относительно направления объекта
+                _currentTime = 0f;
+                _isMoving = true;
             }
         }
 
-        void Update()
+        private void Update()
         {
-            if (isMoving)
+            if (_isMoving)
             {
-                t += Time.deltaTime * moveSpeed;
-                transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+                _currentTime += Time.deltaTime * _speed;
+                transform.position = Vector3.Lerp(_startPosition, _targetPosition, _currentTime);
 
-                if (t >= 1f)
+                if (_currentTime >= _actionTime)
                 {
-                    transform.position = targetPosition; // Обеспечиваем точное попадание в конечную точку
-                    isMoving = false;
+                    transform.position = _targetPosition; // Обеспечиваем точное попадание в конечную точку
+                    _isMoving = false;
+
+                    Debug.Log("OnJumpPerformedInvoke");
+                    JumpPerformed?.Invoke();
                 }
             }
         }

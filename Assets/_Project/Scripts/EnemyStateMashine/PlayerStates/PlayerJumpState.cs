@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace EnemyStateMashine
 {
@@ -29,13 +29,15 @@ namespace EnemyStateMashine
         public virtual void Enter()
         {
             _player.CharacterAnimator.StartJumping();
+            _player.Jumper.JumpPerformed += OnJumpPerformed;
+            _player.WeaponHolder.DeselectWeapon();
             _player.Jumper.Jump();
-            _stateSwitcher.SwitchState<PlayerIdleState>();
             Debug.Log(GetType());
         }
 
         public virtual void Exit()
         {
+
         }
 
         public virtual void Update()
@@ -43,8 +45,12 @@ namespace EnemyStateMashine
 
         }
 
-        public void OnJumpButtonPressed()
+        public void OnJumpPerformed()
         {
+            Debug.Log("OnJumpPerformed");
+            _player.Jumper.JumpPerformed -= OnJumpPerformed;
+            _player.WeaponHolder.PutHands();
+            _stateSwitcher.SwitchState<PlayerIdleState>();
 
         }
     }
