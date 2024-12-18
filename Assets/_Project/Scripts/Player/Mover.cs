@@ -9,6 +9,8 @@ namespace PlayerSystem
         [SerializeField] private float _speed;//TODO Вынести скорость
         [SerializeField] private Turning _turning;
 
+        public bool IsMovingBackward => _inputHandler.HorizontalDirection != _turning.transform.localScale.x;
+        
         private InputHandler _inputHandler;
         private Rigidbody2D _rigidbody2D;
         private PlayerBehaviour _player;

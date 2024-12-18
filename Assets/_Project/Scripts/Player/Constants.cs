@@ -9,13 +9,17 @@ static class Constants
         public const string Run = nameof(Run);
         public const string RunWithGun = nameof(RunWithGun);
         public const string TakeDamage = nameof(TakeDamage);
+        public const string TakeHeal = nameof(TakeHeal);
         public const string ItemPickUp = nameof(ItemPickUp);
+        public const string ReverseWalk = nameof(ReverseWalk);
 
         public static readonly int ActivityAnimation = Animator.StringToHash(LongInactivity);
         public static readonly int IdleAnimation = Animator.StringToHash(IdleWithGun);
         public static readonly int RunningAnimation = Animator.StringToHash(Run);
         public static readonly int RunInWeaponAnimation = Animator.StringToHash(RunWithGun);
         public static readonly int TakeDamageAnimation = Animator.StringToHash(TakeDamage);
+        public static readonly int TakeHealAnimation = Animator.StringToHash(TakeHeal);
         public static readonly int ItemPickUpAnimation = Animator.StringToHash(ItemPickUp);
+        public static readonly int ReverseWalkAnimation = Animator.StringToHash(ReverseWalk);
     }
 }

@@ -34,11 +34,11 @@ public class PlayerBehaviour : Character
         {
             if (WeaponHolder.HasWeapon)
             {
-                Animator.StartRunningWithWeapon();
+                Animator.StartRunningWithWeapon(_mover.IsMovingBackward);
             }
             else
             {
-                Animator.StartRunning();
+                Animator.StartRunning(_mover.IsMovingBackward);
             }
         }
         else

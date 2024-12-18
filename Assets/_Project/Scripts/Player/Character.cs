@@ -14,6 +14,8 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 
     public void TakeDamage(float amount)
     {
+        Animator.TakeDamage();
         Health.TakeDamage(amount);
+        Debug.Log("Take");
     }
 }
