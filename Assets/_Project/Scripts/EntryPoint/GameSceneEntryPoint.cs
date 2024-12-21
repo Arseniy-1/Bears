@@ -6,7 +6,7 @@ public class GameSceneEntryPoint : MonoBehaviour
 {
     [SerializeField] private PlayerBehaviour _player;
     [SerializeField] private List<Weapon> _playerWeapons;
-    [SerializeField] private PlayerInitializer _playerFabric;
+    [SerializeField] private PlayerInitializer _playerInitializer;
 
     [SerializeField] private List<DoneEnemy> _enemys;
     [SerializeField] private EnemyFabric _enemyFabric;
@@ -14,7 +14,7 @@ public class GameSceneEntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        _playerFabric.Initialize(_player);
+        _playerInitializer.Initialize(_player);
 
         foreach (Weapon weapon in _playerWeapons)
         {

@@ -31,6 +31,17 @@ public abstract class Ammo : MonoBehaviour, IDestoyable<Ammo>
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.TryGetComponent(out IDamagable damagable))
+            damagable.TakeDamage(_damage);
+
+        if (collision.collider.TryGetComponent(out Ammo ammo))
+            return;
+
+        Destory();
+    }
+
     public void Activate()
     {
         _rigidbody2D.velocity = transform.right * _speed;

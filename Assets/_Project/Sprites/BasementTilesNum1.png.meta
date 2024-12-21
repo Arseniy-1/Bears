@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77b5fc2eb37234cfaaeb9684b513e612
+guid: 55dc8f39abb5e9340a63531a1131352b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -71,19 +71,6 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -123,7 +110,112 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BasementTilesNum3_0
+      name: BasementTilesNum1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7dc8566d5d946419719f43bcd0ac0e
+      internalID: -1281778897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementTilesNum1_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315ac87dc2d4a584283dbdcb6efec7a2
+      internalID: -936701537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementTilesNum1_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e17852677c28924e9802e85d2e98955
+      internalID: 499203825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementTilesNum1_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3801c345278eb9b469ec48f3df698569
+      internalID: -2062293786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementTilesNum1_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8704fa9cae0e86c4aaf20183abd76e6e
+      internalID: -1141934886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasementTilesNum1_5
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 740a23a210a0e4ed5af11e5334fef155
-      internalID: 1945831752
+      spriteID: fbee121f33d95144eadfcc5fc52678a6
+      internalID: 2103680394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_1
+      name: BasementTilesNum1_6
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9719dab2e38d04df4b3512a52a812022
-      internalID: 936897485
+      spriteID: df09de494c1e52544add0ed11604774b
+      internalID: -715663400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_2
+      name: BasementTilesNum1_7
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6cf3990dc0c441d9aad95efa82ebd3b
-      internalID: -1316258482
+      spriteID: 8a5d8f15bf7044b4692b8cd587b16804
+      internalID: -919348683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_3
+      name: BasementTilesNum1_8
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be7a5f12504324f5c9e196af8d68b6b0
-      internalID: 312871998
+      spriteID: d30a26e6751be9e4bb5958500660405b
+      internalID: -1328959863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_4
+      name: BasementTilesNum1_9
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0bda12c47fa7421a9cba5e9eec02390
-      internalID: -1750822022
+      spriteID: 9aa36b6a469ac514ab080899888ac860
+      internalID: -1039432237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_5
+      name: BasementTilesNum1_10
       rect:
         serializedVersion: 2
         x: 0
@@ -242,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adfbd23971e70496f84b07f2e913b786
-      internalID: -493751448
+      spriteID: a2d0347b42d35ac4c8aa8a160cda9d0b
+      internalID: 402611994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_6
+      name: BasementTilesNum1_11
       rect:
         serializedVersion: 2
         x: 64
@@ -263,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21b0234d8d49f4c2b98eda82673c9ed8
-      internalID: 1034762795
+      spriteID: 14b83500a3f7a064ea6f28551ea25acb
+      internalID: 283320832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_7
+      name: BasementTilesNum1_12
       rect:
         serializedVersion: 2
         x: 128
@@ -284,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: daebc443d1ac346e495c8344370957a8
-      internalID: 1327171043
+      spriteID: d2546ae622c50f3408fcb311f21e3e6e
+      internalID: 1578258060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_8
+      name: BasementTilesNum1_13
       rect:
         serializedVersion: 2
         x: 192
@@ -305,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95009791db59244abb2f92d1da92d1d7
-      internalID: -1707994198
+      spriteID: 4f14d41e9f711744884a28d99dbf2b77
+      internalID: -83653788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_9
+      name: BasementTilesNum1_14
       rect:
         serializedVersion: 2
         x: 256
@@ -326,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eb705f623c9e4dc3a924bb9a275e52c
-      internalID: 779779566
+      spriteID: 3126923e8da0d624993bc51a82ab640f
+      internalID: 2146121882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_10
+      name: BasementTilesNum1_15
       rect:
         serializedVersion: 2
         x: 0
@@ -347,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9478234d9862f4a37a80f3cd558d232c
-      internalID: 480621562
+      spriteID: 56a6c844f4b22b146b32b8faa2b89fe5
+      internalID: -1113952758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_11
+      name: BasementTilesNum1_16
       rect:
         serializedVersion: 2
         x: 64
@@ -368,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d9fe073d5c8d4499ae0880c2d6606da
-      internalID: -1701492764
+      spriteID: 504ddcc3082427c48ba1279bd90b04f7
+      internalID: -1784369940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_12
+      name: BasementTilesNum1_17
       rect:
         serializedVersion: 2
         x: 128
@@ -389,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86b8997d9da564871b062f2e8ab45bcc
-      internalID: 122038996
+      spriteID: 91ebac8aceee9234d8759cea6922585d
+      internalID: -1229923922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_13
+      name: BasementTilesNum1_18
       rect:
         serializedVersion: 2
         x: 192
@@ -410,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c659c4441bf704dd09e8a1d1489f23a3
-      internalID: -718872543
+      spriteID: 28b9586ae10f0614bb846495f0860aa7
+      internalID: 153901900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_14
+      name: BasementTilesNum1_19
       rect:
         serializedVersion: 2
         x: 256
@@ -431,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8856300b67ea44d43a13feae3117d4d7
-      internalID: -939334670
+      spriteID: ba177711173c4d346a554009f05a7b89
+      internalID: -487240977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_15
+      name: BasementTilesNum1_20
       rect:
         serializedVersion: 2
         x: 0
@@ -452,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bf28e989462e4636a6d2052c3a689e6
-      internalID: -1263678938
+      spriteID: ae6a78f031a0c1747bfd224567a936bf
+      internalID: -1283172876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_16
+      name: BasementTilesNum1_21
       rect:
         serializedVersion: 2
         x: 64
@@ -473,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21d193c95e9dc494b909e95040bbe5af
-      internalID: 2121016828
+      spriteID: 6dbb59fa3d282b14689732d11b56a0a2
+      internalID: 418215378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_17
+      name: BasementTilesNum1_22
       rect:
         serializedVersion: 2
         x: 128
@@ -494,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88f6b53d8cbc14d8f930d6df9d303cae
-      internalID: 2131142250
+      spriteID: fc0c6923990b944438df4cf2329689de
+      internalID: -850627906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasementTilesNum3_18
+      name: BasementTilesNum1_23
       rect:
         serializedVersion: 2
         x: 192
@@ -515,29 +607,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32020dd7274a94ae787516ead0c7e7d8
-      internalID: 712185139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BasementTilesNum3_19
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c36e888dbb8cb4fccbdd9364abb940e6
-      internalID: 453808177
+      spriteID: 4ad8bcfc5e556e343b94dd28b5db5fc6
+      internalID: 308505901
       vertices: []
       indices: 
       edges: []
@@ -553,26 +624,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BasementTilesNum3_0: 1945831752
-      BasementTilesNum3_1: 936897485
-      BasementTilesNum3_10: 480621562
-      BasementTilesNum3_11: -1701492764
-      BasementTilesNum3_12: 122038996
-      BasementTilesNum3_13: -718872543
-      BasementTilesNum3_14: -939334670
-      BasementTilesNum3_15: -1263678938
-      BasementTilesNum3_16: 2121016828
-      BasementTilesNum3_17: 2131142250
-      BasementTilesNum3_18: 712185139
-      BasementTilesNum3_19: 453808177
-      BasementTilesNum3_2: -1316258482
-      BasementTilesNum3_3: 312871998
-      BasementTilesNum3_4: -1750822022
-      BasementTilesNum3_5: -493751448
-      BasementTilesNum3_6: 1034762795
-      BasementTilesNum3_7: 1327171043
-      BasementTilesNum3_8: -1707994198
-      BasementTilesNum3_9: 779779566
+      BasementTilesNum1_0: -1281778897
+      BasementTilesNum1_1: -936701537
+      BasementTilesNum1_10: 402611994
+      BasementTilesNum1_11: 283320832
+      BasementTilesNum1_12: 1578258060
+      BasementTilesNum1_13: -83653788
+      BasementTilesNum1_14: 2146121882
+      BasementTilesNum1_15: -1113952758
+      BasementTilesNum1_16: -1784369940
+      BasementTilesNum1_17: -1229923922
+      BasementTilesNum1_18: 153901900
+      BasementTilesNum1_19: -487240977
+      BasementTilesNum1_2: 499203825
+      BasementTilesNum1_20: -1283172876
+      BasementTilesNum1_21: 418215378
+      BasementTilesNum1_22: -850627906
+      BasementTilesNum1_23: 308505901
+      BasementTilesNum1_3: -2062293786
+      BasementTilesNum1_4: -1141934886
+      BasementTilesNum1_5: 2103680394
+      BasementTilesNum1_6: -715663400
+      BasementTilesNum1_7: -919348683
+      BasementTilesNum1_8: -1328959863
+      BasementTilesNum1_9: -1039432237
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
