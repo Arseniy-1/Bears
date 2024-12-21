@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1779581836500994761}
   - component: {fileID: 3954475257293321457}
   - component: {fileID: 8246112805256849453}
+  - component: {fileID: 1819078545911228337}
   - component: {fileID: 5528680206074021944}
   m_Layer: 6
   m_Name: Darchi 1
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff027c32cd0959745a41e113e0c8516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 1819078545911228337}
   <TargetScanner>k__BackingField: {fileID: 3954475257293321457}
   <WeaponHolder>k__BackingField: {fileID: 7282723676922449663}
   Health: {fileID: 8246112805256849453}
@@ -85,6 +87,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealthPoint: 100
+--- !u!114 &1819078545911228337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198293869288859640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ac65dd92be39342a1d56816663467b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1248155949959928533}
 --- !u!61 &5528680206074021944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7406719248075034746
 Transform:
   m_ObjectHideFlags: 0
@@ -582,7 +597,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Name
-      value: EnemyV1 (1)
+      value: EnemyV1
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Layer
@@ -590,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8277017829988258771, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Name
-      value: Tail
+      value: Tail_Bone
       objectReference: {fileID: 0}
     - target: {fileID: -8277017829988258771, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Layer
@@ -598,15 +613,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.629735
+      value: -0.245
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.0612173
+      value: -6.274
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.002835246
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -614,15 +629,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -728,6 +743,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 396748714977813544, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1360909380597077532, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Name
       value: LForearm
@@ -751,6 +770,10 @@ PrefabInstance:
     - target: {fileID: 3297364353584691495, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585360609123726169, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
+      propertyPath: m_SortingOrder
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4157741701538757237, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       propertyPath: m_Name
@@ -827,6 +850,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1637955201693167520}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1248155949959928533}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
 --- !u!4 &2598672087859987621 stripped
 Transform:
@@ -859,6 +885,27 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!95 &1248155949959928533
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856809783835836554}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8e970cebedbed54a91a3b4202ca3b3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &3993976572295911657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: bbe56a1fe8b3a024fa375b7739e98d79, type: 3}
