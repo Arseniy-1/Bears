@@ -8,6 +8,7 @@ public class PlayerBehaviour : Character
     [field: SerializeField] public PlayerInputController PlayerInputController { get; private set; }
     [field: SerializeField] public PlayerMover Mover { get; private set; }
     [field: SerializeField] public Jumper Jumper { get; private set; }
+    [field: SerializeField] public Flipper Flipper { get; private set; }
 
     [SerializeField] private WeaponSelector _weaponSelector;
 

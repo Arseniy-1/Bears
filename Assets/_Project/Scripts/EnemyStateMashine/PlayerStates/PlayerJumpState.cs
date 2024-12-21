@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemyStateMashine
 {
@@ -19,25 +17,21 @@ namespace EnemyStateMashine
             _stateSwitcher = stateSwitcher;
         }
 
-        public IEnumerator Jumping()
-        {
-            yield return new WaitForSeconds(2);
-
-            _stateSwitcher.SwitchState<PlayerIdleState>();
-        }
-
         public virtual void Enter()
         {
             _player.CharacterAnimator.StartJumping();
             _player.Jumper.JumpPerformed += OnJumpPerformed;
             _player.WeaponHolder.DeselectWeapon();
-            _player.Jumper.Jump();
+
+            _player.Jumper.Jump(_player.CharacterRigidbody2D.velocity);
+            _player.Flipper.enabled = false;
             Debug.Log(GetType());
         }
 
         public virtual void Exit()
         {
-
+            _player.Flipper.enabled = true;
+            _player.CharacterRigidbody2D.velocity = Vector3.zero;
         }
 
         public virtual void Update()
