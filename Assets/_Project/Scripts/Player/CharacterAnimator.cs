@@ -8,15 +8,12 @@ public class CharacterAnimator : MonoBehaviour
     private Coroutine _checkIdleTime;
     private float _minIdleDuration = 15f;
     private float _maxIdleDuration = 48f;
+    private int _layerIndexTake = 1;
+    private int _layerIndexBase = 0;
 
     public void StartIdle()
     {
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(Constants.AnimatorConstants.TakeDamage))
-        {
-            return;
-        }
-        
-        if (DetermineAnimationPriority())
+        if (IsPlayingTakeItem() == false)
         {
             _animator.Play(Constants.AnimatorConstants.IdleAnimation);
             //TODO Реализовать enable оружия
@@ -51,9 +48,22 @@ public class CharacterAnimator : MonoBehaviour
         _animator.Play(Constants.AnimatorConstants.RunInWeaponAnimation);
     }
 
+    public void TakeItem()
+    {
+        _animator.Play(Constants.AnimatorConstants.ItemPickupAnimation);
+        /*StartCoroutine(ResetLayer());*/
+    }
+
     public void TakeDamage()
     {
         _animator.Play(Constants.AnimatorConstants.TakeDamageAnimation);
+        StartCoroutine(ResetLayer());
+    }
+
+    public void TakeHeal()
+    {
+        _animator.Play(Constants.AnimatorConstants.TakeHealAnimation);
+        StartCoroutine(ResetLayer());
     }
 
     private IEnumerator CheckIdleTime()
@@ -70,22 +80,15 @@ public class CharacterAnimator : MonoBehaviour
         _checkIdleTime = null;
     }
 
-    private bool DetermineAnimationPriority()
+    private IEnumerator ResetLayer()
     {
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(Constants.AnimatorConstants.TakeDamage))
-        {
-            return true;
-        }
-
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(Constants.AnimatorConstants.LongInactivity))
-        {
-            return true;
-        }
-
-        return false;
+        _animator.SetLayerWeight(1, _layerIndexTake);
+        
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(_layerIndexTake).length);
+        
+        _animator.SetLayerWeight(1, _layerIndexBase);
     }
-}
 
-public class AnimatorController : MonoBehaviour
-{
+    private bool IsPlayingInactivity() => _animator.GetCurrentAnimatorStateInfo(0).IsName(Constants.AnimatorConstants.LongInactivity);
+    private bool IsPlayingTakeItem() => _animator.GetCurrentAnimatorStateInfo(0).IsName(Constants.AnimatorConstants.ItemPickup);
 }

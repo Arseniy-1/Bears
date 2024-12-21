@@ -10,12 +10,25 @@ public class Character : MonoBehaviour, IDamagable, ITarget
 
     public Vector2 Position => transform.position;
 
-    protected virtual void Interact(IInteractable interactable) { }
+    protected virtual void Interact(IInteractable interactable)
+    {
+    }
 
     public void TakeDamage(float amount)
     {
-        Animator.TakeDamage();
         Health.TakeDamage(amount);
-        Debug.Log("Take");
+        Animator.TakeDamage();
+    }
+
+    public void TakeHeal(float amount)
+    {
+        Health.Heal(amount);
+        Animator.TakeHeal();
+    }
+
+    public void TestTakeItem()
+    {
+        Debug.Log("Item");
+        Animator.TakeItem();
     }
 }
