@@ -20,6 +20,7 @@ static class Constants
 
         public static readonly int IdleWithWeaponAnimation = Animator.StringToHash(IdleWithWeapon);
         public static readonly int InactivityAnimation = Animator.StringToHash(LongInactivity);
+        public static readonly int ActivityAnimation = Animator.StringToHash(LongInactivity);
         public static readonly int IdleAnimation = Animator.StringToHash(IdleWithGun);
         public static readonly int RunningAnimation = Animator.StringToHash(Run);
         public static readonly int RunWithWeaponAnimation = Animator.StringToHash(RunWithWeapon);

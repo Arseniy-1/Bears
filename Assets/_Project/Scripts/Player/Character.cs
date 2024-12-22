@@ -22,9 +22,15 @@ public class Character : MonoBehaviour, IDamagable, ITarget
         Animator.TakeDamage();
     }
 
-    public void Heal(float amount)
+    public void TakeHeal(float amount)
     {
         Health.Heal(amount);
         Animator.TakeHeal();
+    }
+
+    public void TestTakeItem()
+    {
+        Debug.Log("Item");
+        Animator.TakeItem();
     }
 }

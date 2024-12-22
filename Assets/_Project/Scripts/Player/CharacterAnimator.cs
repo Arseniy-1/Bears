@@ -38,7 +38,6 @@ public class CharacterAnimator : MonoBehaviour
         }
 
         _animator.Play(Constants.AnimatorConstants.RunningAnimation);
-        Debug.Log("Run");
     }
 
     public void StartRunningWithWeapon(bool isMovingBackward)
@@ -69,11 +68,6 @@ public class CharacterAnimator : MonoBehaviour
         StartCoroutine(ResetLayer());
     }
 
-    public void Die()
-    {
-        _animator.Play(Constants.AnimatorConstants.DeadAnimation);
-    }
-
     private IEnumerator CheckIdleTime()
     {
         var waitTime = new WaitForSeconds(Random.Range(_minIdleDuration, _maxIdleDuration));
@@ -86,18 +80,6 @@ public class CharacterAnimator : MonoBehaviour
         }
 
         _checkIdleTime = null;
-    }
-
-    public void StartCollecting()
-    {
-        _animator.Play(Constants.AnimatorConstants.CollectAnimation);
-        Debug.Log("Collect");
-    }
-
-    public void StartJumping()
-    {
-        _animator.Play(Constants.AnimatorConstants.JumpAnimation);
-        Debug.Log("Jump");
     }
 
     private IEnumerator ResetLayer()

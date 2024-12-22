@@ -19,7 +19,7 @@ namespace EnemyStateMashine
 
         public virtual void Enter()
         {
-            _player.CharacterAnimator.StartJumping();
+            //_player.CharacterAnimator.StartJumping();
             _player.Jumper.JumpPerformed += OnJumpPerformed;
             _player.WeaponHolder.DeselectWeapon();
 
