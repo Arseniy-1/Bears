@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CharacterAnimator : MonoBehaviour 
+public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
@@ -21,6 +21,7 @@ public class CharacterAnimator : MonoBehaviour
             _animator.Play(Constants.AnimatorConstants.IdleAnimation);
             //TODO Реализовать enable оружия
         }
+
 
         if (_checkIdleTime == null)
         {

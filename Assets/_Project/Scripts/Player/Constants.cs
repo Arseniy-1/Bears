@@ -4,8 +4,8 @@ static class Constants
 {
     public static class AnimatorConstants
     {
-        public const string IdleWithWeapon = nameof(IdleWithWeapon);
         public const string LongInactivity = nameof(LongInactivity);
+        public const string IdleWithWeapon = nameof(IdleWithWeapon);
         public const string IdleWithGun = nameof(IdleWithGun);
         public const string Run = nameof(Run);
         public const string RunWithWeapon = nameof(RunWithWeapon);
@@ -18,7 +18,6 @@ static class Constants
         public const string ReverseWalk = nameof(ReverseWalk);
         public const string Dead = nameof(Dead);
 
-        public static readonly int ActivityAnimation = Animator.StringToHash(LongInactivity);
         public static readonly int IdleWithWeaponAnimation = Animator.StringToHash(IdleWithWeapon);
         public static readonly int InactivityAnimation = Animator.StringToHash(LongInactivity);
         public static readonly int IdleAnimation = Animator.StringToHash(IdleWithGun);
