@@ -20,7 +20,7 @@ public class BossHogMoveState : IState
 
     public virtual void Enter()
     {
-        _enemy.CharacterAnimator.StartRunning(false);
+        _enemy.CharacterAnimator.StartRunning();
         Debug.Log(GetType());
     }
 
@@ -70,7 +70,7 @@ public class BossHogJumpState : IState
 
     public virtual void Enter()
     {
-        _enemy.CharacterAnimator.StartRunning(false);
+        _enemy.CharacterAnimator.StartRunning();
         Debug.Log(GetType());
     }
 

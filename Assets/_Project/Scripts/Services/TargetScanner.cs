@@ -12,11 +12,14 @@ public class TargetScanner : MonoBehaviour
     [SerializeField] private float _scanDelay = 1;
 
     private WaitForSeconds _delay;
-
     public ITarget ClosestTarget { get; private set; }
     public bool HasTarget => ClosestTarget != null;
 
     Vector2 Position => transform.position;
+
+    public TargetScanner(Character character)
+    {
+    }
 
     private void Start()
     {

@@ -11,11 +11,8 @@ public class CharacterAnimator : MonoBehaviour
     private int _layerIndexTake = 1;
     private int _layerIndexBase = 0;
 
-    public void StartIdleWithWeapon()
+    public void StartIdle()
     {
-        _animator.Play(Constants.AnimatorConstants.IdleWithWeaponAnimation);
-        Debug.Log("Idle****");
-        
         if (IsPlayingInactivity() == false)
         {
             _animator.Play(Constants.AnimatorConstants.IdleAnimation);

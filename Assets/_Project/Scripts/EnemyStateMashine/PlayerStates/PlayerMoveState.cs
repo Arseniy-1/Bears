@@ -20,7 +20,7 @@ namespace EnemyStateMashine
         public virtual void Enter()
         {
             _player.PlayerInputController.JumpButtonPressed += OnJumpButtonPressed;
-            _player.CharacterAnimator.StartRunningWithWeapon(false);
+            _player.CharacterAnimator.StartRunningWithWeapon();
             Debug.Log(GetType());
         }
 

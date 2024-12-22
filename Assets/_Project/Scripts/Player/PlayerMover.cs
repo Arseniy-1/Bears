@@ -10,7 +10,6 @@ namespace PlayerSystem
         private PlayerBehaviour _player;
 
         public bool IsRunning => _player.PlayerInputController.InputDirection != Vector2.zero;
-        public bool IsMovingBackward => _player.PlayerInputController.InputDirection.x != _flipper.transform.localScale.x;
 
         public void Initialize(PlayerBehaviour player)
         {

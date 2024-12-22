@@ -1,10 +1,12 @@
 ﻿using _Project.Scripts.Spawner;
-using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
+    //TODO: Вынести локику смены оружия, тк оружие меняет только Player
+    [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Weapon _currentWeapon;
 
     [SerializeField] private TargetScanner _targetScaner;
@@ -14,12 +16,15 @@ public class WeaponHolder : MonoBehaviour
 
     [SerializeField] private Transform _flipView;
 
+    private int _currentWeaponIndex;
+
     public event Action WeaponChanged;
 
     public Weapon CurrentWeapon => _currentWeapon;
+    public IReadOnlyList<Weapon> Weapons => _weapons;
     public bool HasWeapon => _currentWeapon != null && _currentWeapon.gameObject.activeSelf;
 
-    private void Start()
+    private void Update()
     {
         if (HasWeapon)
         {
@@ -27,28 +32,19 @@ public class WeaponHolder : MonoBehaviour
         }
     }
 
-    [Button]
-    public void PutHands()
+    private void PutHands()
     {
-        if(_currentWeapon.RightHand == null || _currentWeapon.LeftHand == null)
-            return;
+        _rightHand.transform.parent = _currentWeapon.RightHandPosition;
+        _rightHand.transform.position = _currentWeapon.RightHandPosition.position;
 
-        _rightHand.transform.parent = _currentWeapon.RightHand;
-        _rightHand.transform.position = _currentWeapon.RightHand.position;
-
-        _leftHand.transform.parent = _currentWeapon.LeftHand;
-        _leftHand.transform.position = _currentWeapon.LeftHand.position;
-
-        _currentWeapon.gameObject.SetActive(true); 
+        _leftHand.transform.parent = _currentWeapon.LeftHandPosition;
+        _leftHand.transform.position = _currentWeapon.LeftHandPosition.position;
     }
 
-    [Button]
-    public void DeselectWeapon()
+    public void SwitchWeapon()
     {
-        _rightHand.transform.parent = null;
-        _leftHand.transform.parent = null;
-
-        _currentWeapon.gameObject.SetActive(false); 
+        _currentWeaponIndex = (_currentWeaponIndex + 1) % _weapons.Count;
+        EquipWeapon(_weapons[_currentWeaponIndex]);
     }
 
     public void Construct(TargetScanner targetScanner, MainAmmoSpawner ammoSpawner)
@@ -69,6 +65,11 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _currentWeapon = pickedWeapon;
+
+        foreach (Weapon weapon in _weapons)
+            weapon.gameObject.SetActive(false);
+
+        _currentWeapon.gameObject.SetActive(true);
 
         WeaponChanged?.Invoke();
     }
@@ -95,4 +96,10 @@ public class WeaponHolder : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
+}
+
+public class WeaponCell : MonoBehaviour
+{
+    [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
+    [field: SerializeField] public Weapon Weapon { get; private set; }
 }

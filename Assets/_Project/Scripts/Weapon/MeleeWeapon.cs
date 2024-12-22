@@ -14,8 +14,6 @@ public class MeleeWeapon : Weapon
 
     protected override void Attack()
     {
-        ShowAttackAnimation();
-
         List<Collider2D> targets = new();
         int targetsCount = Physics2D.OverlapCollider(_attackZone, _layerMask, targets);
 
