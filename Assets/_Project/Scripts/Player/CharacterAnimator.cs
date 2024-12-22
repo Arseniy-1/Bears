@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CharacterAnimator : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour 
 {
     [SerializeField] private Animator _animator;
 
@@ -11,14 +11,16 @@ public class CharacterAnimator : MonoBehaviour
     private int _layerIndexTake = 1;
     private int _layerIndexBase = 0;
 
-    public void StartIdle()
+    public void StartIdleWithWeapon()
     {
+        _animator.Play(Constants.AnimatorConstants.IdleWithWeaponAnimation);
+        Debug.Log("Idle****");
+        
         if (IsPlayingInactivity() == false)
         {
             _animator.Play(Constants.AnimatorConstants.IdleAnimation);
             //TODO Реализовать enable оружия
         }
-
 
         if (_checkIdleTime == null)
         {
@@ -35,6 +37,7 @@ public class CharacterAnimator : MonoBehaviour
         }
 
         _animator.Play(Constants.AnimatorConstants.RunningAnimation);
+        Debug.Log("Run");
     }
 
     public void StartRunningWithWeapon(bool isMovingBackward)
@@ -77,6 +80,18 @@ public class CharacterAnimator : MonoBehaviour
         }
 
         _checkIdleTime = null;
+    }
+
+    public void StartCollecting()
+    {
+        _animator.Play(Constants.AnimatorConstants.CollectAnimation);
+        Debug.Log("Collect");
+    }
+
+    public void StartJumping()
+    {
+        _animator.Play(Constants.AnimatorConstants.JumpAnimation);
+        Debug.Log("Jump");
     }
 
     private IEnumerator ResetLayer()

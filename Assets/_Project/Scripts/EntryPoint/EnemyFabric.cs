@@ -5,9 +5,9 @@ using EnemyStateMashine;
 
 public class EnemyFabric : MonoBehaviour
 {
-    public EnemyBehavior Create(Transform transform, EnemyBehavior enemyPrefab, List<Transform> waypoints, MainAmmoSpawner ammoSpawner)
+    public EnemyBehavior Create(Transform spawnPosition, EnemyBehavior enemyPrefab, List<Transform> waypoints, MainAmmoSpawner ammoSpawner)
     {
-        EnemyBehavior enemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
+        EnemyBehavior enemy = Instantiate(enemyPrefab, spawnPosition.position, spawnPosition.rotation);
 
         List<IState> enemyStates = new List<IState>
             {
@@ -17,7 +17,7 @@ public class EnemyFabric : MonoBehaviour
             new EnemyActivitysState(enemy)
             };
 
-        EnemyStateMachine enemyStateMashine = new EnemyStateMachine(enemyStates);
+        EntityStateMachine enemyStateMashine = new EntityStateMachine(enemyStates);
 
         foreach (IState state in enemyStates)
         {

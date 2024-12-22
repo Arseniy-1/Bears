@@ -6,19 +6,20 @@ using PlayerSystem;
 
 public class EnemyBehavior : Character
 {
-    private EnemyStateMachine _stateMachine;
-
     [field: SerializeField] public float DetectionRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
-    [field: SerializeField] public Turning Turning { get; private set; }
+    [field: SerializeField] public Flipper Turning { get; private set; }
+    
+    private EntityStateMachine _stateMachine;
     
     public List<Transform> Waypoints { get; private set; }
 
-    public void Construct(EnemyStateMachine enemyStateMachine, List<Transform> waypoints, MainAmmoSpawner ammoBoss)
+    public void Construct(EntityStateMachine enemyStateMachine, List<Transform> waypoints, MainAmmoSpawner ammoBoss)
     {
         _stateMachine = enemyStateMachine;
         Waypoints = waypoints;
         WeaponHolder.Construct(TargetScanner, ammoBoss);
+        CharacterRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()

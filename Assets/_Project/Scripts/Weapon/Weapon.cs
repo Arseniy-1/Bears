@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Sirenix.OdinInspector;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField, Range(0.01f, 20)] private float _reloadTime;
@@ -8,8 +8,8 @@ public abstract class Weapon : MonoBehaviour
 
     [SerializeField] protected Animator WeaponAnimator;
 
-    [field: SerializeField] public Transform RightHandPosition { get; private set; }
-    [field: SerializeField] public Transform LeftHandPosition { get; private set; }
+    [field: SerializeField] public Transform RightHand { get; private set; }
+    [field: SerializeField] public Transform LeftHand { get; private set; }
     [field: SerializeField] public SpriteRenderer Icon { get; private set; }
 
     public Transform Transform { get; private set; }
@@ -17,8 +17,6 @@ public abstract class Weapon : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        
         if (_currentTime < _reloadTime && IsReloaded == false)
             _currentTime += Time.deltaTime;
 
@@ -39,6 +37,7 @@ public abstract class Weapon : MonoBehaviour
         WeaponAnimator.Play(attackAnim);
     }
 
+    [Button]
     public virtual void TryAttack()
     {
         if (IsReloaded == false)
