@@ -13,7 +13,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void StartIdle()
     {
-        if (IsPlayingTakeItem() == false)
+        if (IsPlayingInactivity() == false)
         {
             _animator.Play(Constants.AnimatorConstants.IdleAnimation);
             //TODO Реализовать enable оружия
@@ -51,7 +51,6 @@ public class CharacterAnimator : MonoBehaviour
     public void TakeItem()
     {
         _animator.Play(Constants.AnimatorConstants.ItemPickupAnimation);
-        /*StartCoroutine(ResetLayer());*/
     }
 
     public void TakeDamage()
@@ -73,7 +72,7 @@ public class CharacterAnimator : MonoBehaviour
         while (enabled)
         {
             yield return waitTime;
-            _animator.Play(Constants.AnimatorConstants.ActivityAnimation);
+            _animator.Play(Constants.AnimatorConstants.InactivityAnimation);
             //TODO Реализовать disable оружия
         }
 
