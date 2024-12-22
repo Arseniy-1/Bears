@@ -68,6 +68,11 @@ public class CharacterAnimator : MonoBehaviour
         StartCoroutine(ResetLayer());
     }
 
+    public void Die()
+    {
+        _animator.Play(Constants.AnimatorConstants.DeadAnimation);
+    }
+
     private IEnumerator CheckIdleTime()
     {
         var waitTime = new WaitForSeconds(Random.Range(_minIdleDuration, _maxIdleDuration));
