@@ -8,7 +8,6 @@ static class Constants
         public const string LongInactivity = nameof(LongInactivity);
         public const string IdleWithGun = nameof(IdleWithGun);
         public const string Run = nameof(Run);
-        public const string RunWithWeapon = nameof(RunWithWeapon);
         public const string Collecting = nameof(Collecting);
         public const string Jump = nameof(Jump);
         public const string RunWithGun = nameof(RunWithGun);
@@ -18,15 +17,13 @@ static class Constants
         public const string ReverseWalk = nameof(ReverseWalk);
         public const string Dead = nameof(Dead);
 
-        public static readonly int ActivityAnimation = Animator.StringToHash(LongInactivity);
         public static readonly int IdleWithWeaponAnimation = Animator.StringToHash(IdleWithWeapon);
         public static readonly int InactivityAnimation = Animator.StringToHash(LongInactivity);
         public static readonly int IdleAnimation = Animator.StringToHash(IdleWithGun);
         public static readonly int RunningAnimation = Animator.StringToHash(Run);
-        public static readonly int RunWithWeaponAnimation = Animator.StringToHash(RunWithWeapon);
+        public static readonly int RunWithWeaponAnimation = Animator.StringToHash(RunWithGun);
         public static readonly int CollectAnimation = Animator.StringToHash(Collecting);
         public static readonly int JumpAnimation = Animator.StringToHash(Jump);
-        public static readonly int RunInWeaponAnimation = Animator.StringToHash(RunWithGun);
         public static readonly int TakeDamageAnimation = Animator.StringToHash(TakeDamage);
         public static readonly int TakeHealAnimation = Animator.StringToHash(TakeHeal);
         public static readonly int ItemPickupAnimation = Animator.StringToHash(ItemPickup);

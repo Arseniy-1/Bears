@@ -48,7 +48,7 @@ public class CharacterAnimator : MonoBehaviour
             return;
         }
 
-        _animator.Play(Constants.AnimatorConstants.RunInWeaponAnimation);
+        _animator.Play(Constants.AnimatorConstants.RunWithWeaponAnimation);
     }
 
     public void TakeItem()
